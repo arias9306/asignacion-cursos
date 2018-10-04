@@ -30,6 +30,11 @@ public class LoginController {
 	public ModelAndView getUsuario() {
 		ModelAndView view = new ModelAndView("index");
 		Usuario usurio = usuarioService.buscarUsuarioLogin("andres.arias@correo.co", "12345");
+		if(usurio != null) {
+			// Existe
+		} else {
+			// no existe
+		}
 		System.out.println(usurio);
 		return view;
 	}
