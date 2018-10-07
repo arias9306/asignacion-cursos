@@ -22,4 +22,10 @@ public class UsuarioService implements IUsuarioService {
 		return usuarioRepository.findByCorreoAndPassword(correo, pass);
 	}
 
+	@Override
+	public Usuario recuperarPassword(String correo) {
+	
+		return usuarioRepository.findByCorreo(correo);
+	}
+
 }
