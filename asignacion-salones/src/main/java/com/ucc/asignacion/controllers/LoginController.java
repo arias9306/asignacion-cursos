@@ -70,7 +70,7 @@ public class LoginController {
 		System.out.println("id: "+id_user);
 		//System.out.println("rol: "+rolUser);
 		
-		if (usuario != null) 
+		if ((usuario != null) && (!"".equals(usuario))) 
 		{
 			System.out.println("Si se loguea aca");
 			session.setAttribute("miUserSession", id_user);
