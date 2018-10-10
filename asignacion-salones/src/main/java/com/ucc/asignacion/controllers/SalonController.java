@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ucc.asignacion.entities.Usuario;
 import com.ucc.asignacion.services.ISalonService;
 import com.ucc.asignacion.services.IUsuarioService;
 
@@ -27,6 +28,12 @@ public class SalonController {
 		return view;
 	}
 	
+	@GetMapping("/salon")
+	public ModelAndView getSalon() {
+		ModelAndView view = new ModelAndView("index");
+		
+		
+	}
 	
 
 }
