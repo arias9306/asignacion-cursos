@@ -9,5 +9,5 @@ public interface IUsuarioService {
 
 	Usuario buscarUsuarioLogin(String correo, String pass);
     Usuario recuperarPassword(String correo);
-	
+	Usuario buscarUsuarioPrimerApellido(String primerApellido);
 }

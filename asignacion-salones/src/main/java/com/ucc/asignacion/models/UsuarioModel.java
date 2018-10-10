@@ -6,11 +6,34 @@ public class UsuarioModel {
 	private String password;
 	private int idUser;
 	private String estado;
+	private String primerApellido, segundoApellido, primerNombre, segundoNombre;
 	private boolean cambioPassw;
 	
 	
-	
-	
+	public String getPrimerApellido() {
+		return primerApellido;
+	}
+	public void setPrimerApellido(String primerApellido) {
+		this.primerApellido = primerApellido;
+	}
+	public String getSegundoApellido() {
+		return segundoApellido;
+	}
+	public void setSegundoApellido(String segundoApellido) {
+		this.segundoApellido = segundoApellido;
+	}
+	public String getPrimerNombre() {
+		return primerNombre;
+	}
+	public void setPrimerNombre(String primerNombre) {
+		this.primerNombre = primerNombre;
+	}
+	public String getSegundoNombre() {
+		return segundoNombre;
+	}
+	public void setSegundoNombre(String segundoNombre) {
+		this.segundoNombre = segundoNombre;
+	}
 	public String getCorreo() {
 		return correo;
 	}

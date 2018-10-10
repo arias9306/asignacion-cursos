@@ -31,6 +31,13 @@ public class UsuarioService implements IUsuarioService {
 		
 		return usuarioRepository.findByCorreo(correo);
 	}
+
+	@Override
+	public Usuario buscarUsuarioPrimerApellido(String primerApellido) {
+		
+		return usuarioRepository.findByPrimerApellido(primerApellido);
+	}
+	
 	
 
 	
