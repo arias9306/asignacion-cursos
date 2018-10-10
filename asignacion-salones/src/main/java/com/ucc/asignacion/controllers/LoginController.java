@@ -17,12 +17,11 @@ import com.ucc.asignacion.services.IUsuarioService;
 import com.ucc.asignacion.services.impl.EmailServiceImpl;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping({ "", "/login" })
 public class LoginController {
 
 	private final IUsuarioService usuarioService;
 	private final EmailServiceImpl email;
-	
 
 	@Autowired
 	public LoginController(IUsuarioService usuarioService, EmailServiceImpl email) {
@@ -30,7 +29,7 @@ public class LoginController {
 		this.email = email;
 	}
 
-	@GetMapping("/")
+	@GetMapping({ "", "/" })
 	public ModelAndView getRoles() {
 		ModelAndView view = new ModelAndView("index");
 		view.addObject("modeloUser", new UsuarioModel());
