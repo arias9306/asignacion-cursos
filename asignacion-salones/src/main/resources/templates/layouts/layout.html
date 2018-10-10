@@ -15,22 +15,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Bootstrap 3.3.7 -->
 <link rel="stylesheet"
-	href="../plugins/bootstrap/css/bootstrap.min.css">
+	th:href="@{~/plugins/bootstrap/css/bootstrap.min.css}">
 <!-- Font Awesome -->
 <link rel="stylesheet"
-	href="../plugins/font-awesome/css/font-awesome.min.css">
+	th:href="@{~/plugins/font-awesome/css/font-awesome.min.css}">
 <!-- Ionicons -->
 <link rel="stylesheet"
-	href="../plugins/ionicons/css/ionicons.min.css">
+	th:href="@{~/plugins/ionicons/css/ionicons.min.css}">
 
 
 <!-- Theme style -->
-<link rel="stylesheet" href="../css/theme/AdminLTE.min.css">
+<link rel="stylesheet" th:href="@{~/css/theme/AdminLTE.min.css}">
 <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
-<link rel="stylesheet"
-	href="../css/theme/skins/skin-purple.min.css">
+<link rel="stylesheet" th:href="@{~/css/theme/skins/skin-purple.min.css}">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -182,9 +181,8 @@ desired effect
 							</a>
 								<ul class="dropdown-menu">
 									<!-- The user image in the menu -->
-									<li class="user-header"><img
-										src="../img/avatar5.png" class="img-circle"
-										alt="User Image">
+									<li class="user-header"><img src="../img/avatar5.png"
+										class="img-circle" alt="User Image">
 
 										<p>
 											Alexander Pierce - Web Developer <small>Member since
@@ -231,8 +229,7 @@ desired effect
 					<!-- Sidebar user panel (optional) -->
 					<div class="user-panel">
 						<div class="pull-left image">
-							<img src="../img/avatar5.png" class="img-circle"
-								alt="User Image">
+							<img src="../img/avatar5.png" class="img-circle" alt="User Image">
 						</div>
 						<div class="pull-left info">
 							<p>Alexander Pierce</p>
@@ -388,13 +385,12 @@ desired effect
 	<!-- ./wrapper -->
 
 	<!-- REQUIRED JS SCRIPTS -->
-
 	<!-- jQuery 3 -->
-	<script src="../../static/plugins/jquery/jquery-3.3.1.min.js"></script>
+	<script th:src="@{~/static/plugins/jquery/jquery-3.3.1.min.js}"></script>
 	<!-- Bootstrap 3.3.7 -->
-	<script src="../../static/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script th:src="@{~/static/plugins/bootstrap/js/bootstrap.min.js}"></script>
 	<!-- AdminLTE App -->
-	<script src="../../static/js/adminlte.min.js"></script>
+	<script th:src="@{~/static/js/adminlte.min.js}"></script>
 
 </body>
 </html>

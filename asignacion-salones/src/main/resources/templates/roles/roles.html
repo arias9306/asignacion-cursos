@@ -6,11 +6,39 @@
 <body class="hold-transition skin-purple sidebar-mini">
 	<div class="wrapper">
 		<header th:replace="/layouts/layout :: header"></header>
-		<div class="content-wrapper">
-		
-		
-		
-		
+		<div class="content-wrapper ">
+			<div class="col-md-12 " style="padding-top: 15px">
+				<div >
+					<div class="box">
+						<div class="box-header">
+							<h3 class="box-title">Roles</h3>
+						</div>
+						<div class="box-body no-padding " th:if="${not #lists.isEmpty(roles)}">
+							<table class="table table-striped">
+								<tr>
+									<th>Id</th>
+									<th>Descripción</th>
+									<th style="width: 150px; text-align: center;">Editar</th>
+									<th style="width: 150px; text-align: center;">Eliminar</th>
+								</tr>
+								<tr th:each="rol : ${roles}">
+									<td th:text="${rol.idRol}">Id</td>
+									<td th:text="${rol.descripcion}">Descripción</td>
+									<td style="text-align: center"><a
+										th:href="${'/roles/edit/' + rol.idRol}"
+										class="btn btn-default">Edit</a></td>
+									<td style="text-align: center"><a onclick="return confirm('Esta seguro que desea eliminar le rol..')"
+										th:href="${'/roles/delete/' + rol.idRol}"
+										class="btn btn-danger">Delete</a></td>
+								</tr>
+							</table>
+						</div>
+						<div class="box-footer">
+							<a class="btn btn-primary pull-right" th:href="@{/roles/add}">Crear</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<footer th:replace="/layouts/layout :: footer"></footer>
 	</div>

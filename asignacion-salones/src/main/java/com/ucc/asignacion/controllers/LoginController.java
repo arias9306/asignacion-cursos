@@ -17,16 +17,19 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ucc.asignacion.entities.Usuario;
 import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.services.IUsuarioService;
+import com.ucc.asignacion.services.impl.EmailServiceImpl;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 
 	private final IUsuarioService usuarioService;
+	private final EmailServiceImpl email;
 
 	@Autowired
-	public LoginController(IUsuarioService usuarioService) {
+	public LoginController(IUsuarioService usuarioService, EmailServiceImpl email) {
 		this.usuarioService = usuarioService;
+		this.email = email;
 	}
 
 	@GetMapping("/")
@@ -73,7 +76,7 @@ public class LoginController {
 			System.out.println("Si se loguea aca");
 			session.setAttribute("miUserSession", id_user);
 		
-			return "redirect:/login/EnvioPrueba";
+			return "dashboard";
 		}else{
 			errorMessage= "Usuario y Contraseña incorrectos";
 			System.out.println("Error de Loguin");
@@ -93,10 +96,12 @@ public class LoginController {
 		if ((usuario != null) && (!"".equals(usuario))) 
 		{
 			System.out.println("Se le envia la contraseña"+usuario.getPassword());
+		
+			email.enviarCorreo(correo);
 			}else {
 				System.out.println("No le envio nada");
 			}
-		return "";
+		return "redirect:/login/";
 	
 		}
 }
