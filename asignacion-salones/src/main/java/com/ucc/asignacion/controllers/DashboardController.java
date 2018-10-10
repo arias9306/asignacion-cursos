@@ -12,6 +12,6 @@ public class DashboardController {
 	
 	@GetMapping("/")
 	public ModelAndView get() {
-		return new ModelAndView("dasboard");
+		return new ModelAndView("dashboard");
 	}
 }
