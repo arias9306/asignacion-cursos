@@ -48,7 +48,7 @@ public class LoginController {
 		if (usuario != null) {
 			int id_user = usuario.getIdUsuario();
 			session.setAttribute("miUserSession", id_user);
-			return "dashboard";
+			return "redirect:/dashboard/";
 		} else {
 			errorMessage = "Usuario y Contraseña incorrectos";
 
