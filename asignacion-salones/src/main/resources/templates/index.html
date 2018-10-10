@@ -1,39 +1,40 @@
 <!DOCTYPE html>
-<html lang="es"/>
+<html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>AdminLTE 2 | Log in</title>
-<body style="Background-color: #242e3d;">
-	<!-- Tell the browser to be responsive to screen width -->
-	<meta
-		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-		name="viewport">
-	<!-- Bootstrap 3.3.7 -->
-	<link rel="stylesheet"
-		href="../plugins/bootstrap/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet"
-		href="../plugins/font-awesome/css/font-awesome.min.css">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="../plugins/ionicons/css/ionicons.min.css">
-	<!-- Theme style -->
-	<link rel="stylesheet" href="../css/theme/AdminLTE.min.css">
+<body style="Background-color:#242e3d;">
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<!-- Bootstrap 3.3.7 -->
+<link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="../plugins/font-awesome/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="../plugins/ionicons/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../css/theme/AdminLTE.min.css">
 
-	<!-- Google Font -->
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<!-- Google Font -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-	<style type="text/css">
+<style type="text/css">
 html, body {
 	height: 90%;
 }
 </style>
+
+
 </head>
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<img src="img/LogoUcc.png" border="0" width="300" height="300">
+		<img src="../img/LogoUcc.png" border="0" width="300" height="300">
 
 			<a href="../../index2.html"><b>LOGIN</b>USUARIO</a>
 		</div>
@@ -46,15 +47,15 @@ html, body {
 				<div class="form-group has-feedback">
 
 					<input type="email" class="form-control" th:field="*{correo}"
-						placeholder="Email" required /> <span
+						placeholder="Email" required> <span
 						class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="password" class="form-control" th:field="*{password}"
-						placeholder="Password" required /> <span
+						placeholder="Password" required> <span
 						class="glyphicon glyphicon-lock form-control-feedback"></span>
-				</div>
-
+</div>
+				
 				<div class="row">
 
 					<div class="col-xs-4 pull-right">
@@ -66,46 +67,42 @@ html, body {
 			</form>
 			<div th:if="${mensajeError}" th:text="${mensajeError}"></div>
 
-
-
-			<!-- Aca Recuerdo la contraseña -->
-			<a href="#" data-toggle="modal" data-target="#myModal">Olvide mi
-				Contraseña</a><br>
-
+				
+				
+				<!-- Aca Recuerdo la contraseña -->	
+			<a href="#" data-toggle="modal" data-target="#myModal">Olvide mi Contraseña</a><br>
+			
 			<!-- Modal -->
-			<div id="myModal" class="modal fade" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Recuperar mi Contraseña</h4>
-						</div>
-						<div class="modal-body">
-							<p>Para recordar su contraseña, ingrese el correo registrado
-								en la plataforma.</p>
-
-							<form th:action="@{/login/cambioPassw}" th:object="${modeloUser}"
-								method="post">
-								<div class="form-group">
-									<label for="email">Correo Electronico:</label> <input
-										type="email" class="form-control" id="email"
-										th:field="*{correo}" required>
-								</div>
-								<button type="submit" class="btn btn-default">Recuperar</button>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Cerrar</button>
-						</div>
-					</div>
-
+				<div id="myModal" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+				
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">Recuperar mi Contraseña</h4>
+				      </div>
+				      <div class="modal-body">
+				        <p>Para recordar su contraseña, ingrese el correo registrado en la plataforma.</p>
+				        
+				        <form th:action="@{/login/cambioPassw}" th:object="${modeloUser}"
+						method="post">
+				        	  <div class="form-group">
+							    <label for="email">Correo Electronico:</label>
+							    <input type="email" class="form-control" id="email" th:field="*{correo}" required>
+							  </div>
+							   <button type="submit" class="btn btn-default">Recuperar</button>
+				        </form>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				      </div>
+				    </div>
+				
+				  </div>
 				</div>
-			</div>
-
-
+			
+			
 
 		</div>
 		<!-- /.login-box-body -->
