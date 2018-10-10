@@ -12,7 +12,7 @@ import com.ucc.asignacion.services.IRolService;
 @RequestMapping("/roles")
 public class RolController {
 
-	private static final String VISTA = "roles";
+	private static final String VISTA = "/roles/roles";
 
 	private final IRolService rolService;
 

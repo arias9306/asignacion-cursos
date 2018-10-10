@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.ucc.asignacion.models.SalonModel;
 
-public interface ISalonesService {
+public interface ISalonService {
 
 	List<SalonModel> consultarsalones();
 }
