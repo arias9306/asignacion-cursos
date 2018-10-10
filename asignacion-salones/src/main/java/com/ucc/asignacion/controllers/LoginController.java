@@ -32,6 +32,7 @@ public class LoginController {
 	@GetMapping("/")
 	public ModelAndView getRoles() {
 		ModelAndView view = new ModelAndView("index");
+		view.addObject("modeloUser", new UsuarioModel());
 		return view;
 	}
 
@@ -57,21 +58,18 @@ public class LoginController {
 		view.addObject("modeloUser", new UsuarioModel());
 		return view;
 	}
+	private String errorMessage = "";
 	
 	@PostMapping("/iniciarSesion")
 	public String validaUser(Model model, @ModelAttribute("modeloUser") UsuarioModel usuarioModel, HttpSession session) {
 		
-		String errorMessage = "";
 		String correo = usuarioModel.getCorreo();
 		String password = usuarioModel.getPassword();
 		Usuario usuario = usuarioService.buscarUsuarioLogin(correo, password);
-		int id_user= usuario.getIdUsuario();
-		
-		System.out.println("id: "+id_user);
-		//System.out.println("rol: "+rolUser);
 		
 		if ((usuario != null) && (!"".equals(usuario))) 
 		{
+			int id_user= usuario.getIdUsuario();
 			System.out.println("Si se loguea aca");
 			session.setAttribute("miUserSession", id_user);
 		
@@ -79,9 +77,10 @@ public class LoginController {
 		}else{
 			errorMessage= "Usuario y Contraseña incorrectos";
 			System.out.println("Error de Loguin");
+			
 		}
 		model.addAttribute("mensajeError", errorMessage);
-		return "UsuarioModel";
+		return "index";
 	
 	}
 	
