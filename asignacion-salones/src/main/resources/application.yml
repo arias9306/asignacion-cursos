@@ -22,6 +22,8 @@ spring:
           auth: true
           starttls:
             enable: true
+  thymeleaf:
+    cache: false
 
 #Log
 logging:

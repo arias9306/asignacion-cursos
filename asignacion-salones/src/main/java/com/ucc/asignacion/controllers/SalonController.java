@@ -29,10 +29,10 @@ public class SalonController {
 	}
 	
 	@GetMapping("/salon")
-	public ModelAndView getSalon() {
+	public ModelAndView getSalo() {
 		ModelAndView view = new ModelAndView("index");
 		
-		
+		return null;
 	}
 	
 
