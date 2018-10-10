@@ -7,7 +7,6 @@ import com.ucc.asignacion.entities.Salon;
 
 public interface ISalonRepository  extends CrudRepository<Salon, Integer> {
 	
-	
-	
+		
 
 }

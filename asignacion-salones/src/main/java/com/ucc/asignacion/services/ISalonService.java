@@ -7,5 +7,5 @@ import com.ucc.asignacion.models.SalonModel;
 
 public interface ISalonService {
 
-	List<SalonModel> consultarsalones();
+	List<SalonModel> consultarSalones();
 }

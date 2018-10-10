@@ -28,12 +28,7 @@ public class SalonController {
 		return view;
 	}
 	
-	@GetMapping("/salon")
-	public ModelAndView getSalo() {
-		ModelAndView view = new ModelAndView("index");
-		
-		return null;
-	}
+	
 	
 
 }

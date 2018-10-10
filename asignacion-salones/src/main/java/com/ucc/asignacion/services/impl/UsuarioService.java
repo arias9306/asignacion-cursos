@@ -28,7 +28,6 @@ public class UsuarioService implements IUsuarioService {
 
 	@Override
 	public Usuario recuperarPassword(String correo) {
-		
 		return usuarioRepository.findByCorreo(correo);
 	}
 	
