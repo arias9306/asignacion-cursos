@@ -12,6 +12,7 @@ public class ExceptionController {
 
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ModelAndView handleError404(HttpServletRequest request, Exception e) {
+		System.out.println("123");
 		return new ModelAndView("/errores/404");
 	}
 	

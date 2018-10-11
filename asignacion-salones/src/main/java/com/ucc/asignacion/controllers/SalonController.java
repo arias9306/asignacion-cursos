@@ -14,6 +14,8 @@ import com.ucc.asignacion.services.IUsuarioService;
 @RequestMapping("/salon")
 public class SalonController {
 	
+	private static final String VIEW = "/salones/busqueda_salones";
+
 	private final ISalonService salonService;
 	
 	@Autowired
@@ -24,7 +26,8 @@ public class SalonController {
 	
 	@GetMapping("/")
 	public ModelAndView getSalon() {
-		ModelAndView view = new ModelAndView("index");
+		ModelAndView view = new ModelAndView(VIEW);
+		view.addObject("salones", salonService.salon());
 		return view;
 	}
 	
