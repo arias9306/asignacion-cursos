@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.ucc.asignacion.entities.Usuario;
+import com.ucc.asignacion.models.RolModel;
 import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.services.IUsuarioService;
 
@@ -35,6 +36,13 @@ public class UsuarioController {
 	public String editProduct(Model model, @PathVariable(value = "id") String id) {
 		model.addAttribute("usuarioModel", usuarioService.buscarUsuarioById(id));
 		return "/usuarios/edit";
+	}
+	
+	@GetMapping("/add")
+	public ModelAndView createProduct(Model model) {
+		ModelAndView view = new ModelAndView("/usuarios/edit");
+		view.addObject("usuarioModel", new UsuarioModel());
+		return view;
 	}
 	
 	/*@PostMapping("/usuario")
