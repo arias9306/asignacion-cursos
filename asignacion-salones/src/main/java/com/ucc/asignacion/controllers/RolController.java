@@ -45,7 +45,6 @@ public class RolController {
 		return "redirect:/roles/";
 	}
 
-
 	@GetMapping("/edit/{id}")
 	public String editProduct(Model model, @PathVariable(value = "id") String id) {
 		model.addAttribute("rolModel", rolService.buscarRolById(id));

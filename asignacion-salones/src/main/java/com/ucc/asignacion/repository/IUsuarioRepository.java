@@ -8,4 +8,5 @@ public interface IUsuarioRepository extends CrudRepository<Usuario, Integer> {
 
 	Usuario findByCorreoAndPassword(String correo, String password);
 	Usuario findByCorreo(String correo);
+	Usuario findByPrimerApellido(String PrimerApellido);
 }

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Usuarios</title>
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+	<div class="wrapper">
+		<header th:replace="/layouts/layout :: header"></header>
+		<div class="content-wrapper">
+
+			<div class="col-md-12 " style="padding-top: 15px">
+				<div class="box box-primary ">
+					<div class="box-header with-border">
+						<h3 class="box-title">Usuario</h3>
+					</div>
+					<form class="form-horizontal" th:object="${usuarioModel}"
+						th:action="@{/usuario/}" method="post">
+						<div class="box-body">
+							
+							<div class="form-group" th:if="${idUser != 0}">
+								<label class="col-sm-2 control-label">Id:</label>
+								<div class="col-sm-10">
+									<input type="text" readonly="readonly" class="form-control"
+										th:field="*{idUser}" />
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Primer Nombre:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control"
+										th:field="*{primerNombre}" />
+								</div>
+							</div>
+												
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Segundo Nombre:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control"
+										th:field="*{segundoNombre}" />
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Primer Apellido:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control"
+										th:field="*{primerApellido}" />
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">segundo Apellido:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control"
+										th:field="*{segundoApellido}" />
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Correo:</label>
+								<div class="col-sm-10">
+									<input type="email" class="form-control"
+										th:field="*{correo}" />
+								</div>
+							</div>
+							
+								<div class="form-group">
+								<label class="col-sm-2 control-label">Codigo:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control"
+										th:field="*{codigo}" />
+								</div>
+								</div>
+								
+								<div class="form-group">
+								<label class="col-sm-2 control-label">Numero identificacion:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control"
+										th:field="*{nroIdentificacion}" />
+								</div>
+								</div>
+								
+								<div class="form-group">
+								<label class="col-sm-2 control-label">Telefono:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control"
+										th:field="*{telefono}" />
+								</div>
+								</div>
+								
+								<div class="form-group">
+								<label class="col-sm-2 control-label">Password:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control"
+										th:field="*{password}" />
+								</div>
+								</div>
+								
+								
+								
+							
+						</div>
+						<div class="box-footer">
+							<div class="form-group">
+								<div class="col-sm-2">
+									<button type="submit" class="btn btn-primary">Guardar</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+		<footer th:replace="/layouts/layout :: footer"></footer>
+	</div>
+</body>
+</html>

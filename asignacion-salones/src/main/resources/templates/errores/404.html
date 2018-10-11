@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Not Found</title>
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+	<div class="wrapper">
+		<header th:replace="/layouts/layout :: header"></header>
+		<div class="content-wrapper">
+			<div class="error-page">
+				<h2 class="headline text-yellow">404</h2>
+
+				<div class="error-content">
+					<h3>
+						<i class="fa fa-warning text-yellow"></i> Oops! La pagina no
+						existe.
+					</h3>
+
+					<p>
+						Revisa la url a la que estás tratando de ingresar..... <a
+							th:href="@{/dashboard/}">regresar a dashboard</a>
+					</p>
+
+				</div>
+				<!-- /.error-content -->
+			</div>
+		</div>
+		<footer th:replace="/layouts/layout :: footer"></footer>
+	</div>
+</body>
+</html>
