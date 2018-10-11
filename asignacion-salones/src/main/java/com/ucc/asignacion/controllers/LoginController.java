@@ -49,7 +49,7 @@ public class LoginController {
 			session.setAttribute("miUserSession", id_user);
 			return "redirect:/dashboard/";
 		} else {
-			errorMessage = "Usuario y Contraseña incorrectos";
+			errorMessage = "Usuario Y Contraseña incorrectos";
 
 		}
 		model.addAttribute("mensajeError", errorMessage);
@@ -58,18 +58,21 @@ public class LoginController {
 	}
 
 	@PostMapping("/cambioPassw")
-	public String recordarPassword(Model model, @ModelAttribute("modeloUser") UsuarioModel usuarioModel,
+	public String recordarPassword(Model model1, @ModelAttribute("modeloUser") UsuarioModel usuarioModel,
 			HttpSession session) {
 
 		String correo = usuarioModel.getCorreo();
+		String error="";
 		Usuario usuario = usuarioService.recuperarPassword(correo);
 
 		if (usuario != null) {
 			email.enviarCorreo(correo);
 		} else {
-			System.out.println("No le envio nada");
+			error = "CORREO NO EXISTE";
+
 		}
-		return "redirect:/login/";
+		model1.addAttribute("mensajeError", error);
+		return "index";
 
 	}
 }
