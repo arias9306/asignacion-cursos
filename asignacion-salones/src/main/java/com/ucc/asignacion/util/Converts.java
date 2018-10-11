@@ -1,7 +1,9 @@
 package com.ucc.asignacion.util;
 
 import com.ucc.asignacion.entities.Rol;
+import com.ucc.asignacion.entities.Salon;
 import com.ucc.asignacion.models.RolModel;
+import com.ucc.asignacion.models.SalonModel;
 
 public class Converts {
 
@@ -35,4 +37,44 @@ public class Converts {
 		return rol;
 	}
 
+	/**
+	 * Metodo para convertir SalonModel a Salon
+	 * 
+	 * @param salonModel
+	 * @return
+	 */
+	public static Salon convertSalonModelToSalon(SalonModel salonModel) {
+		Salon salon = null;
+		if (salonModel != null) {
+			salon = new Salon();
+			salon.setIdSalon(salonModel.getIdSalon());
+			salon.setBloque(salonModel.getBloque());
+			salon.setCodigo(salonModel.getCodigo());
+			salon.setDescripcion(salonModel.getDescripcion());
+			salon.setEstado(salonModel.isEstado());
+			salon.setTipo(salonModel.getTipo());
+		}
+		return salon;
+	}
+
+	/**
+	 * Metodo para convertir salon a SalonModel
+	 * 
+	 * @param salon
+	 * @return
+	 */
+
+	public static SalonModel convertsalonToSalonModel(Salon salon) {
+		SalonModel model = null;
+		if (salon != null) {
+			model = new SalonModel();
+			model.setIdSalon(salon.getIdSalon());
+			model.setBloque(salon.getBloque());
+			model.setCodigo(salon.getCodigo());
+			model.setDescripcion(salon.getDescripcion());
+			model.setEstado(salon.getEstado());
+			model.setTipo(salon.getTipo());
+		}
+		return model;
+	}
 }
