@@ -65,11 +65,16 @@ html, body {
 					<!-- /.col -->
 				</div>
 			</form>
-			<div th:if="${mensajeError}" th:text="${mensajeError}"></div>
+			
+			<br>
+			<div class="alert alert-warning" role="alert"
+			th:if="${mensajeError}" th:text="${mensajeError}"></div>
+			
 
 				
 				
 				<!-- Aca Recuerdo la contraseña -->	
+				
 			<a href="#" data-toggle="modal" data-target="#myModal">Olvide mi Contraseña</a><br>
 			
 			<!-- Modal -->
