@@ -16,6 +16,7 @@ import com.ucc.asignacion.util.Converts;
 @Service
 public class RolServiceImpl implements IRolService {
 
+	
 	private final IRolRepository rolRepository;
 
 	@Autowired
@@ -35,15 +36,20 @@ public class RolServiceImpl implements IRolService {
 
 	@Override
 	public void guardarRol(RolModel rol) {
+		// si el idrol es diferente de 0, entonces ya existe en la base
 		if (rol.getIdRol() != 0) {
+			//Consulto el rol ya guardado
 			Optional<Rol> rolEntity = rolRepository.findById(rol.getIdRol());
 			if (rolEntity.isPresent()) {
+				//Actualizo los valores que se pueden actualizar (el id NO)
 				Rol updateRol = rolEntity.get();
 				updateRol.setNombre(rol.getDescripcion());
 				rolRepository.save(updateRol);
-			}	
+			}
+		} else {
+			// si el idrol es 0 es nuevo
+			rolRepository.save(Converts.convertRolModelToRol(rol));
 		}
-		rolRepository.save(Converts.convertRolModelToRol(rol));
 	}
 
 	@Override
