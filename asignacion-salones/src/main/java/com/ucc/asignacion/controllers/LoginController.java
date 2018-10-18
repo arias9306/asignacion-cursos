@@ -66,7 +66,7 @@ public class LoginController {
 		Usuario usuario = usuarioService.recuperarPassword(correo);
 
 		if (usuario != null) {
-			email.enviarCorreo(correo);
+			email.enviarCorreo(correo, usuario.getPassword());
 		} else {
 			error = "CORREO NO EXISTE";
 
