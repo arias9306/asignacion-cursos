@@ -15,11 +15,11 @@ public class EmailServiceImpl {
 		this.emailSender = emailSende;
 	}
 	
-	public void enviarCorreo(String to, String password) {
+	public void enviarCorreo(String to) {
 		SimpleMailMessage message = new SimpleMailMessage(); 
         message.setTo(to); 
-        message.setSubject("Recuperacion de Contraseña"); 
-        message.setText("Su usuario de Ingreso es: "+to+", la contraseña es: "+password);
+        message.setSubject("Recuperacion Password"); 
+        message.setText("Mk le envie un correo");
         emailSender.send(message);
 	}
 
