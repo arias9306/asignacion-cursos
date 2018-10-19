@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.ucc.asignacion.entities.Usuario;
 import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.repository.IUsuarioRepository;
@@ -31,6 +32,8 @@ public class UsuarioService implements IUsuarioService {
 	public Usuario recuperarPassword(String correo) {
 		return usuarioRepository.findByCorreo(correo);
 	}
+	
+	
 
 	@Override
 	public Usuario buscarUsuarioPrimerApellido(String primerApellido) {
@@ -58,6 +61,33 @@ public class UsuarioService implements IUsuarioService {
 		return new UsuarioModel();
 
 	}
+
+	@Override
+	public void guardarUsuario(UsuarioModel usuario) {
+		if (usuario.getIdUser() != 0) {
+			Optional<Usuario> usuarioEntity = usuarioRepository.findById(usuario.getIdUser());
+			if (usuarioEntity.isPresent()) {
+				Usuario updateUsuario = usuarioEntity.get();
+				updateUsuario.setPrimerNombre(usuario.getPrimerNombre());
+				updateUsuario.setSegundoNombre(usuario.getSegundoNombre());
+				updateUsuario.setPrimerApellido(usuario.getPrimerApellido());
+				updateUsuario.setPrimerApellido(usuario.getPrimerNombre());
+				updateUsuario.setCorreo(usuario.getCorreo());
+				updateUsuario.setCodigo(usuario.getCodigo());
+				updateUsuario.setNroIdentificacion(usuario.getNroIdentificacion());
+				updateUsuario.setTelefono(usuario.getTelefono());
+				updateUsuario.setPassword(usuario.getPassword());
+				updateUsuario.setCambioPassword(usuario.isCambioPassw());
+				updateUsuario.setEstado(usuario.getEstado());
+				usuarioRepository.save(updateUsuario);
+			}	
+		} else {
+			usuarioRepository.save(Converts.convertUsuarioModelToUsuario(usuario));
+		}
+		
+	}
+
+
 	
 	
 

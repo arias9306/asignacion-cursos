@@ -1,5 +1,6 @@
 package com.ucc.asignacion.util;
 
+import com.ucc.asignacion.entities.Programa;
 import com.ucc.asignacion.entities.Rol;
 import com.ucc.asignacion.entities.Salon;
 import com.ucc.asignacion.models.RolModel;
@@ -42,7 +43,7 @@ public class Converts {
 			model.setEstado(usuario.getEstado());
 			model.setIdRol(usuario.getRol().getIdRol());
 			model.setIdPrograma(usuario.getPrograma().getIdPrograma());
-			
+
 		}
 		return model;
 	}
@@ -103,7 +104,7 @@ public class Converts {
 		}
 		return model;
 	}
-	
+
 	public static Usuario convertUsuarioModelToUsuario(UsuarioModel usuarioModel) {
 
 		Usuario usuario = null;
@@ -114,7 +115,17 @@ public class Converts {
 			usuario.setSegundoNombre(usuarioModel.getSegundoNombre());
 			usuario.setPrimerApellido(usuarioModel.getPrimerApellido());
 			usuario.setSegundoApellido(usuarioModel.getSegundoApellido());
-
+			usuario.setCorreo(usuarioModel.getCorreo());
+			usuario.setCodigo(usuarioModel.getCodigo());
+			usuario.setTelefono(usuarioModel.getTelefono());
+			usuario.setEstado(usuarioModel.getEstado());
+			usuario.setCambioPassword(usuarioModel.isCambioPassw());
+			usuario.setNroIdentificacion(usuarioModel.getNroIdentificacion());
+			usuario.setPassword(usuarioModel.getPassword());
+			usuario.setRol(new Rol());
+			usuario.getRol().setIdRol(usuarioModel.getIdRol());
+			usuario.setPrograma(new Programa());
+			usuario.getPrograma().setIdPrograma(usuarioModel.getIdPrograma());
 		}
 
 		return usuario;

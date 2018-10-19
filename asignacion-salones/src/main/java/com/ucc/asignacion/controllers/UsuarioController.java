@@ -45,13 +45,13 @@ public class UsuarioController {
 		return view;
 	}
 	
-	/*@PostMapping("/usuario")
-	public String buscarUsuarios(Model model, @ModelAttribute("usuarioModel") UsuarioModel usuarioModel) {
-		
-		Usuario usuario= usuarioService.buscarUsuarioPrimerApellido(usuarioModel.getPrimerApellido());
-		return "";
-	} */
-
+	@PostMapping("/")
+	public String saveProduct(UsuarioModel usuario) {
+		usuarioService.guardarUsuario(usuario);
+		return "redirect:/usuario/";
+	}
+	
+	
 	
 	
 }

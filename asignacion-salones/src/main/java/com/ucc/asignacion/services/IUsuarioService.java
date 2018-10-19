@@ -1,9 +1,7 @@
 package com.ucc.asignacion.services;
 import java.util.List;
 
-
 import com.ucc.asignacion.entities.Usuario;
-import com.ucc.asignacion.models.RolModel;
 import com.ucc.asignacion.models.UsuarioModel;
 
 public interface IUsuarioService {
@@ -13,5 +11,6 @@ public interface IUsuarioService {
 	Usuario buscarUsuarioLogin(String correo, String pass);
     Usuario recuperarPassword(String correo);
 	Usuario buscarUsuarioPrimerApellido(String primerApellido);
+	void guardarUsuario(UsuarioModel usuario);
 	
 }

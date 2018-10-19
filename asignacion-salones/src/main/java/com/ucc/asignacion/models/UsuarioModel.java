@@ -28,8 +28,6 @@ public class UsuarioModel {
 		this.segundoNombre = segundoNombre;
 	}
 	
-	
-
 
 	public int getCodigo() {
 		return codigo;
