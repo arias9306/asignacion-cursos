@@ -14,6 +14,15 @@ public class SalonModel {
 
 	private String tipo;
 
+	public SalonModel() {
+		this.idSalon = idSalon;
+		this.bloque = bloque;
+		this.codigo = codigo;
+		this.descripcion = descripcion;
+		this.estado = estado;
+		this.tipo = tipo;
+	}
+
 	public int getIdSalon() {
 		return idSalon;
 	}
@@ -61,6 +70,5 @@ public class SalonModel {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
 
 }
