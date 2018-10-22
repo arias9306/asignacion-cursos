@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ucc.asignacion.entities.Programa;
+import com.ucc.asignacion.entities.Rol;
 import com.ucc.asignacion.entities.Usuario;
 import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.repository.IUsuarioRepository;
@@ -71,7 +73,7 @@ public class UsuarioService implements IUsuarioService {
 				updateUsuario.setPrimerNombre(usuario.getPrimerNombre());
 				updateUsuario.setSegundoNombre(usuario.getSegundoNombre());
 				updateUsuario.setPrimerApellido(usuario.getPrimerApellido());
-				updateUsuario.setPrimerApellido(usuario.getPrimerNombre());
+				updateUsuario.setSegundoApellido(usuario.getSegundoApellido());
 				updateUsuario.setCorreo(usuario.getCorreo());
 				updateUsuario.setCodigo(usuario.getCodigo());
 				updateUsuario.setNroIdentificacion(usuario.getNroIdentificacion());
@@ -79,6 +81,10 @@ public class UsuarioService implements IUsuarioService {
 				updateUsuario.setPassword(usuario.getPassword());
 				updateUsuario.setCambioPassword(usuario.isCambioPassw());
 				updateUsuario.setEstado(usuario.getEstado());
+				updateUsuario.setRol(new Rol());
+				updateUsuario.getRol().setIdRol(usuario.getIdRol());
+				updateUsuario.setPrograma(new Programa());
+				updateUsuario.getPrograma().setIdPrograma(usuario.getIdPrograma());
 				usuarioRepository.save(updateUsuario);
 			}	
 		} else {
