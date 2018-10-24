@@ -17,7 +17,7 @@
 					<form class="form-horizontal" th:object="${usuarioModel}"
 						th:action="@{/usuario/}" method="post">
 						<div class="box-body">
-							
+
 							<div class="form-group" th:if="${idUser != 0}">
 								<label class="col-sm-2 control-label">Id:</label>
 								<div class="col-sm-10">
@@ -25,7 +25,7 @@
 										th:field="*{idUser}" />
 								</div>
 							</div>
-							
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Primer Nombre:</label>
 								<div class="col-sm-10">
@@ -33,7 +33,7 @@
 										th:field="*{primerNombre}" />
 								</div>
 							</div>
-												
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Segundo Nombre:</label>
 								<div class="col-sm-10">
@@ -41,7 +41,7 @@
 										th:field="*{segundoNombre}" />
 								</div>
 							</div>
-							
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Primer Apellido:</label>
 								<div class="col-sm-10">
@@ -49,7 +49,7 @@
 										th:field="*{primerApellido}" />
 								</div>
 							</div>
-							
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label">segundo Apellido:</label>
 								<div class="col-sm-10">
@@ -57,80 +57,81 @@
 										th:field="*{segundoApellido}" />
 								</div>
 							</div>
-							
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Correo:</label>
 								<div class="col-sm-10">
-									<input type="email" class="form-control"
-										th:field="*{correo}" />
+									<input type="email" class="form-control" th:field="*{correo}" />
 								</div>
 							</div>
-							
-								<div class="form-group">
+
+							<div class="form-group">
 								<label class="col-sm-2 control-label">Codigo:</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										th:field="*{codigo}" />
+									<input type="text" class="form-control" th:field="*{codigo}" />
 								</div>
-								</div>
-								
-								<div class="form-group">
-								<label class="col-sm-2 control-label">Numero identificacion:</label>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Numero
+									identificacion:</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
 										th:field="*{nroIdentificacion}" />
 								</div>
-								</div>
-								
-								<div class="form-group">
+							</div>
+
+							<div class="form-group">
 								<label class="col-sm-2 control-label">Telefono:</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										th:field="*{telefono}" />
+									<input type="text" class="form-control" th:field="*{telefono}" />
 								</div>
-								</div>
-								
-								<div class="form-group">
+							</div>
+
+							<div class="form-group">
 								<label class="col-sm-2 control-label">Password:</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										th:field="*{password}" />
+									<input type="text" class="form-control" th:field="*{password}" />
 								</div>
-								</div>
-								
-								<div class="form-group">
+							</div>
+
+							<div class="form-group">
 								<label class="col-sm-2 control-label">Cambio Password:</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
 										th:field="*{cambioPassw}" />
 								</div>
-								</div>
-								
-								<div class="form-group">
-								<label class="col-sm-2 control-label">Estado:</label>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-2 control-label"
+									for="exampleFormControlSelect1">Estado: </label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										th:field="*{estado}" />
+									<select class="form-control" id="estado" th-field="*{estado}">
+										<option th:value="0" th:text="Seleccione..."></option>
+										<option th:value="'Activo'" th:text="Activo"></option>
+										<option th:value="'Inactivo'" th:text="Inactivo"></option>
+									</select>
 								</div>
-								</div>
-								
-								<div class="form-group">
+							</div>
+
+
+							<div class="form-group">
 								<label class="col-sm-2 control-label">ID Rol:</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										th:field="*{idRol}" />
+									<input type="text" class="form-control" th:field="*{idRol}" />
 								</div>
-								</div>
-								
-								<div class="form-group">
+							</div>
+
+							<div class="form-group">
 								<label class="col-sm-2 control-label">Id Programas:</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
 										th:field="*{idPrograma}" />
 								</div>
-								</div>
-								
-							
+							</div>
+
+
 						</div>
 						<div class="box-footer">
 							<div class="form-group">
