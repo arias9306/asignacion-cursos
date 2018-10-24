@@ -51,7 +51,11 @@ public class UsuarioController {
 		return "redirect:/usuario/";
 	}
 	
-	
+	@GetMapping("/delete/{id}")
+	public String deleteProduct(@PathVariable(name = "id") String id) {
+		usuarioService.eliminarUsuarioById(id);
+		return "redirect:/usuario/";
+	}
 	
 	
 }

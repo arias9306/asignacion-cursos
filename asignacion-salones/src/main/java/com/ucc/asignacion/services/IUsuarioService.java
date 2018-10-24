@@ -12,5 +12,6 @@ public interface IUsuarioService {
     Usuario recuperarPassword(String correo);
 	Usuario buscarUsuarioPrimerApellido(String primerApellido);
 	void guardarUsuario(UsuarioModel usuario);
+	void eliminarUsuarioById(String id);
 	
 }

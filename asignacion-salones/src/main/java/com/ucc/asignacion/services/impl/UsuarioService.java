@@ -93,6 +93,13 @@ public class UsuarioService implements IUsuarioService {
 		
 	}
 
+	@Override
+	public void eliminarUsuarioById(String id) {
+		
+		usuarioRepository.deleteById(Integer.parseInt(id));
+		
+	}
+
 
 	
 	
