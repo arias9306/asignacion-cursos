@@ -114,7 +114,7 @@
 								<label class="col-sm-2 control-label">Estado:<span
 									class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<select class="form-control" id="estado" th-field="*{estado}">
+									<select class="form-control" id="estado" th:field="*{estado}">
 										<option th:value="0" th:text="Seleccione..."></option>
 										<option th:value="'Activo'" th:text="Activo"></option>
 										<option th:value="'Inactivo'" th:text="Inactivo"></option>
