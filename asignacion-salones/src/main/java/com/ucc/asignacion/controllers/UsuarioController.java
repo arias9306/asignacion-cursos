@@ -19,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ucc.asignacion.entities.Usuario;
 import com.ucc.asignacion.models.RolModel;
 import com.ucc.asignacion.models.UsuarioModel;
+import com.ucc.asignacion.services.IProgramaService;
+import com.ucc.asignacion.services.IRolService;
 import com.ucc.asignacion.services.IUsuarioService;
 
 @Controller
@@ -26,11 +28,15 @@ import com.ucc.asignacion.services.IUsuarioService;
 public class UsuarioController {
 	
 	private final IUsuarioService usuarioService;
+	private final IRolService rolService;
+	private final IProgramaService programaService;
 	
 	@Autowired
-	public UsuarioController(IUsuarioService usuarioService) {
+	public UsuarioController(IUsuarioService usuarioService, IRolService rolService, IProgramaService programaService) {
+		this.rolService=rolService;
 		this.usuarioService=usuarioService;
-	}
+		this.programaService=programaService;
+	}	
 	
 	@GetMapping("/")
 	public ModelAndView getUsuarios() {
@@ -44,13 +50,17 @@ public class UsuarioController {
 		UsuarioModel usuarioModel = usuarioService.buscarUsuarioById(id);
 		usuarioModel.setEditar(true);
 		model.addAttribute("usuarioModel", usuarioModel);
+		model.addAttribute("rolModel",rolService.roles());
+		model.addAttribute("programaModel",programaService.programas());
 		return "/usuarios/edit";
 	}
 	
 	@GetMapping("/add")
 	public ModelAndView createProduct(Model model) {
 		ModelAndView view = new ModelAndView("/usuarios/edit");
-		view.addObject("usuarioModel", new UsuarioModel()); 
+		view.addObject("usuarioModel", new UsuarioModel());
+		model.addAttribute("rolModel",rolService.roles());
+		model.addAttribute("programaModel",programaService.programas());
 		return view;
 	}
 	
