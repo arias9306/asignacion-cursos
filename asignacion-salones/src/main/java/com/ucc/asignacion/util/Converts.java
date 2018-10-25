@@ -1,8 +1,10 @@
 package com.ucc.asignacion.util;
 
+import com.ucc.asignacion.entities.Caracteristica;
 import com.ucc.asignacion.entities.Programa;
 import com.ucc.asignacion.entities.Rol;
 import com.ucc.asignacion.entities.Salon;
+import com.ucc.asignacion.models.CaracteristicaModel;
 import com.ucc.asignacion.models.RolModel;
 import com.ucc.asignacion.models.SalonModel;
 import com.ucc.asignacion.entities.Usuario;
@@ -132,4 +134,25 @@ public class Converts {
 
 	}
 
+	
+	
+	public static CaracteristicaModel convertCaracteristicaToCaracteristicaModel(Caracteristica caracteristica) {
+		CaracteristicaModel model = null;
+		if (caracteristica != null) {
+			model = new CaracteristicaModel(caracteristica.getIdCaracteristica(), caracteristica.getNombre(), caracteristica.getEstado());
+		}
+		return model;
+	}
+	
+	public static Caracteristica convertCaracteriscitcaModelToCaracteristica(CaracteristicaModel caracteristicamodel) {
+		Caracteristica caracteristica = null;
+		if(caracteristicamodel !=null) {
+			caracteristica = new Caracteristica();
+			caracteristica.setIdCaracteristica(caracteristicamodel.getIdCaracteristica());
+			caracteristica.setNombre(caracteristicamodel.getNombre());
+			caracteristica.setEstado(caracteristicamodel.isEstado());
+		}
+		return caracteristica;
+	}
 }
+
