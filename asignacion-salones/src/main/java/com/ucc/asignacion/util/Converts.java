@@ -3,6 +3,7 @@ package com.ucc.asignacion.util;
 import com.ucc.asignacion.entities.Programa;
 import com.ucc.asignacion.entities.Rol;
 import com.ucc.asignacion.entities.Salon;
+import com.ucc.asignacion.models.ProgramaModel;
 import com.ucc.asignacion.models.RolModel;
 import com.ucc.asignacion.models.SalonModel;
 import com.ucc.asignacion.entities.Usuario;
@@ -105,6 +106,19 @@ public class Converts {
 		return model;
 	}
 
+	public static ProgramaModel convertprogramaToProgramaModel(Programa programa) {
+		ProgramaModel model=null;
+		if(programa != null) {	
+			model=new ProgramaModel();
+			model.setIdPrograma(programa.getIdPrograma());
+			model.setNombre(programa.getNombre());
+			model.setFacultad(programa.getFacultad());
+			model.setCodigo(programa.getCodigo());
+		}
+		
+		return model;
+	}
+	
 	public static Usuario convertUsuarioModelToUsuario(UsuarioModel usuarioModel) {
 
 		Usuario usuario = null;
@@ -131,5 +145,7 @@ public class Converts {
 		return usuario;
 
 	}
+	
+	
 
 }
