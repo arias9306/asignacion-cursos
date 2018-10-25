@@ -1,8 +1,15 @@
 package com.ucc.asignacion.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,14 +47,30 @@ public class RolController {
 	}
 
 	@PostMapping("/")
-	public String saveProduct(RolModel rol) {
-		rolService.guardarRol(rol);
-		return "redirect:/roles/";
+	public ModelAndView saveProduct(@Valid RolModel rol, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			List<String> errors = new ArrayList<>();
+			for (ObjectError error : bindingResult.getAllErrors()) {
+				errors.add(error.getDefaultMessage());
+			}
+
+			ModelAndView view = new ModelAndView("/roles/edit");
+			view.addObject("rolModel", rol);
+			view.addObject("errors", errors);
+			return view;
+		} else {
+			rolService.guardarRol(rol);
+			return new ModelAndView("redirect:/roles/");
+			
+		}
 	}
 
 	@GetMapping("/edit/{id}")
 	public String editProduct(Model model, @PathVariable(value = "id") String id) {
-		model.addAttribute("rolModel", rolService.buscarRolById(id));
+		RolModel rolModel = rolService.buscarRolById(id);
+		rolModel.setEditar(true);
+		model.addAttribute("rolModel", rolModel);
 		return "/roles/edit";
 	}
 

@@ -1,9 +1,17 @@
 package com.ucc.asignacion.models;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class RolModel {
 
 	private int idRol;
+
+	@NotNull(message = "la descripción no puede ser nula..")
+	@NotBlank(message = "la descripción no puede estar vacia..")
 	private String descripcion;
+
+	private boolean editar;
 
 	public RolModel() {
 
@@ -40,6 +48,14 @@ public class RolModel {
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public boolean isEditar() {
+		return editar;
+	}
+
+	public void setEditar(boolean editar) {
+		this.editar = editar;
 	}
 
 }
