@@ -1,26 +1,32 @@
 package com.ucc.asignacion.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class SalonModel {
 
 	private int idSalon;
 
 	private int bloque;
 
+	@NotNull(message = "El codigo no puede ser nulo...")
+	@Min(value = 1, message = "El codigo no puede ser cero..")
 	private int codigo;
 
 	private String descripcion;
 
+	@NotNull(message = "El estado no puede ser nulo...")
 	private boolean estado;
 
+	@NotNull(message = "El tipo no puede ser nulo...")
+	@NotBlank(message = "El tipo no puede estar vacio")
 	private String tipo;
 
+	private boolean editar;
+
 	public SalonModel() {
-		this.idSalon = idSalon;
-		this.bloque = bloque;
-		this.codigo = codigo;
-		this.descripcion = descripcion;
-		this.estado = estado;
-		this.tipo = tipo;
+
 	}
 
 	public int getIdSalon() {
@@ -69,6 +75,14 @@ public class SalonModel {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public boolean isEditar() {
+		return editar;
+	}
+
+	public void setEditar(boolean editar) {
+		this.editar = editar;
 	}
 
 }
