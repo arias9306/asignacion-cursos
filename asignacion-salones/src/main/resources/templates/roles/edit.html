@@ -9,7 +9,7 @@
 		<header th:replace="/layouts/layout :: header"></header>
 		<div class="content-wrapper">
 
-			<div class="col-md-12 " style="padding-top: 15px">
+			<div class="col-md-12" style="padding-top: 15px">
 				<div class="box box-primary ">
 					<div class="box-header with-border">
 						<h3 class="box-title">Rol</h3>
@@ -17,7 +17,7 @@
 					<form class="form-horizontal" th:object="${rolModel}"
 						th:action="@{/roles/}" method="post">
 						<div class="box-body">
-							<div class="form-group" th:if="${idRol != 0}">
+							<div class="form-group" th:if="${editar} == true">
 								<label class="col-sm-2 control-label">Id:</label>
 								<div class="col-sm-10">
 									<input type="text" readonly="readonly" class="form-control"
@@ -31,9 +31,17 @@
 										th:field="*{descripcion}" />
 								</div>
 							</div>
+							<div class="col-sm-10 col-sm-offset-2"
+								th:if="${not #lists.isEmpty(errors)}">
+								<div class="alert alert-danger" role="alert">
+									<ul th:each="error : ${errors}">
+										<li th:text="${error}"></li>
+									</ul>
+								</div>
+							</div>
 						</div>
-						<div class="box-footer">
-							<div class="form-group">
+						<div class="box-footer ">
+							<div class="form-group pull-right">
 								<div class="col-sm-2">
 									<button type="submit" class="btn btn-primary">Guardar</button>
 								</div>
