@@ -4,15 +4,13 @@ import java.util.List;
 
 import com.ucc.asignacion.models.CaracteristicaModel;
 
-
 public interface ICaracteristicaService {
 
+  List<CaracteristicaModel> caracteristica();
 
-	List<CaracteristicaModel> caracteristica();
+  void guardarCaracteristica(CaracteristicaModel caracteristica);
 
-	void guardarCaracteristica(CaracteristicaModel caracteristica);
+  CaracteristicaModel buscarCaractById(String id);
 
-	CaracteristicaModel buscarCaractById(String id);
-
-	void eliminarCaractById(String id);
+  void eliminarCaractById(String id);
 }

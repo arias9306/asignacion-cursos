@@ -1,8 +1,6 @@
 package com.ucc.asignacion.models;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -10,174 +8,177 @@ import javax.validation.constraints.Size;
 
 public class UsuarioModel {
 
-	@NotNull(message = "El correo no puede ser nulo..")
-	@NotBlank(message = "El correo no puede estar vacio..")
-	@Email(message = "Debe ingresar un correo valido")
-	private String correo;
-	@NotNull(message = "La contraseña no puede ser nula..")
-	@NotBlank(message = "La contraseña no puede estar vacia..")
-	private String password;
-	private int idUser;
-	@NotNull(message = "El código no puede ser nulo..")
-	private int codigo;
-	@NotNull(message = "El rol no puede ser nulo..")
-	private int idRol;
-	@NotNull(message = "El programa no puede ser nulo..")
-	private int idPrograma;
-	@NotNull(message = "El número de identificación no puede ser nulo..")
-	private Integer nroIdentificacion;
-	@NotNull(message = "El estado no puede ser nulo..")
-	@NotBlank(message = "El estado no puede estar vacio..")
-	private String estado;
-	@NotNull(message = "El teléfono no puede ser nulo..")
-	@NotBlank(message = "El teléfono no puede estar vacio..")
-	@Size(min = 7, max = 10, message = "El teléfono no es valido")
-	@Pattern(regexp = "[0-9]+", message = "Ingresar solamente números")
-	private String telefono;
-	@NotNull(message = "El primer apellido no puede ser nulo..")
-	@NotBlank(message = "El primer apellido no puede estar vacio..")
-	private String primerApellido;
-	private String segundoApellido;
-	@NotNull(message = "El primer nombre no puede ser nulo..")
-	@NotBlank(message = "El primer nombre no puede estar vacio..")
-	private String primerNombre;
-	private String segundoNombre;
-	private boolean cambioPassw;
-	private boolean editar;
+  @NotNull(message = "El correo no puede ser nulo..")
+  @NotBlank(message = "El correo no puede estar vacio..")
+  @Email(message = "Debe ingresar un correo valido")
+  private String correo;
 
-	public UsuarioModel() {
+  @NotNull(message = "La contraseña no puede ser nula..")
+  @NotBlank(message = "La contraseña no puede estar vacia..")
+  private String password;
 
-	}
+  private int idUser;
 
-	public UsuarioModel(int idUser, String primerApellido, String segundoApellido, String primerNombre,
-			String segundoNombre) {
-		super();
-		this.idUser = idUser;
-		this.primerApellido = primerApellido;
-		this.segundoApellido = segundoApellido;
-		this.primerNombre = primerNombre;
-		this.segundoNombre = segundoNombre;
-	}
+  @NotNull(message = "El código no puede ser nulo..")
+  private int codigo;
 
-	public int getCodigo() {
-		return codigo;
-	}
+  @NotNull(message = "El rol no puede ser nulo..")
+  private int idRol;
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+  @NotNull(message = "El programa no puede ser nulo..")
+  private int idPrograma;
 
-	public int getIdRol() {
-		return idRol;
-	}
+  @NotNull(message = "El número de identificación no puede ser nulo..")
+  private Integer nroIdentificacion;
 
-	public void setIdRol(int idRol) {
-		this.idRol = idRol;
-	}
+  @NotNull(message = "El estado no puede ser nulo..")
+  @NotBlank(message = "El estado no puede estar vacio..")
+  private String estado;
 
-	public int getIdPrograma() {
-		return idPrograma;
-	}
+  @NotNull(message = "El teléfono no puede ser nulo..")
+  @NotBlank(message = "El teléfono no puede estar vacio..")
+  @Size(min = 7, max = 10, message = "El teléfono no es valido")
+  @Pattern(regexp = "[0-9]+", message = "Ingresar solamente números")
+  private String telefono;
 
-	public void setIdPrograma(int idPrograma) {
-		this.idPrograma = idPrograma;
-	}
+  @NotNull(message = "El primer apellido no puede ser nulo..")
+  @NotBlank(message = "El primer apellido no puede estar vacio..")
+  private String primerApellido;
 
-	public Integer getNroIdentificacion() {
-		return nroIdentificacion;
-	}
+  private String segundoApellido;
 
-	public void setNroIdentificacion(Integer nroIdentificacion) {
-		this.nroIdentificacion = nroIdentificacion;
-	}
+  @NotNull(message = "El primer nombre no puede ser nulo..")
+  @NotBlank(message = "El primer nombre no puede estar vacio..")
+  private String primerNombre;
 
-	public String getTelefono() {
-		return telefono;
-	}
+  private String segundoNombre;
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
+  private boolean cambioPassw;
 
-	public String getPrimerApellido() {
-		return primerApellido;
-	}
+  private boolean editar;
 
-	public void setPrimerApellido(String primerApellido) {
-		this.primerApellido = primerApellido;
-	}
+  public UsuarioModel() {
 
-	public String getSegundoApellido() {
-		return segundoApellido;
-	}
+  }
 
-	public void setSegundoApellido(String segundoApellido) {
-		this.segundoApellido = segundoApellido;
-	}
+  public int getCodigo() {
+    return codigo;
+  }
 
-	public String getPrimerNombre() {
-		return primerNombre;
-	}
+  public void setCodigo(int codigo) {
+    this.codigo = codigo;
+  }
 
-	public void setPrimerNombre(String primerNombre) {
-		this.primerNombre = primerNombre;
-	}
+  public int getIdRol() {
+    return idRol;
+  }
 
-	public String getSegundoNombre() {
-		return segundoNombre;
-	}
+  public void setIdRol(int idRol) {
+    this.idRol = idRol;
+  }
 
-	public void setSegundoNombre(String segundoNombre) {
-		this.segundoNombre = segundoNombre;
-	}
+  public int getIdPrograma() {
+    return idPrograma;
+  }
 
-	public String getCorreo() {
-		return correo;
-	}
+  public void setIdPrograma(int idPrograma) {
+    this.idPrograma = idPrograma;
+  }
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
+  public Integer getNroIdentificacion() {
+    return nroIdentificacion;
+  }
 
-	public String getPassword() {
-		return password;
-	}
+  public void setNroIdentificacion(Integer nroIdentificacion) {
+    this.nroIdentificacion = nroIdentificacion;
+  }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+  public String getTelefono() {
+    return telefono;
+  }
 
-	public int getIdUser() {
-		return idUser;
-	}
+  public void setTelefono(String telefono) {
+    this.telefono = telefono;
+  }
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}
+  public String getPrimerApellido() {
+    return primerApellido;
+  }
 
-	public String getEstado() {
-		return estado;
-	}
+  public void setPrimerApellido(String primerApellido) {
+    this.primerApellido = primerApellido;
+  }
 
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
+  public String getSegundoApellido() {
+    return segundoApellido;
+  }
 
-	public boolean isCambioPassw() {
-		return cambioPassw;
-	}
+  public void setSegundoApellido(String segundoApellido) {
+    this.segundoApellido = segundoApellido;
+  }
 
-	public void setCambioPassw(boolean cambioPassw) {
-		this.cambioPassw = cambioPassw;
-	}
+  public String getPrimerNombre() {
+    return primerNombre;
+  }
 
-	public boolean isEditar() {
-		return editar;
-	}
+  public void setPrimerNombre(String primerNombre) {
+    this.primerNombre = primerNombre;
+  }
 
-	public void setEditar(boolean editar) {
-		this.editar = editar;
-	}
+  public String getSegundoNombre() {
+    return segundoNombre;
+  }
 
-	
+  public void setSegundoNombre(String segundoNombre) {
+    this.segundoNombre = segundoNombre;
+  }
+
+  public String getCorreo() {
+    return correo;
+  }
+
+  public void setCorreo(String correo) {
+    this.correo = correo;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public int getIdUser() {
+    return idUser;
+  }
+
+  public void setIdUser(int idUser) {
+    this.idUser = idUser;
+  }
+
+  public String getEstado() {
+    return estado;
+  }
+
+  public void setEstado(String estado) {
+    this.estado = estado;
+  }
+
+  public boolean isCambioPassw() {
+    return cambioPassw;
+  }
+
+  public void setCambioPassw(boolean cambioPassw) {
+    this.cambioPassw = cambioPassw;
+  }
+
+  public boolean isEditar() {
+    return editar;
+  }
+
+  public void setEditar(boolean editar) {
+    this.editar = editar;
+  }
+
 }

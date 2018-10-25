@@ -6,83 +6,83 @@ import javax.validation.constraints.NotNull;
 
 public class SalonModel {
 
-	private int idSalon;
+  private int idSalon;
 
-	private int bloque;
+  private int bloque;
 
-	@NotNull(message = "El codigo no puede ser nulo...")
-	@Min(value = 1, message = "El codigo no puede ser cero..")
-	private int codigo;
+  @NotNull(message = "El codigo no puede ser nulo...")
+  @Min(value = 1, message = "El codigo no puede ser cero..")
+  private int codigo;
 
-	private String descripcion;
+  private String descripcion;
 
-	@NotNull(message = "El estado no puede ser nulo...")
-	private boolean estado;
+  @NotNull(message = "El estado no puede ser nulo...")
+  private boolean estado;
 
-	@NotNull(message = "El tipo no puede ser nulo...")
-	@NotBlank(message = "El tipo no puede estar vacio")
-	private String tipo;
+  @NotNull(message = "El tipo no puede ser nulo...")
+  @NotBlank(message = "El tipo no puede estar vacio")
+  private String tipo;
 
-	private boolean editar;
+  private boolean editar;
 
-	public SalonModel() {
+  public SalonModel() {
 
-	}
+  }
 
-	public int getIdSalon() {
-		return idSalon;
-	}
+  public int getIdSalon() {
+    return idSalon;
+  }
 
-	public void setIdSalon(int idSalon) {
-		this.idSalon = idSalon;
-	}
+  public void setIdSalon(int idSalon) {
+    this.idSalon = idSalon;
+  }
 
-	public int getBloque() {
-		return bloque;
-	}
+  public int getBloque() {
+    return bloque;
+  }
 
-	public void setBloque(int bloque) {
-		this.bloque = bloque;
-	}
+  public void setBloque(int bloque) {
+    this.bloque = bloque;
+  }
 
-	public int getCodigo() {
-		return codigo;
-	}
+  public int getCodigo() {
+    return codigo;
+  }
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+  public void setCodigo(int codigo) {
+    this.codigo = codigo;
+  }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+  public String getDescripcion() {
+    return descripcion;
+  }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
 
-	public boolean isEstado() {
-		return estado;
-	}
+  public boolean isEstado() {
+    return estado;
+  }
 
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
+  public void setEstado(boolean estado) {
+    this.estado = estado;
+  }
 
-	public String getTipo() {
-		return tipo;
-	}
+  public String getTipo() {
+    return tipo;
+  }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+  public void setTipo(String tipo) {
+    this.tipo = tipo;
+  }
 
-	public boolean isEditar() {
-		return editar;
-	}
+  public boolean isEditar() {
+    return editar;
+  }
 
-	public void setEditar(boolean editar) {
-		this.editar = editar;
-	}
+  public void setEditar(boolean editar) {
+    this.editar = editar;
+  }
 
 }

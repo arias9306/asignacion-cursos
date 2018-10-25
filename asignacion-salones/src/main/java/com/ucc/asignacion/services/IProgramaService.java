@@ -6,6 +6,6 @@ import com.ucc.asignacion.models.ProgramaModel;
 
 public interface IProgramaService {
 
-	List<ProgramaModel> programas();
-	
+  List<ProgramaModel> programas();
+
 }

@@ -2,43 +2,43 @@ package com.ucc.asignacion.models;
 
 public class CaracteristicaModel {
 
-	private int Idcaracteristica;
-	private String Nombre;
-	private boolean Estado;
+  private int Idcaracteristica;
+  private String Nombre;
+  private boolean Estado;
 
-	public int getIdCaracteristica() {
-		return Idcaracteristica;
-	}
+  public CaracteristicaModel(int idcaracteristica, String nombre, boolean estado) {
+    super();
+    Idcaracteristica = idcaracteristica;
+    Nombre = nombre;
+    Estado = estado;
+  }
 
-	public void setIdCaracteristica(int idcaracteristica) {
-		Idcaracteristica = idcaracteristica;
-	}
+  public CaracteristicaModel() {
+    // TODO Auto-generated constructor stub
+  }
 
-	public String getNombre() {
-		return Nombre;
-	}
+  public int getIdCaracteristica() {
+    return Idcaracteristica;
+  }
 
-	public void setNombre(String nombre) {
-		Nombre = nombre;
-	}
+  public void setIdCaracteristica(int idcaracteristica) {
+    Idcaracteristica = idcaracteristica;
+  }
 
-	public boolean isEstado() {
-		return Estado;
-	}
+  public String getNombre() {
+    return Nombre;
+  }
 
-	public void setEstado(boolean estado) {
-		Estado = estado;
-	}
+  public void setNombre(String nombre) {
+    Nombre = nombre;
+  }
 
-	public CaracteristicaModel(int idcaracteristica, String nombre, boolean estado) {
-		super();
-		Idcaracteristica = idcaracteristica;
-		Nombre = nombre;
-		Estado = estado;
-	}
+  public boolean isEstado() {
+    return Estado;
+  }
 
-	public CaracteristicaModel() {
-		// TODO Auto-generated constructor stub
-	}
+  public void setEstado(boolean estado) {
+    Estado = estado;
+  }
 
 }
