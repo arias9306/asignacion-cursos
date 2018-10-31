@@ -9,9 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/dashboard")
 public class DashboardController {
 
-	
-	@GetMapping("/")
-	public ModelAndView get() {
-		return new ModelAndView("dashboard");
-	}
+  @GetMapping("/")
+  public ModelAndView get() {
+    return new ModelAndView("/user/dashboard");
+  }
 }
