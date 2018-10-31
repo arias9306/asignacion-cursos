@@ -21,4 +21,6 @@ public interface IUsuarioService {
 
   void eliminarUsuarioById(String id);
 
+  UsuarioModel buscarUsuarioByCorreo(String correo);
+
 }

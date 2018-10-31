@@ -13,4 +13,6 @@ public interface IRolService {
   RolModel buscarRolById(String id);
 
   void eliminarRolById(String id);
+
+  RolModel buscarByNombre(String rol);
 }

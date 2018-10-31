@@ -15,7 +15,7 @@ public class Converts {
 
   /**
    * Metodo para convertir {@link Rol} a {@link RolModel}.
-   * 
+   *
    * @param rol entidad
    * @return modelo de rol
    */
@@ -56,7 +56,7 @@ public class Converts {
 
   /**
    * Metodo para convertir {@link RolModel} a {@link Rol}
-   * 
+   *
    * @param rolModel modelo
    * @return entidad
    */
@@ -72,7 +72,7 @@ public class Converts {
 
   /**
    * Metodo para convertir SalonModel a Salon
-   * 
+   *
    * @param salonModel
    * @return
    */
@@ -92,7 +92,7 @@ public class Converts {
 
   /**
    * Metodo para convertir salon a SalonModel
-   * 
+   *
    * @param salon
    * @return
    */
@@ -125,7 +125,6 @@ public class Converts {
   }
 
   public static Usuario convertUsuarioModelToUsuario(UsuarioModel usuarioModel) {
-
     Usuario usuario = null;
     if (usuarioModel != null) {
       usuario = new Usuario();
@@ -140,7 +139,9 @@ public class Converts {
       usuario.setEstado(usuarioModel.getEstado());
       usuario.setCambioPassword(usuarioModel.isCambioPassw());
       usuario.setNroIdentificacion(usuarioModel.getNroIdentificacion());
-      usuario.setPassword(usuarioModel.getNroIdentificacion().toString());
+      usuario.setPassword(
+          usuarioModel.getNroIdentificacion()
+              .toString());
       usuario.setRol(new Rol());
       usuario.getRol()
           .setIdRol(usuarioModel.getIdRol());

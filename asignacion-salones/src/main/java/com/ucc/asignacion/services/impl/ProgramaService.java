@@ -15,31 +15,37 @@ import com.ucc.asignacion.util.Converts;
 @Service
 public class ProgramaService implements IProgramaService {
 
-	private final IProgramaRepository programaRepository;
+  private final IProgramaRepository programaRepository;
 
-	@Autowired
-	public ProgramaService(IProgramaRepository programaRespository) {
+  @Autowired
+  public ProgramaService(IProgramaRepository programaRespository) {
+    this.programaRepository = programaRespository;
+  }
 
-		this.programaRepository = programaRespository;
+  @Override
+  public List<ProgramaModel> programas() {
+    List<ProgramaModel> programasModel = new ArrayList<ProgramaModel>();
+    Iterable<Programa> programas = programaRepository.findAll();
+    if (programas != null) {
+      programas.forEach(programa -> programasModel.add(Converts.convertprogramaToProgramaModel(programa)));
+    }
+    return programasModel;
+  }
 
-	}
+  @Override
+  public void guardarPrograma(ProgramaModel model) {
+    Programa programa = new Programa();
+    programa.setCodigo(model.getCodigo());
+    programa.setFacultad(model.getFacultad());
+    programa.setIdPrograma(0);
+    programa.setNombre(model.getNombre());
+    programaRepository.save(programa);
+  }
 
-	@Override
-	public List<ProgramaModel> programas() {
-		List<ProgramaModel> programasModel = new ArrayList<ProgramaModel>();
-		Iterable<Programa> programas = programaRepository.findAll();
-		if (programas != null) {
-			programas.forEach(programa -> programasModel.add(Converts.convertprogramaToProgramaModel(programa)));
-		}
-		return programasModel;
-	}
+  @Override
+  public ProgramaModel buscarByNombre(String nombre) {
+    Programa programa = programaRepository.findByNombre(nombre);
+    return Converts.convertprogramaToProgramaModel(programa);
+  }
 
-	@Override
-	public void guardarPrograma(ProgramaModel programa) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	
 }
