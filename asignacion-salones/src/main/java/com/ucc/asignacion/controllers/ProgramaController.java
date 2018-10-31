@@ -42,7 +42,7 @@ public class ProgramaController {
 
   @GetMapping("/add")
   public ModelAndView create() {
-    ModelAndView view = new ModelAndView("/Programas/edit");
+    ModelAndView view = new ModelAndView("/programas/edit");
     view.addObject("programaModel", new ProgramaModel());
     return view;
   }
@@ -55,14 +55,14 @@ public class ProgramaController {
       for (ObjectError error : bindingResult.getAllErrors()) {
         errors.add(error.getDefaultMessage());
       }
-      view.setViewName("/Programas/edit");
+      view.setViewName("/programas/edit");
       view.addObject("programaModel", programa);
       view.addObject("errors", errors);
  
     }
     else {
       programaService.guardarPrograma(programa);
-      view.setViewName("redirect:/usuario/");
+      view.setViewName("redirect:/Programas/");
     }
     return view;
 

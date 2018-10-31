@@ -123,6 +123,19 @@ public class Converts {
 
     return model;
   }
+  
+  public static Programa convertProgramaModelToPrograma(ProgramaModel programaModel) {
+	    Programa programa = null;
+	    if (programaModel != null) {
+	      programa = new Programa();
+	      programa.setIdPrograma(programaModel.getIdPrograma());
+	      programa.setNombre(programaModel.getNombre());
+	      programa.setFacultad(programaModel.getFacultad());
+	      programa.setCodigo(programaModel.getCodigo());
+	    }
+	    return programa;
+	  }
+  
 
   public static Usuario convertUsuarioModelToUsuario(UsuarioModel usuarioModel) {
 
