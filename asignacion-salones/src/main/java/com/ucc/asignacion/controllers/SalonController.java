@@ -51,7 +51,12 @@ public class SalonController {
     if (bindingResult.hasErrors()) {
       List<String> errors = new ArrayList<>();
       for (ObjectError error : bindingResult.getAllErrors()) {
-        errors.add(error.getDefaultMessage());
+    	  if (error.getCode().contains("typeMismatch")) {
+				errors.add("El campo " + ((DefaultMessageSourceResolvable) error.getArguments()[0]).getCodes()[1]
+						+ " es numérico...");
+			} else {
+				errors.add(error.getDefaultMessage());
+			}
       }
 
       view.setViewName("salones/edit");
