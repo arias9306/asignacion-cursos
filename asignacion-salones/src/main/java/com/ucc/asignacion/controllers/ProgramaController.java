@@ -18,18 +18,17 @@ import com.ucc.asignacion.models.ProgramaModel;
 import com.ucc.asignacion.services.IProgramaService;
 
 @Controller
-@RequestMapping("/programas")
+@RequestMapping("/admin/programas")
 public class ProgramaController {
 
-  private static final String VISTA = "/Programas/Programas";
-
+  private static final String REDIRECT_PROGRAMA = "redirect:/admin/programas/";
+  private static final String PROGRAMAS_EDIT = "/admin/programas/edit";
+  private static final String VISTA = "/admin/programas/programas";
   private final IProgramaService programaService;
 
   @Autowired
   public ProgramaController(IProgramaService programaService) {
-
     this.programaService = programaService;
-
   }
 
   @GetMapping("/")
@@ -41,7 +40,7 @@ public class ProgramaController {
 
   @GetMapping("/add")
   public ModelAndView create() {
-    ModelAndView view = new ModelAndView("/Programas/edit");
+    ModelAndView view = new ModelAndView(PROGRAMAS_EDIT);
     view.addObject("programaModel", new ProgramaModel());
     return view;
   }
@@ -54,14 +53,14 @@ public class ProgramaController {
       for (ObjectError error : bindingResult.getAllErrors()) {
         errors.add(error.getDefaultMessage());
       }
-      view.setViewName("/Programas/edit");
+      view.setViewName(PROGRAMAS_EDIT);
       view.addObject("programaModel", programa);
       view.addObject("errors", errors);
 
     }
     else {
       programaService.guardarPrograma(programa);
-      view.setViewName("redirect:/usuario/");
+      view.setViewName(REDIRECT_PROGRAMA);
     }
     return view;
 

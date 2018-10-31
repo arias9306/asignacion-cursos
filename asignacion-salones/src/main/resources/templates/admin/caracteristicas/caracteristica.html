@@ -28,20 +28,22 @@
 									<td th:text="${carga.nombre}">Nombre</td>
 									<td th:text="${carga.estado}">Estado</td>
 									<td style="text-align: center"><a
-										th:href="${'/caracteristica/edit/' + carga.idCaracteristica}"
+										th:href="${'/admin/caracteristica/edit/' + carga.idCaracteristica}"
 										class="btn btn-default">Edit</a></td>
 									<td style="text-align: center"><a
 										onclick="return confirm('Esta seguro que desea eliminar la caracteristica del Salon..')"
-										th:href="${'/caracteristica/delete/' + carga.idCaracteristica}"
+										th:href="${'/admin/caracteristica/delete/' + carga.idCaracteristica}"
 										class="btn btn-danger">Delete</a></td>
 								</tr>
 							</table>
 						</div>
 						<div class="box-footer">
-							<a class="btn btn-primary pull-right" th:href="@{/caracteristica/add}">Crear</a>
+							<a class="btn btn-primary pull-right"
+								th:href="@{/caracteristica/add}">Crear</a>
 						</div>
 					</div>
-				</div>s
+				</div>
+				s
 			</div>
 		</div>
 		<footer th:replace="/layouts/layout :: footer"></footer>

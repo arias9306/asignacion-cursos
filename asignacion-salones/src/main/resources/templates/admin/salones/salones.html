@@ -33,11 +33,11 @@
 								<td th:text="${salon.tipo}">Tipo</td>
 								<td th:text="${salon.descripcion}">Descripcion</td>
 								<td style="text-align: center"><a
-										th:href="${'/salones/edit/' + salon.idSalon}"
+										th:href="${'/admin/salones/edit/' + salon.idSalon}"
 										class="btn btn-default">Edit</a></td>
 								<td style="text-align: center"><a
 									onclick="return confirm('Esta seguro que desea eliminar el salón..')"
-									th:href="${'/salones/delete/' + salon.idSalon}" class="btn btn-danger">Delete</a>
+									th:href="${'/admin/salones/delete/' + salon.idSalon}" class="btn btn-danger">Delete</a>
 
 								</td>
 							</tr>
