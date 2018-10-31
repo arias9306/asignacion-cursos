@@ -13,4 +13,7 @@ public interface ICaracteristicaService {
   CaracteristicaModel buscarCaractById(String id);
 
   void eliminarCaractById(String id);
+  
+  List<CaracteristicaModel> caracteristicasActivas();
+  
 }
