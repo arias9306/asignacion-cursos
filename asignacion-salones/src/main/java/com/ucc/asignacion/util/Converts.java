@@ -140,7 +140,7 @@ public class Converts {
       usuario.setEstado(usuarioModel.getEstado());
       usuario.setCambioPassword(usuarioModel.isCambioPassw());
       usuario.setNroIdentificacion(usuarioModel.getNroIdentificacion());
-      usuario.setPassword(usuarioModel.getPassword());
+      usuario.setPassword(usuarioModel.getNroIdentificacion().toString());
       usuario.setRol(new Rol());
       usuario.getRol()
           .setIdRol(usuarioModel.getIdRol());
