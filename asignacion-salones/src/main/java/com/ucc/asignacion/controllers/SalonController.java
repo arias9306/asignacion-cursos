@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -42,12 +43,12 @@ public class SalonController {
 	}
 
 	@GetMapping("/add")
-  public ModelAndView create() {
-    ModelAndView view = new ModelAndView("/salones/edit");
-    view.addObject("salonModel", new SalonModel());
-    view.addObject("caracteristicas", caracteristicaService.caracteristicasActivas());
-    return view;
-  }
+	public ModelAndView create() {
+		ModelAndView view = new ModelAndView("/salones/edit");
+		view.addObject("salonModel", new SalonModel());
+		view.addObject("caracteristicas", caracteristicaService.caracteristicasActivas());
+		return view;
+	}
 
 	@PostMapping("/")
 	public ModelAndView save(@Valid SalonModel salon, BindingResult bindingResult) {
@@ -55,7 +56,12 @@ public class SalonController {
 		if (bindingResult.hasErrors()) {
 			List<String> errors = new ArrayList<>();
 			for (ObjectError error : bindingResult.getAllErrors()) {
-				errors.add(error.getDefaultMessage());
+				if (error.getCode().contains("typeMismatch")) {
+					errors.add("El campo " + ((DefaultMessageSourceResolvable) error.getArguments()[0]).getCodes()[1]
+							+ " es numérico...");
+				} else {
+					errors.add(error.getDefaultMessage());
+				}
 			}
 
 			view.setViewName("salones/edit");

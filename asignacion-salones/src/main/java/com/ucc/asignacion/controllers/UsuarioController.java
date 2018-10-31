@@ -73,6 +73,8 @@ public class UsuarioController {
       view.setViewName("/usuarios/edit");
       view.addObject("usuarioModel", usuario);
       view.addObject("errors", errors);
+      view.addObject("rolModel", rolService.roles());
+      view.addObject("programaModel", programaService.programas());
     }
     else {
       usuarioService.guardarUsuario(usuario);

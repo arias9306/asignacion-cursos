@@ -1,6 +1,7 @@
 package com.ucc.asignacion.models;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -8,47 +9,47 @@ import javax.validation.constraints.Size;
 
 public class UsuarioModel {
 
-  @NotNull(message = "El correo no puede ser nulo..")
-  @NotBlank(message = "El correo no puede estar vacio..")
-  @Email(message = "Debe ingresar un correo valido")
+  @NotNull(message = "El correo no puede ser nulo...")
+  @NotBlank(message = "El correo no puede estar vacio...")
+  @Email(message = "Debe ingresar un correo valido.")
   private String correo;
 
-  @NotNull(message = "La contraseña no puede ser nula..")
-  @NotBlank(message = "La contraseña no puede estar vacia..")
   private String password;
 
   private int idUser;
 
-  @NotNull(message = "El código no puede ser nulo..")
+  @NotNull(message = "El código no puede ser nulo...")
   private int codigo;
 
-  @NotNull(message = "El rol no puede ser nulo..")
+  @NotNull(message = "El rol no puede ser nulo...")
+  @Min(value = 1, message = "Debe seleccionar un rol...")
   private int idRol;
 
-  @NotNull(message = "El programa no puede ser nulo..")
+  @NotNull(message = "El programa no puede ser nulo...")
+  @Min(value = 1, message = "Debe seleccionar un programa...")
   private int idPrograma;
 
-  @NotNull(message = "El número de identificación no puede ser nulo..")
+  @NotNull(message = "El número de identificación no puede ser nulo...")
   private Integer nroIdentificacion;
 
-  @NotNull(message = "El estado no puede ser nulo..")
-  @NotBlank(message = "El estado no puede estar vacio..")
+  @NotNull(message = "El estado no puede ser nulo...")
+  @NotBlank(message = "El estado no puede estar vacio...")
   private String estado;
 
-  @NotNull(message = "El teléfono no puede ser nulo..")
-  @NotBlank(message = "El teléfono no puede estar vacio..")
-  @Size(min = 7, max = 10, message = "El teléfono no es valido")
-  @Pattern(regexp = "[0-9]+", message = "Ingresar solamente números")
+  @NotNull(message = "El teléfono no puede ser nulo...")
+  @NotBlank(message = "El teléfono no puede estar vacio...")
+  @Size(min = 7, max = 10, message = "El teléfono no es valido.")
+  @Pattern(regexp = "[0-9]+", message = "Ingresar solamente números.")
   private String telefono;
 
-  @NotNull(message = "El primer apellido no puede ser nulo..")
-  @NotBlank(message = "El primer apellido no puede estar vacio..")
+  @NotNull(message = "El primer apellido no puede ser nulo...")
+  @NotBlank(message = "El primer apellido no puede estar vacio...")
   private String primerApellido;
 
   private String segundoApellido;
 
-  @NotNull(message = "El primer nombre no puede ser nulo..")
-  @NotBlank(message = "El primer nombre no puede estar vacio..")
+  @NotNull(message = "El primer nombre no puede ser nulo...")
+  @NotBlank(message = "El primer nombre no puede estar vacio...")
   private String primerNombre;
 
   private String segundoNombre;
