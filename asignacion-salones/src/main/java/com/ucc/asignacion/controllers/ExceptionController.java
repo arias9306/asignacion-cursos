@@ -10,14 +10,19 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class ExceptionController {
 
-	@ExceptionHandler(NoHandlerFoundException.class)
-	public ModelAndView handleError404(HttpServletRequest request, Exception e) {
-		System.out.println("123");
-		return new ModelAndView("/errores/404");
-	}
-	
-	@ExceptionHandler(Exception.class)
-    public ModelAndView handleError(HttpServletRequest request, Exception e)   {
-        return new ModelAndView("/errores/500");
-    }
+  @ExceptionHandler(NoHandlerFoundException.class)
+  public ModelAndView handleError404(HttpServletRequest request, Exception e) {
+    ModelAndView view = new ModelAndView("/errores/404");
+    view.addObject("request", request);
+    view.addObject("ex", e);
+    return view;
+  }
+
+  @ExceptionHandler(Exception.class)
+  public ModelAndView handleError(HttpServletRequest request, Exception e) {
+    ModelAndView view = new ModelAndView("/errores/500");
+    view.addObject("request", request);
+    view.addObject("ex", e);
+    return view;
+  }
 }

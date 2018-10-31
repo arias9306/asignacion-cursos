@@ -6,12 +6,12 @@ import com.ucc.asignacion.models.SalonModel;
 
 public interface ISalonService {
 
-	List<SalonModel> salones();
+  List<SalonModel> salones();
 
-	void guardarSalon(SalonModel salon);
+  void guardarSalon(SalonModel salon);
 
-	SalonModel buscarSalonById(String id);
+  SalonModel buscarSalonById(String id);
 
-	void eliminarSalonById(String id);
+  void eliminarSalonById(String id);
 
 }

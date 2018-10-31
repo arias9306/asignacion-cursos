@@ -6,11 +6,11 @@ import com.ucc.asignacion.models.RolModel;
 
 public interface IRolService {
 
-	List<RolModel> roles();
+  List<RolModel> roles();
 
-	void guardarRol(RolModel rol);
+  void guardarRol(RolModel rol);
 
-	RolModel buscarRolById(String id);
+  RolModel buscarRolById(String id);
 
-	void eliminarRolById(String id);
+  void eliminarRolById(String id);
 }

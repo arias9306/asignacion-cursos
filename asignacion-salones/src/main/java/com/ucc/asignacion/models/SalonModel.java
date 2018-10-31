@@ -1,74 +1,88 @@
 package com.ucc.asignacion.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class SalonModel {
 
-	private int idSalon;
+  private int idSalon;
 
-	private int bloque;
+  private int bloque;
 
-	private int codigo;
+  @NotNull(message = "El codigo no puede ser nulo...")
+  @Min(value = 1, message = "El codigo no puede ser cero..")
+  private int codigo;
 
-	private String descripcion;
+  private String descripcion;
 
-	private boolean estado;
+  @NotNull(message = "El estado no puede ser nulo...")
+  private boolean estado;
 
-	private String tipo;
+  @NotNull(message = "El tipo no puede ser nulo...")
+  @NotBlank(message = "El tipo no puede estar vacio")
+  private String tipo;
 
-	public SalonModel() {
-		this.idSalon = idSalon;
-		this.bloque = bloque;
-		this.codigo = codigo;
-		this.descripcion = descripcion;
-		this.estado = estado;
-		this.tipo = tipo;
-	}
+  private boolean editar;
 
-	public int getIdSalon() {
-		return idSalon;
-	}
+  public SalonModel() {
 
-	public void setIdSalon(int idSalon) {
-		this.idSalon = idSalon;
-	}
+  }
 
-	public int getBloque() {
-		return bloque;
-	}
+  public int getIdSalon() {
+    return idSalon;
+  }
 
-	public void setBloque(int bloque) {
-		this.bloque = bloque;
-	}
+  public void setIdSalon(int idSalon) {
+    this.idSalon = idSalon;
+  }
 
-	public int getCodigo() {
-		return codigo;
-	}
+  public int getBloque() {
+    return bloque;
+  }
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+  public void setBloque(int bloque) {
+    this.bloque = bloque;
+  }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+  public int getCodigo() {
+    return codigo;
+  }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+  public void setCodigo(int codigo) {
+    this.codigo = codigo;
+  }
 
-	public boolean isEstado() {
-		return estado;
-	}
+  public String getDescripcion() {
+    return descripcion;
+  }
 
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
 
-	public String getTipo() {
-		return tipo;
-	}
+  public boolean isEstado() {
+    return estado;
+  }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+  public void setEstado(boolean estado) {
+    this.estado = estado;
+  }
+
+  public String getTipo() {
+    return tipo;
+  }
+
+  public void setTipo(String tipo) {
+    this.tipo = tipo;
+  }
+
+  public boolean isEditar() {
+    return editar;
+  }
+
+  public void setEditar(boolean editar) {
+    this.editar = editar;
+  }
 
 }

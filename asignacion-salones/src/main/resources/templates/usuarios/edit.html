@@ -26,7 +26,7 @@
                                </div>
 							</div>
 							
-							<div class="form-group" th:if="${idUser != 0}">
+							<div class="form-group" th:if="${editar} == true">
 								<label class="col-sm-2 control-label">Id:</label>
 								<div class="col-sm-10">
 									<input type="text" readonly="readonly" class="form-control"
@@ -121,11 +121,17 @@
 									</select>
 								</div>
 							</div>
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Rol:<span
 									class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" th:field="*{idRol}" />
+									<select class="form-control" id="estado" th:field="*{idRol}">
+										<option th:value="0" th:text="Seleccione..."></option>
+										<option th:each="rol : ${rolModel}" th:value="${rol.idRol}"
+											th:text="${rol.descripcion}"></option>
+									</select>
+
 								</div>
 							</div>
 
@@ -133,15 +139,28 @@
 								<label class="col-sm-2 control-label">Programa:<span
 									class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										th:field="*{idPrograma}" />
+									<select class="form-control" id="estado" th:field="*{idRol}">
+										<option th:value="0" th:text="Seleccione..."></option>
+										<option th:each="programa : ${programaModel}" th:value="${programa.idPrograma}"
+											th:text="${programa.nombre}"></option>
+									</select>
+
+								</div>
+							</div>
+										
+										<div class="col-sm-10 col-sm-offset-2"
+								th:if="${not #lists.isEmpty(errors)}">
+								<div class="alert alert-danger" role="alert">
+									<ul th:each="error : ${errors}">
+										<li th:text="${error}"></li>
+									</ul>
 								</div>
 							</div>
 
 
 						</div>
 						<div class="box-footer">
-							<div class="form-group">
+							<div class="form-group pull-right">
 								<div class="col-sm-2">
 									<button type="submit" class="btn btn-primary">Guardar</button>
 								</div>

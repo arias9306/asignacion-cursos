@@ -18,93 +18,84 @@ import com.ucc.asignacion.util.Converts;
 @Service
 public class UsuarioService implements IUsuarioService {
 
-	private final IUsuarioRepository usuarioRepository;
+  private final IUsuarioRepository usuarioRepository;
 
-	@Autowired
-	public UsuarioService(IUsuarioRepository usuarioRepository) {
-		this.usuarioRepository = usuarioRepository;
-	}
+  @Autowired
+  public UsuarioService(IUsuarioRepository usuarioRepository) {
+    this.usuarioRepository = usuarioRepository;
+  }
 
-	@Override
-	public Usuario buscarUsuarioLogin(String correo, String pass) {
-		return usuarioRepository.findByCorreoAndPassword(correo, pass);
-	}
+  @Override
+  public Usuario buscarUsuarioLogin(String correo, String pass) {
+    return usuarioRepository.findByCorreoAndPassword(correo, pass);
+  }
 
-	@Override
-	public Usuario recuperarPassword(String correo) {
-		return usuarioRepository.findByCorreo(correo);
-	}
-	
-	
+  @Override
+  public Usuario recuperarPassword(String correo) {
+    return usuarioRepository.findByCorreo(correo);
+  }
 
-	@Override
-	public Usuario buscarUsuarioPrimerApellido(String primerApellido) {
-		
-		return usuarioRepository.findByPrimerApellido(primerApellido);
-	}
+  @Override
+  public Usuario buscarUsuarioPrimerApellido(String primerApellido) {
 
-	@Override
-	public List<UsuarioModel> usuarios() {
-		List<UsuarioModel> usuariosModel = new ArrayList<UsuarioModel>();
-		Iterable<Usuario> usuarios = usuarioRepository.findAll();
-		if (usuarios != null) {
-			usuarios.forEach(usuario -> usuariosModel.add(Converts.convertUsuarioToUsuarioModel(usuario)));
-		}
-		return usuariosModel;
-	}
-	
+    return usuarioRepository.findByPrimerApellido(primerApellido);
+  }
 
-	@Override
-	public UsuarioModel buscarUsuarioById(String id) {
-		Optional<Usuario> usuario = usuarioRepository.findById(Integer.parseInt(id));
-		if (usuario.isPresent()) {
-			return Converts.convertUsuarioToUsuarioModel(usuario.get());
-		}
-		return new UsuarioModel();
+  @Override
+  public List<UsuarioModel> usuarios() {
+    List<UsuarioModel> usuariosModel = new ArrayList<UsuarioModel>();
+    Iterable<Usuario> usuarios = usuarioRepository.findAll();
+    if (usuarios != null) {
+      usuarios.forEach(usuario -> usuariosModel.add(Converts.convertUsuarioToUsuarioModel(usuario)));
+    }
+    return usuariosModel;
+  }
 
-	}
+  @Override
+  public UsuarioModel buscarUsuarioById(String id) {
+    Optional<Usuario> usuario = usuarioRepository.findById(Integer.parseInt(id));
+    if (usuario.isPresent()) {
+      return Converts.convertUsuarioToUsuarioModel(usuario.get());
+    }
+    return new UsuarioModel();
 
-	@Override
-	public void guardarUsuario(UsuarioModel usuario) {
-		if (usuario.getIdUser() != 0) {
-			Optional<Usuario> usuarioEntity = usuarioRepository.findById(usuario.getIdUser());
-			if (usuarioEntity.isPresent()) {
-				Usuario updateUsuario = usuarioEntity.get();
-				updateUsuario.setPrimerNombre(usuario.getPrimerNombre());
-				updateUsuario.setSegundoNombre(usuario.getSegundoNombre());
-				updateUsuario.setPrimerApellido(usuario.getPrimerApellido());
-				updateUsuario.setSegundoApellido(usuario.getSegundoApellido());
-				updateUsuario.setCorreo(usuario.getCorreo());
-				updateUsuario.setCodigo(usuario.getCodigo());
-				updateUsuario.setNroIdentificacion(usuario.getNroIdentificacion());
-				updateUsuario.setTelefono(usuario.getTelefono());
-				updateUsuario.setPassword(usuario.getPassword());
-				updateUsuario.setCambioPassword(usuario.isCambioPassw());
-				updateUsuario.setEstado(usuario.getEstado());
-				updateUsuario.setRol(new Rol());
-				updateUsuario.getRol().setIdRol(usuario.getIdRol());
-				updateUsuario.setPrograma(new Programa());
-				updateUsuario.getPrograma().setIdPrograma(usuario.getIdPrograma());
-				usuarioRepository.save(updateUsuario);
-			}	
-		} else {
-			usuarioRepository.save(Converts.convertUsuarioModelToUsuario(usuario));
-		}
-		
-	}
+  }
 
-	@Override
-	public void eliminarUsuarioById(String id) {
-		
-		usuarioRepository.deleteById(Integer.parseInt(id));
-		
-	}
+  @Override
+  public void guardarUsuario(UsuarioModel usuario) {
+    if (usuario.getIdUser() != 0) {
+      Optional<Usuario> usuarioEntity = usuarioRepository.findById(usuario.getIdUser());
+      if (usuarioEntity.isPresent()) {
+        Usuario updateUsuario = usuarioEntity.get();
+        updateUsuario.setPrimerNombre(usuario.getPrimerNombre());
+        updateUsuario.setSegundoNombre(usuario.getSegundoNombre());
+        updateUsuario.setPrimerApellido(usuario.getPrimerApellido());
+        updateUsuario.setSegundoApellido(usuario.getSegundoApellido());
+        updateUsuario.setCorreo(usuario.getCorreo());
+        updateUsuario.setCodigo(usuario.getCodigo());
+        updateUsuario.setNroIdentificacion(usuario.getNroIdentificacion());
+        updateUsuario.setTelefono(usuario.getTelefono());
+        updateUsuario.setPassword(usuario.getPassword());
+        updateUsuario.setCambioPassword(usuario.isCambioPassw());
+        updateUsuario.setEstado(usuario.getEstado());
+        updateUsuario.setRol(new Rol());
+        updateUsuario.getRol()
+            .setIdRol(usuario.getIdRol());
+        updateUsuario.setPrograma(new Programa());
+        updateUsuario.getPrograma()
+            .setIdPrograma(usuario.getIdPrograma());
+        usuarioRepository.save(updateUsuario);
+      }
+    }
+    else {
+      usuarioRepository.save(Converts.convertUsuarioModelToUsuario(usuario));
+    }
 
+  }
 
-	
-	
-
-	
-	
+  @Override
+  public void eliminarUsuarioById(String id) {
+    usuarioRepository.deleteById(Integer.parseInt(id));
+  }
 
 }
