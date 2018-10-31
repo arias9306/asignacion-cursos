@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ucc.asignacion.models.ProgramaModel;
-import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.services.IProgramaService;
 
 @Controller
@@ -46,7 +45,7 @@ public class ProgramaController {
     view.addObject("programaModel", new ProgramaModel());
     return view;
   }
-  
+
   @PostMapping("/")
   public ModelAndView save(@Valid ProgramaModel programa, BindingResult bindingResult) {
     ModelAndView view = new ModelAndView();
@@ -58,7 +57,7 @@ public class ProgramaController {
       view.setViewName("/Programas/edit");
       view.addObject("programaModel", programa);
       view.addObject("errors", errors);
- 
+
     }
     else {
       programaService.guardarPrograma(programa);
@@ -67,6 +66,5 @@ public class ProgramaController {
     return view;
 
   }
-
 
 }
