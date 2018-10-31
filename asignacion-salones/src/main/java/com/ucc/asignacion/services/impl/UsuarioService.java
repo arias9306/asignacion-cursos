@@ -75,7 +75,6 @@ public class UsuarioService implements IUsuarioService {
         updateUsuario.setCodigo(usuario.getCodigo());
         updateUsuario.setNroIdentificacion(usuario.getNroIdentificacion());
         updateUsuario.setTelefono(usuario.getTelefono());
-        updateUsuario.setPassword(usuario.getPassword());
         updateUsuario.setCambioPassword(usuario.isCambioPassw());
         updateUsuario.setEstado(usuario.getEstado());
         updateUsuario.setRol(new Rol());
