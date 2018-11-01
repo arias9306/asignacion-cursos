@@ -1,10 +1,21 @@
 package com.ucc.asignacion.models;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class ProgramaModel {
 
   private int idPrograma;
+  @NotNull(message = "El nombre no puede ser nulo...")
+  @NotBlank(message = "El nombre no puede estar vacio...")
   private String nombre;
+  @NotNull(message = "La facultad no puede ser nulo...")
+  @NotBlank(message = "La facultad no puede estar vacio...")
   private String facultad;
+  @NotNull(message = "El codigo no puede ser nulo...")
+  @NotBlank(message = "El codigo no puede estar vacio...")
+  @Size(min = 2, max = 5, message = "El teléfono no es valido.")
   private String codigo;
   private boolean editar;
 
