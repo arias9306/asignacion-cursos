@@ -249,22 +249,22 @@ desired effect
 						<!-- Optionally, you can add icons to the links -->
 						<li sec:authorize="hasAuthority('ADMIN')"
 							th:classappend="${#httpServletRequest.getRequestURI().contains('usuario') ? 'active':''}">><a
-							th:href="@{/usuario/}"><i class="fa fa-link"></i> <span>Usuarios</span></a></li>
+							th:href="@{/admin/usuario/}"><i class="fa fa-link"></i> <span>Usuarios</span></a></li>
 						<li sec:authorize="hasAuthority('ADMIN')"
 							th:classappend="${#httpServletRequest.getRequestURI().contains('roles') ? 'active':''}"><a
 							th:href="@{/admin/roles/}"><i class="fa fa-link"></i> <span>Roles
 							</span></a></li>
 						<li sec:authorize="hasAuthority('ADMIN')"
 							th:classappend="${#httpServletRequest.getRequestURI().contains('salon') ? 'active':''}">><a
-							th:href="@{/salones/}"><i class="fa fa-link"></i> <span>Salones
+							th:href="@{/admin/salones/}"><i class="fa fa-link"></i> <span>Salones
 							</span></a></li>
 						<li sec:authorize="hasAuthority('ADMIN')"
 							th:classappend="${#httpServletRequest.getRequestURI().contains('programa') ? 'active':''}">><a
-							th:href="@{/programas/}"><i class="fa fa-link"></i> <span>Programas
+							th:href="@{/admin/programas/}"><i class="fa fa-link"></i> <span>Programas
 							</span></a></li>
 						<li sec:authorize="hasAuthority('ADMIN')"
 							th:classappend="${#httpServletRequest.getRequestURI().contains('caracteristica') ? 'active':''}">><a
-							th:href="@{/caracteristica/}"><i class="fa fa-link"></i> <span>Caracteristicas
+							th:href="@{/admin/caracteristica/}"><i class="fa fa-link"></i> <span>Caracteristicas
 							</span></a></li>
 
 
