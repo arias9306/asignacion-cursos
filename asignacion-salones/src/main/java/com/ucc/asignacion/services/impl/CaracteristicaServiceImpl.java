@@ -27,13 +27,14 @@ public class CaracteristicaServiceImpl implements ICaracteristicaService {
 	@Override
 	public List<CaracteristicaModel> caracteristica() {
 		// TODO Auto-generated method stub
-		
+
 		List<CaracteristicaModel> caracteristicaModel = new ArrayList<CaracteristicaModel>();
 		Iterable<Caracteristica> caracteristica = caracteristicaRepository.findAll();
-		if(caracteristica != null) {
-			caracteristica.forEach(caracteris-> caracteristicaModel.add(Converts.convertCaracteristicaToCaracteristicaModel(caracteris)));
+		if (caracteristica != null) {
+			caracteristica.forEach(caracteris -> caracteristicaModel
+					.add(Converts.convertCaracteristicaToCaracteristicaModel(caracteris)));
 		}
-		
+
 		return caracteristicaModel;
 	}
 
@@ -41,37 +42,36 @@ public class CaracteristicaServiceImpl implements ICaracteristicaService {
 	public void guardarCaracteristica(CaracteristicaModel caracteristica) {
 		// TODO Auto-generated method stub
 		// si el idrol es diferente de 0, entonces ya existe en la base
-				if (caracteristica.getIdcaracteristica() != 0) {
-					//Consulto el rol ya guardado
-					Optional<Caracteristica> caracteristicaEntity = caracteristicaRepository.findById(caracteristica.getIdcaracteristica());
-					if (caracteristicaEntity.isPresent()) {
-						//Actualizo los valores que se pueden actualizar (el id NO)
-						Caracteristica updateCaracteristica = caracteristicaEntity.get();
-						updateCaracteristica.setNombre(caracteristica.getNombre());
-						updateCaracteristica.setEstado(caracteristica.isEstado());
-						caracteristicaRepository.save(updateCaracteristica);
-					}
-				} else {
-					// si el idrol es 0 es nuevo
-					caracteristicaRepository.save(Converts.convertCaracteriscitcaModelToCaracteristica(caracteristica));
-				}
+		if (caracteristica.getIdcaracteristica() != 0) {
+			// Consulto el rol ya guardado
+			Optional<Caracteristica> caracteristicaEntity = caracteristicaRepository
+					.findById(caracteristica.getIdcaracteristica());
+			if (caracteristicaEntity.isPresent()) {
+				// Actualizo los valores que se pueden actualizar (el id NO)
+				Caracteristica updateCaracteristica = caracteristicaEntity.get();
+				updateCaracteristica.setNombre(caracteristica.getNombre());
+				updateCaracteristica.setEstado(caracteristica.getEstado().equals("true") ? true : false);
+				caracteristicaRepository.save(updateCaracteristica);
+			}
+		} else {
+			// si el idrol es 0 es nuevo
+			caracteristicaRepository.save(Converts.convertCaracteriscitcaModelToCaracteristica(caracteristica));
+		}
 	}
 
 	@Override
 	public CaracteristicaModel buscarCaractById(String id) {
 		Optional<Caracteristica> caracteristica = caracteristicaRepository.findById(Integer.valueOf(id));
-		if(caracteristica.isPresent()) {
+		if (caracteristica.isPresent()) {
 			return Converts.convertCaracteristicaToCaracteristicaModel(caracteristica.get());
 		}
-		return null ;
+		return null;
 	}
 
 	@Override
 	public void eliminarCaractById(String id) {
 		caracteristicaRepository.deleteById(Integer.parseInt(id));
-		
-		
-		
+
 		// TODO Auto-generated method stub
 
 	}
@@ -80,10 +80,11 @@ public class CaracteristicaServiceImpl implements ICaracteristicaService {
 	public List<CaracteristicaModel> caracteristicasActivas() {
 		List<CaracteristicaModel> caracteristicaModel = new ArrayList<CaracteristicaModel>();
 		Iterable<Caracteristica> caracteristica = caracteristicaRepository.findByEstadoTrue();
-		if(caracteristica != null) {
-			caracteristica.forEach(caracteris-> caracteristicaModel.add(Converts.convertCaracteristicaToCaracteristicaModel(caracteris)));
+		if (caracteristica != null) {
+			caracteristica.forEach(caracteris -> caracteristicaModel
+					.add(Converts.convertCaracteristicaToCaracteristicaModel(caracteris)));
 		}
-		
+
 		return caracteristicaModel;
 	}
 
