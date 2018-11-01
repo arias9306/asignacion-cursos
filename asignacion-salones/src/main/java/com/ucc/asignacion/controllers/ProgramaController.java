@@ -15,58 +15,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ucc.asignacion.models.ProgramaModel;
-import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.services.IProgramaService;
 
 @Controller
-@RequestMapping("/programas")
+@RequestMapping("/admin/programas")
 public class ProgramaController {
 
-  private static final String VISTA = "/Programas/Programas";
+	private static final String REDIRECT_PROGRAMA = "redirect:/admin/programas/";
+	private static final String PROGRAMAS_EDIT = "/admin/programas/edit";
+	private static final String VISTA = "/admin/programas/programas";
+	private final IProgramaService programaService;
 
-  private final IProgramaService programaService;
+	@Autowired
+	public ProgramaController(IProgramaService programaService) {
+		this.programaService = programaService;
+	}
 
-  @Autowired
-  public ProgramaController(IProgramaService programaService) {
+	@GetMapping("/")
+	public ModelAndView getProgramas() {
+		ModelAndView view = new ModelAndView(VISTA);
+		view.addObject("programas", programaService.programas());
+		return view;
+	}
 
-    this.programaService = programaService;
+	@GetMapping("/add")
+	public ModelAndView create() {
+		ModelAndView view = new ModelAndView(PROGRAMAS_EDIT);
+		view.addObject("programaModel", new ProgramaModel());
+		return view;
+	}
 
-  }
+	@PostMapping("/")
+	public ModelAndView save(@Valid ProgramaModel programa, BindingResult bindingResult) {
+		ModelAndView view = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			List<String> errors = new ArrayList<>();
+			for (ObjectError error : bindingResult.getAllErrors()) {
+				errors.add(error.getDefaultMessage());
+			}
+			view.setViewName(PROGRAMAS_EDIT);
+			view.addObject("errors", errors);
 
-  @GetMapping("/")
-  public ModelAndView getProgramas() {
-    ModelAndView view = new ModelAndView(VISTA);
-    view.addObject("programas", programaService.programas());
-    return view;
-  }
+		} else {
+			programaService.guardarPrograma(programa);
+			view.setViewName(REDIRECT_PROGRAMA);
+		}
+		return view;
 
-  @GetMapping("/add")
-  public ModelAndView create() {
-    ModelAndView view = new ModelAndView("/programas/edit");
-    view.addObject("programaModel", new ProgramaModel());
-    return view;
-  }
-  
-  @PostMapping("/")
-  public ModelAndView save(@Valid ProgramaModel programa, BindingResult bindingResult) {
-    ModelAndView view = new ModelAndView();
-    if (bindingResult.hasErrors()) {
-      List<String> errors = new ArrayList<>();
-      for (ObjectError error : bindingResult.getAllErrors()) {
-        errors.add(error.getDefaultMessage());
-      }
-      view.setViewName("/programas/edit");
-      view.addObject("programaModel", programa);
-      view.addObject("errors", errors);
- 
-    }
-    else {
-      programaService.guardarPrograma(programa);
-      view.setViewName("redirect:/Programas/");
-    }
-    return view;
-
-  }
-
+	}
 
 }

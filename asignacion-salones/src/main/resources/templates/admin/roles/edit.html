@@ -2,48 +2,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Caracteristicas de Salon</title>
+<title>Roles</title>
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
 	<div class="wrapper">
 		<header th:replace="/layouts/layout :: header"></header>
 		<div class="content-wrapper">
 
-			<div class="col-md-12 " style="padding-top: 15px">
+			<div class="col-md-12" style="padding-top: 15px">
 				<div class="box box-primary ">
 					<div class="box-header with-border">
-						<h3 class="box-title">Caracteristica</h3>
+						<h3 class="box-title">Rol</h3>
 					</div>
-					<form class="form-horizontal" th:object="${caracteristicaModel}"
-						th:action="@{/caracteristica/}" method="post">
+					<form class="form-horizontal" th:object="${rolModel}"
+						th:action="@{/admin/roles/}" method="post">
 						<div class="box-body">
-							<div class="form-group" th:if="${idCaracteristica != 0}">
+							<div class="form-group" th:if="*{editar} == true">
 								<label class="col-sm-2 control-label">Id:</label>
 								<div class="col-sm-10">
 									<input type="text" readonly="readonly" class="form-control"
-										th:field="*{idCaracteristica}" />
+										th:field="*{idRol}" />
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Nombre:</label>
+								<label class="col-sm-2 control-label">Descripción:</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
-										th:field="*{nombre}" />
+										th:field="*{descripcion}" />
 								</div>
 							</div>
-							
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Estado:</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control"
-										th:field="*{estado}" />
+							<div class="col-sm-10 col-sm-offset-2"
+								th:if="${not #lists.isEmpty(errors)}">
+								<div class="alert alert-danger" role="alert">
+									<ul th:each="error : ${errors}">
+										<li th:text="${error}"></li>
+									</ul>
 								</div>
 							</div>
-							
-							
 						</div>
-						<div class="box-footer">
-							<div class="form-group">
+						<div class="box-footer ">
+							<div class="form-group pull-right">
 								<div class="col-sm-2">
 									<button type="submit" class="btn btn-primary">Guardar</button>
 								</div>

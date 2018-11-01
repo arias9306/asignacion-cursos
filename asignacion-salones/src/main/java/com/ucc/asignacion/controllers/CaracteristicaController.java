@@ -13,10 +13,12 @@ import com.ucc.asignacion.models.CaracteristicaModel;
 import com.ucc.asignacion.services.ICaracteristicaService;
 
 @Controller
-@RequestMapping("/caracteristica")
+@RequestMapping("/admin/caracteristica")
 public class CaracteristicaController {
 
-  private static final String VISTA = "/caracteristicas/caracteristica";
+  private static final String REDIRECT_CARACTERISTICA = "redirect:/admin/caracteristica/";
+  private static final String CARACTERISTICAS_EDIT = "/admin/caracteristicas/edit";
+  private static final String VISTA = "/admin/caracteristicas/caracteristica";
 
   private final ICaracteristicaService caracteristicaService;
 
@@ -34,7 +36,7 @@ public class CaracteristicaController {
 
   @GetMapping("/add")
   public ModelAndView crearCaracteristica() {
-    ModelAndView view = new ModelAndView("/caracteristicas/edit");
+    ModelAndView view = new ModelAndView(CARACTERISTICAS_EDIT);
     view.addObject("caracteristicaModel", new CaracteristicaModel());
     return view;
   }
@@ -42,19 +44,19 @@ public class CaracteristicaController {
   @PostMapping("/")
   public String guardarCaracteristica(CaracteristicaModel caracteristica) {
     caracteristicaService.guardarCaracteristica(caracteristica);
-    return "redirect:/caracteristica/";
+    return REDIRECT_CARACTERISTICA;
   }
 
   @GetMapping("/edit/{id}")
   public String editarCaracteristica(Model model, @PathVariable(value = "id") String id) {
     model.addAttribute("caracteristicaModel", caracteristicaService.buscarCaractById(id));
-    return "/caracteristicas/edit";
+    return CARACTERISTICAS_EDIT;
   }
 
   @GetMapping("/delete/{id}")
   public String eliminarCaracteristica(@PathVariable(name = "id") String id) {
     caracteristicaService.eliminarCaractById(id);
-    return "redirect:/caracteristica/";
+    return REDIRECT_CARACTERISTICA;
   }
 
 }

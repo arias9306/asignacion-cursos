@@ -22,9 +22,7 @@ public class ProgramaService implements IProgramaService {
 
 	@Autowired
 	public ProgramaService(IProgramaRepository programaRespository) {
-
 		this.programaRepository = programaRespository;
-
 	}
 
 	@Override
@@ -38,22 +36,25 @@ public class ProgramaService implements IProgramaService {
 	}
 
 	@Override
-	public void guardarPrograma(ProgramaModel programa) {
-		 if (programa.getIdPrograma() != 0) {
-		      Optional<Programa> programaEntity = programaRepository.findById(programa.getIdPrograma());
-		      if (programaEntity.isPresent()) {
-		        Programa updatePrograma = programaEntity.get();
-		        updatePrograma.setCodigo(programa.getCodigo());
-		        updatePrograma.setFacultad(programa.getFacultad());
-		        updatePrograma.setNombre(programa.getNombre());		        
-		      }
-		    }
-		    else {
-		      programaRepository.save(Converts.convertProgramaModelToPrograma(programa));
-		    }
-		
+	public ProgramaModel buscarByNombre(String nombre) {
+		Programa programa = programaRepository.findByNombre(nombre);
+		return Converts.convertprogramaToProgramaModel(programa);
 	}
 
-	
-	
+	@Override
+	public void guardarPrograma(ProgramaModel programa) {
+		if (programa.getIdPrograma() != 0) {
+			Optional<Programa> programaEntity = programaRepository.findById(programa.getIdPrograma());
+			if (programaEntity.isPresent()) {
+				Programa updatePrograma = programaEntity.get();
+				updatePrograma.setCodigo(programa.getCodigo());
+				updatePrograma.setFacultad(programa.getFacultad());
+				updatePrograma.setNombre(programa.getNombre());
+			}
+		} else {
+			programaRepository.save(Converts.convertProgramaModelToPrograma(programa));
+		}
+
+	}
+
 }

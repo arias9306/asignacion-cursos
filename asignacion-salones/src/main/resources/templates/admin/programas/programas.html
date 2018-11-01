@@ -11,37 +11,39 @@
 				<div>
 					<div class="box">
 						<div class="box-header">
-							<h3 class="box-title">Caracteristica</h3>
+							<h3 class="box-title">Programas</h3>
 						</div>
 						<div class="box-body no-padding"
-							th:if="${not #lists.isEmpty(caracteristica)}">
+							th:if="${not #lists.isEmpty(programas)}">
 							<table class="table table-striped">
 								<tr>
 									<th>Id</th>
 									<th>Nombre</th>
-									<th>Estado</th>
+									<th>Facultad</th>
+									<th>Codigo</th>
 									<th style="width: 150px; text-align: center;">Editar</th>
 									<th style="width: 150px; text-align: center;">Eliminar</th>
 								</tr>
-								<tr th:each="carga : ${caracteristica}">
-									<td th:text="${carga.idCaracteristica}">Id</td>
-									<td th:text="${carga.nombre}">Nombre</td>
-									<td th:text="${carga.estado}">Estado</td>
+								<tr th:each="programa : ${programas}">
+									<td th:text="${programa.idPrograma}">Id</td>
+									<td th:text="${programa.nombre}">Nombre</td>
+									<td th:text="${programa.facultad}">Facultad</td>
+									<td th:text="${programa.codigo}">Codigo</td>
 									<td style="text-align: center"><a
-										th:href="${'/caracteristica/edit/' + carga.idCaracteristica}"
+										th:href="${'/admin/programas/edit/' + programa.idPrograma}"
 										class="btn btn-default">Edit</a></td>
 									<td style="text-align: center"><a
-										onclick="return confirm('Esta seguro que desea eliminar la caracteristica del Salon..')"
-										th:href="${'/caracteristica/delete/' + carga.idCaracteristica}"
+										onclick="return confirm('¿Esta seguro que desea eliminar este programa?')"
+										th:href="${'/admin/programas/delete/' + programa.idPrograma}"
 										class="btn btn-danger">Delete</a></td>
 								</tr>
 							</table>
 						</div>
 						<div class="box-footer">
-							<a class="btn btn-primary pull-right" th:href="@{/caracteristica/add}">Crear</a>
+							<a class="btn btn-primary pull-right" th:href="@{/programas/add}">Crear</a>
 						</div>
 					</div>
-				</div>s
+				</div>
 			</div>
 		</div>
 		<footer th:replace="/layouts/layout :: footer"></footer>

@@ -21,13 +21,24 @@ import com.ucc.asignacion.services.IRolService;
 import com.ucc.asignacion.services.IUsuarioService;
 
 @Controller
-@RequestMapping("/usuario")
+@RequestMapping("/admin/usuario")
 public class UsuarioController {
 
   private final IUsuarioService usuarioService;
   private final IRolService rolService;
   private final IProgramaService programaService;
 
+  private static final String REDIRECT_USUARIO = "redirect:/admin/usuario/";
+  private static final String VISTA_CONSULTA = "/admin/usuarios/usuario";
+  private static final String VISTA_EDITAR = "/admin/usuarios/edit";
+
+  /**
+   * Constructor.
+   *
+   * @param usuarioService
+   * @param rolService
+   * @param programaService
+   */
   @Autowired
   public UsuarioController(IUsuarioService usuarioService, IRolService rolService, IProgramaService programaService) {
     this.rolService = rolService;
@@ -37,14 +48,14 @@ public class UsuarioController {
 
   @GetMapping("/")
   public ModelAndView getUsuarios() {
-    ModelAndView view = new ModelAndView("/usuarios/usuario");
+    ModelAndView view = new ModelAndView(VISTA_CONSULTA);
     view.addObject("usuarios", usuarioService.usuarios());
     return view;
   }
 
   @GetMapping("/edit/{id}")
   public ModelAndView edit(@PathVariable(value = "id") String id) {
-    ModelAndView view = new ModelAndView("/usuarios/edit");
+    ModelAndView view = new ModelAndView(VISTA_EDITAR);
     UsuarioModel usuarioModel = usuarioService.buscarUsuarioById(id);
     usuarioModel.setEditar(true);
     view.addObject("usuarioModel", usuarioModel);
@@ -55,7 +66,7 @@ public class UsuarioController {
 
   @GetMapping("/add")
   public ModelAndView create() {
-    ModelAndView view = new ModelAndView("/usuarios/edit");
+    ModelAndView view = new ModelAndView(VISTA_EDITAR);
     view.addObject("usuarioModel", new UsuarioModel());
     view.addObject("rolModel", rolService.roles());
     view.addObject("programaModel", programaService.programas());
@@ -70,7 +81,7 @@ public class UsuarioController {
       for (ObjectError error : bindingResult.getAllErrors()) {
         errors.add(error.getDefaultMessage());
       }
-      view.setViewName("/usuarios/edit");
+      view.setViewName(VISTA_EDITAR);
       view.addObject("usuarioModel", usuario);
       view.addObject("errors", errors);
       view.addObject("rolModel", rolService.roles());
@@ -78,7 +89,7 @@ public class UsuarioController {
     }
     else {
       usuarioService.guardarUsuario(usuario);
-      view.setViewName("redirect:/usuario/");
+      view.setViewName(REDIRECT_USUARIO);
     }
     return view;
 
@@ -87,7 +98,7 @@ public class UsuarioController {
   @GetMapping("/delete/{id}")
   public String delete(@PathVariable(name = "id") String id) {
     usuarioService.eliminarUsuarioById(id);
-    return "redirect:/usuario/";
+    return REDIRECT_USUARIO;
   }
 
 }
