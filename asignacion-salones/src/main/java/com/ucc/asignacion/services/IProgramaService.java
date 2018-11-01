@@ -9,7 +9,11 @@ public interface IProgramaService {
   List<ProgramaModel> programas();
 
   void guardarPrograma(ProgramaModel programa);
+  
+  void eliminarProgramaById(String id);
 
   ProgramaModel buscarByNombre(String string);
+  
+  ProgramaModel buscarProgramaById(String id); 
 
 }

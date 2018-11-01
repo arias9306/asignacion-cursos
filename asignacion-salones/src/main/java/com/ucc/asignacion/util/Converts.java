@@ -107,7 +107,7 @@ public class Converts {
 		return model;
 	}
 
-	public static ProgramaModel convertprogramaToProgramaModel(Programa programa) {
+	public static ProgramaModel convertProgramaToProgramaModel(Programa programa) {
 		ProgramaModel model = null;
 		if (programa != null) {
 			model = new ProgramaModel();
