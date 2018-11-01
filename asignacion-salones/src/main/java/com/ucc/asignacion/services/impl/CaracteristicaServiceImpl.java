@@ -41,9 +41,9 @@ public class CaracteristicaServiceImpl implements ICaracteristicaService {
 	public void guardarCaracteristica(CaracteristicaModel caracteristica) {
 		// TODO Auto-generated method stub
 		// si el idrol es diferente de 0, entonces ya existe en la base
-				if (caracteristica.getIdCaracteristica() != 0) {
+				if (caracteristica.getIdcaracteristica() != 0) {
 					//Consulto el rol ya guardado
-					Optional<Caracteristica> caracteristicaEntity = caracteristicaRepository.findById(caracteristica.getIdCaracteristica());
+					Optional<Caracteristica> caracteristicaEntity = caracteristicaRepository.findById(caracteristica.getIdcaracteristica());
 					if (caracteristicaEntity.isPresent()) {
 						//Actualizo los valores que se pueden actualizar (el id NO)
 						Caracteristica updateCaracteristica = caracteristicaEntity.get();

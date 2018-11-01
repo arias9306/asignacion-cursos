@@ -179,7 +179,7 @@ public class Converts {
     Caracteristica caracteristica = null;
     if (caracteristicamodel != null) {
       caracteristica = new Caracteristica();
-      caracteristica.setIdCaracteristica(caracteristicamodel.getIdCaracteristica());
+      caracteristica.setIdCaracteristica(caracteristicamodel.getIdcaracteristica());
       caracteristica.setNombre(caracteristicamodel.getNombre());
       caracteristica.setEstado(caracteristicamodel.isEstado());
     }

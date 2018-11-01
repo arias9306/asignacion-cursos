@@ -2,43 +2,52 @@ package com.ucc.asignacion.models;
 
 public class CaracteristicaModel {
 
-  private int Idcaracteristica;
-  private String Nombre;
-  private boolean Estado;
+	private int idcaracteristica;
+	private String nombre;
+	private boolean estado;
+	private boolean editar;
+	
+	public CaracteristicaModel(int idcaracteristica, String nombre, boolean estado) {
+		super();
+		this.idcaracteristica = idcaracteristica;
+		this.nombre = nombre;
+		this.estado = estado;
+	}
 
-  public CaracteristicaModel(int idcaracteristica, String nombre, boolean estado) {
-    super();
-    Idcaracteristica = idcaracteristica;
-    Nombre = nombre;
-    Estado = estado;
-  }
+	public int getIdcaracteristica() {
+		return idcaracteristica;
+	}
 
-  public CaracteristicaModel() {
-    // TODO Auto-generated constructor stub
-  }
+	public void setIdcaracteristica(int idcaracteristica) {
+		this.idcaracteristica = idcaracteristica;
+	}
 
-  public int getIdCaracteristica() {
-    return Idcaracteristica;
-  }
+	public String getNombre() {
+		return nombre;
+	}
 
-  public void setIdCaracteristica(int idcaracteristica) {
-    Idcaracteristica = idcaracteristica;
-  }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-  public String getNombre() {
-    return Nombre;
-  }
+	public boolean isEstado() {
+		return estado;
+	}
 
-  public void setNombre(String nombre) {
-    Nombre = nombre;
-  }
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
 
-  public boolean isEstado() {
-    return Estado;
-  }
+	public boolean isEditar() {
+		return editar;
+	}
 
-  public void setEstado(boolean estado) {
-    Estado = estado;
-  }
+	public void setEditar(boolean editar) {
+		this.editar = editar;
+	}
+
+	public CaracteristicaModel() {
+		// TODO Auto-generated constructor stub
+	}
 
 }

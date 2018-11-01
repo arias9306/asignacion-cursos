@@ -24,7 +24,7 @@
 					<form class="form-horizontal" th:object="${caracteristicaModel}"
 						th:action="@{/admin/caracteristica/}" method="post">
 						<div class="box-body">
-							<div class="form-group" th:if="${idCaracteristica != 0}">
+							<div class="form-group" th:if="*{editar} == true">
 								<label class="col-sm-2 control-label">Id:</label>
 								<div class="col-sm-10">
 									<input type="text" readonly="readonly" class="form-control"

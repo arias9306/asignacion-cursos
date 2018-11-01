@@ -49,7 +49,9 @@ public class CaracteristicaController {
 
   @GetMapping("/edit/{id}")
   public String editarCaracteristica(Model model, @PathVariable(value = "id") String id) {
-    model.addAttribute("caracteristicaModel", caracteristicaService.buscarCaractById(id));
+    CaracteristicaModel caracteristicaModel = caracteristicaService.buscarCaractById(id);
+    caracteristicaModel.setEditar(true);
+	model.addAttribute("caracteristicaModel", caracteristicaModel);
     return CARACTERISTICAS_EDIT;
   }
 
