@@ -24,79 +24,78 @@ import com.ucc.asignacion.services.ISalonService;
 @RequestMapping("/admin/salones")
 public class SalonController {
 
-  private static final String REDIRECT_SALONES = "redirect:/admin/salones/";
-  private static final String SALONES_EDIT = "/admin/salones/edit";
-  private static final String VIEW = "/admin/salones/salones";
+	private static final String REDIRECT_SALONES = "redirect:/admin/salones/";
+	private static final String SALONES_EDIT = "/admin/salones/edit";
+	private static final String VIEW = "/admin/salones/salones";
 
-  private final ISalonService salonService;
-  private final ICaracteristicaService caracteristicaService;
+	private final ISalonService salonService;
+	private final ICaracteristicaService caracteristicaService;
 
-  /**
-   * Constructor.
-   *
-   * @param salonService
-   * @param caracteristicaService
-   */
-  @Autowired
-  public SalonController(ISalonService salonService, ICaracteristicaService caracteristicaService) {
-    this.salonService = salonService;
-    this.caracteristicaService = caracteristicaService;
-  }
+	/**
+	 * Constructor.
+	 *
+	 * @param salonService
+	 * @param caracteristicaService
+	 */
+	@Autowired
+	public SalonController(ISalonService salonService, ICaracteristicaService caracteristicaService) {
+		this.salonService = salonService;
+		this.caracteristicaService = caracteristicaService;
+	}
 
-  @GetMapping("/")
-  public ModelAndView getSalones() {
-    ModelAndView view = new ModelAndView(VIEW);
-    view.addObject("salones", salonService.salones());
-    return view;
-  }
+	@GetMapping("/")
+	public ModelAndView getSalones() {
+		ModelAndView view = new ModelAndView(VIEW);
+		view.addObject("salones", salonService.salones());
+		return view;
+	}
 
-  @GetMapping("/add")
-  public ModelAndView create() {
-    ModelAndView view = new ModelAndView(SALONES_EDIT);
-    view.addObject("salonModel", new SalonModel());
-    view.addObject("caracteristicas", caracteristicaService.caracteristicasActivas());
-    return view;
-  }
+	@GetMapping("/add")
+	public ModelAndView create() {
+		ModelAndView view = new ModelAndView(SALONES_EDIT);
+		view.addObject("salonModel", new SalonModel());
+		view.addObject("caracteristicasModel", caracteristicaService.caracteristicasActivas());
+		return view;
+	}
 
-  @PostMapping("/")
-  public ModelAndView save(@Valid SalonModel salon, BindingResult bindingResult) {
-    ModelAndView view = new ModelAndView();
-    if (bindingResult.hasErrors()) {
-      List<String> errors = new ArrayList<>();
-      for (ObjectError error : bindingResult.getAllErrors()) {
-        if (error.getCode()
-            .contains("typeMismatch")) {
-          errors.add("El campo " + ((DefaultMessageSourceResolvable) error.getArguments()[0]).getCodes()[1] + " es numérico...");
-        }
-        else {
-          errors.add(error.getDefaultMessage());
-        }
-      }
+	@PostMapping("/")
+	public ModelAndView save(@Valid SalonModel salon, BindingResult bindingResult) {
+		ModelAndView view = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			List<String> errors = new ArrayList<>();
+			for (ObjectError error : bindingResult.getAllErrors()) {
+				if (error.getCode().contains("typeMismatch")) {
+					errors.add("El campo " + ((DefaultMessageSourceResolvable) error.getArguments()[0]).getCodes()[1]
+							+ " es numérico...");
+				} else {
+					errors.add(error.getDefaultMessage());
+				}
+			}
 
-      view.setViewName(SALONES_EDIT);
-      view.addObject("salonModel", salon);
-      view.addObject("errors", errors);
-    }
-    else {
-      salonService.guardarSalon(salon);
-      view.setViewName(REDIRECT_SALONES);
-    }
-    return view;
-  }
+			view.setViewName(SALONES_EDIT);
+			view.addObject("salonModel", salon);
+			view.addObject("errors", errors);
+		} else {
+			salonService.guardarSalon(salon);
+			view.setViewName(REDIRECT_SALONES);
+		}
+		return view;
+	}
 
-  @GetMapping("/edit/{id}")
-  public ModelAndView edit(@PathVariable(value = "id") String id) {
-    ModelAndView view = new ModelAndView(SALONES_EDIT);
-    SalonModel modelSalon = salonService.buscarSalonById(id);
-    modelSalon.setEditar(true);
-    view.addObject("salonModel", modelSalon);
-    return view;
-  }
+	@GetMapping("/edit/{id}")
+	public ModelAndView edit(@PathVariable(value = "id") String id) {
+		ModelAndView view = new ModelAndView(SALONES_EDIT);
+		SalonModel modelSalon = salonService.buscarSalonById(id);
+		modelSalon.setEditar(true);
+		view.addObject("salonModel", modelSalon);
+		view.addObject("caracteristicaModel", caracteristicaService.caracteristica());
+		return view;
+	}
 
-  @GetMapping("/delete/{id}")
-  public String delete(@PathVariable(name = "id") String id) {
-    salonService.eliminarSalonById(id);
-    return REDIRECT_SALONES;
-  }
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable(name = "id") String id) {
+		salonService.eliminarSalonById(id);
+		return REDIRECT_SALONES;
+	}
 
 }
