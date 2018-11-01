@@ -36,7 +36,7 @@
 									class="text-danger">*</span></label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control"
-										th:field="*{nombre}" required />
+										th:field="*{nombre}"  />
 								</div>
 							</div>
 							
@@ -45,14 +45,21 @@
 									class="text-danger">*</span></label>
 								<div class="col-sm-10">
 									<select class="form-control" id="estado" th:field="*{estado}">
-										<option th:value="0" th:text="Seleccione"></option>
+										<option th:value="''" th:text="Seleccione"></option>
 										<option th:value="'true'" th:text="Activo"></option>
 										<option th:value="'false'" th:text="Inactivo"></option>
 									</select>
 								</div>
 							</div>
 							
-							
+							<div class="col-sm-10 col-sm-offset-2"
+								th:if="${not #lists.isEmpty(errors)}">
+								<div class="alert alert-danger" role="alert">
+									<ul th:each="error : ${errors}">
+										<li th:text="${error}"></li>
+									</ul>
+								</div>
+							</div>
 						</div>
 						<div class="box-footer">
 							<div class="form-group">

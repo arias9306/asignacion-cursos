@@ -1,13 +1,20 @@
 package com.ucc.asignacion.models;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class CaracteristicaModel {
 
 	private int idcaracteristica;
+	@NotBlank(message = "El nombre es obligatorio...")
+	@NotNull(message = "El nombre es obligatorio...")
 	private String nombre;
-	private boolean estado;
+	@NotNull(message = "El estado es obligatorio...")
+	@NotBlank(message = "El estado es obligatorio...")
+	private String estado;
 	private boolean editar;
-	
-	public CaracteristicaModel(int idcaracteristica, String nombre, boolean estado) {
+
+	public CaracteristicaModel(int idcaracteristica, String nombre, String estado) {
 		super();
 		this.idcaracteristica = idcaracteristica;
 		this.nombre = nombre;
@@ -30,11 +37,11 @@ public class CaracteristicaModel {
 		this.nombre = nombre;
 	}
 
-	public boolean isEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
