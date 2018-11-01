@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -16,19 +17,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ucc.asignacion.models.SalonModel;
+import com.ucc.asignacion.services.ICaracteristicaService;
 import com.ucc.asignacion.services.ISalonService;
 
 @Controller
-@RequestMapping("/salones")
+@RequestMapping("/admin/salones")
 public class SalonController {
 
-  private static final String VIEW = "/salones/salones";
+  private static final String REDIRECT_SALONES = "redirect:/admin/salones/";
+  private static final String SALONES_EDIT = "/admin/salones/edit";
+  private static final String VIEW = "/admin/salones/salones";
 
   private final ISalonService salonService;
+  private final ICaracteristicaService caracteristicaService;
 
+  /**
+   * Constructor.
+   *
+   * @param salonService
+   * @param caracteristicaService
+   */
   @Autowired
-  public SalonController(ISalonService salonService) {
+  public SalonController(ISalonService salonService, ICaracteristicaService caracteristicaService) {
     this.salonService = salonService;
+    this.caracteristicaService = caracteristicaService;
   }
 
   @GetMapping("/")
@@ -40,8 +52,9 @@ public class SalonController {
 
   @GetMapping("/add")
   public ModelAndView create() {
-    ModelAndView view = new ModelAndView("/salones/edit");
+    ModelAndView view = new ModelAndView(SALONES_EDIT);
     view.addObject("salonModel", new SalonModel());
+    view.addObject("caracteristicas", caracteristicaService.caracteristicasActivas());
     return view;
   }
 
@@ -51,23 +64,29 @@ public class SalonController {
     if (bindingResult.hasErrors()) {
       List<String> errors = new ArrayList<>();
       for (ObjectError error : bindingResult.getAllErrors()) {
-        errors.add(error.getDefaultMessage());
+        if (error.getCode()
+            .contains("typeMismatch")) {
+          errors.add("El campo " + ((DefaultMessageSourceResolvable) error.getArguments()[0]).getCodes()[1] + " es numérico...");
+        }
+        else {
+          errors.add(error.getDefaultMessage());
+        }
       }
 
-      view.setViewName("salones/edit");
+      view.setViewName(SALONES_EDIT);
       view.addObject("salonModel", salon);
       view.addObject("errors", errors);
     }
     else {
       salonService.guardarSalon(salon);
-      view.setViewName("redirect:/salones/");
+      view.setViewName(REDIRECT_SALONES);
     }
     return view;
   }
 
   @GetMapping("/edit/{id}")
   public ModelAndView edit(@PathVariable(value = "id") String id) {
-    ModelAndView view = new ModelAndView("/salones/edit");
+    ModelAndView view = new ModelAndView(SALONES_EDIT);
     SalonModel modelSalon = salonService.buscarSalonById(id);
     modelSalon.setEditar(true);
     view.addObject("salonModel", modelSalon);
@@ -77,7 +96,7 @@ public class SalonController {
   @GetMapping("/delete/{id}")
   public String delete(@PathVariable(name = "id") String id) {
     salonService.eliminarSalonById(id);
-    return "redirect:/salones/";
+    return REDIRECT_SALONES;
   }
 
 }

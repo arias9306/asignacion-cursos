@@ -30,11 +30,11 @@
 									<td th:text="${programa.facultad}">Facultad</td>
 									<td th:text="${programa.codigo}">Codigo</td>
 									<td style="text-align: center"><a
-										th:href="${'/Programas/edit/' + programa.idPrograma}"
+										th:href="${'/admin/programas/edit/' + programa.idPrograma}"
 										class="btn btn-default">Edit</a></td>
 									<td style="text-align: center"><a
 										onclick="return confirm('¿Esta seguro que desea eliminar este programa?')"
-										th:href="${'/Programas/delete/' + programa.idPrograma}"
+										th:href="${'/admin/programas/delete/' + programa.idPrograma}"
 										class="btn btn-danger">Delete</a></td>
 								</tr>
 							</table>

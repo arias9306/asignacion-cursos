@@ -6,4 +6,6 @@ import com.ucc.asignacion.entities.Rol;
 
 public interface IRolRepository extends CrudRepository<Rol, Integer> {
 
+  Rol findByNombre(String rol);
+
 }

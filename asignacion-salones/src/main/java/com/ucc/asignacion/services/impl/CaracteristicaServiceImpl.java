@@ -76,4 +76,15 @@ public class CaracteristicaServiceImpl implements ICaracteristicaService {
 
 	}
 
+	@Override
+	public List<CaracteristicaModel> caracteristicasActivas() {
+		List<CaracteristicaModel> caracteristicaModel = new ArrayList<CaracteristicaModel>();
+		Iterable<Caracteristica> caracteristica = caracteristicaRepository.findByEstadoTrue();
+		if(caracteristica != null) {
+			caracteristica.forEach(caracteris-> caracteristicaModel.add(Converts.convertCaracteristicaToCaracteristicaModel(caracteris)));
+		}
+		
+		return caracteristicaModel;
+	}
+
 }

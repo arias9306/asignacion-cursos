@@ -26,17 +26,17 @@
 									<td th:text="${rol.idRol}">Id</td>
 									<td th:text="${rol.descripcion}">Descripción</td>
 									<td style="text-align: center"><a
-										th:href="${'/roles/edit/' + rol.idRol}"
+										th:href="${'/admin/roles/edit/' + rol.idRol}"
 										class="btn btn-default">Edit</a></td>
 									<td style="text-align: center"><a
 										onclick="return confirm('Esta seguro que desea eliminar le rol..')"
-										th:href="${'/roles/delete/' + rol.idRol}"
+										th:href="${'/admin/roles/delete/' + rol.idRol}"
 										class="btn btn-danger">Delete</a></td>
 								</tr>
 							</table>
 						</div>
 						<div class="box-footer">
-							<a class="btn btn-primary pull-right" th:href="@{/roles/add}">Crear</a>
+							<a class="btn btn-primary pull-right" th:href="@{/admin/roles/add}">Crear</a>
 						</div>
 					</div>
 				</div>

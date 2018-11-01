@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ucc.asignacion.entities.Programa;
@@ -19,10 +20,12 @@ import com.ucc.asignacion.util.Converts;
 public class UsuarioService implements IUsuarioService {
 
   private final IUsuarioRepository usuarioRepository;
+  private final BCryptPasswordEncoder passwordEncoder;
 
   @Autowired
-  public UsuarioService(IUsuarioRepository usuarioRepository) {
+  public UsuarioService(IUsuarioRepository usuarioRepository, BCryptPasswordEncoder passwordEncoder) {
     this.usuarioRepository = usuarioRepository;
+    this.passwordEncoder = passwordEncoder;
   }
 
   @Override
@@ -75,7 +78,6 @@ public class UsuarioService implements IUsuarioService {
         updateUsuario.setCodigo(usuario.getCodigo());
         updateUsuario.setNroIdentificacion(usuario.getNroIdentificacion());
         updateUsuario.setTelefono(usuario.getTelefono());
-        updateUsuario.setPassword(usuario.getPassword());
         updateUsuario.setCambioPassword(usuario.isCambioPassw());
         updateUsuario.setEstado(usuario.getEstado());
         updateUsuario.setRol(new Rol());
@@ -88,7 +90,9 @@ public class UsuarioService implements IUsuarioService {
       }
     }
     else {
-      usuarioRepository.save(Converts.convertUsuarioModelToUsuario(usuario));
+      Usuario newUsuario = Converts.convertUsuarioModelToUsuario(usuario);
+      newUsuario.setPassword(passwordEncoder.encode(String.valueOf(newUsuario.getNroIdentificacion())));
+      usuarioRepository.save(newUsuario);
     }
 
   }
@@ -96,6 +100,11 @@ public class UsuarioService implements IUsuarioService {
   @Override
   public void eliminarUsuarioById(String id) {
     usuarioRepository.deleteById(Integer.parseInt(id));
+  }
+
+  @Override
+  public UsuarioModel buscarUsuarioByCorreo(String correo) {
+    return Converts.convertUsuarioToUsuarioModel(usuarioRepository.findByCorreo(correo));
   }
 
 }

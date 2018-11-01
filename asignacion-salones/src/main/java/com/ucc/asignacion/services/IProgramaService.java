@@ -8,4 +8,8 @@ public interface IProgramaService {
 
   List<ProgramaModel> programas();
 
+  void guardarPrograma(ProgramaModel programa);
+
+  ProgramaModel buscarByNombre(String string);
+
 }
