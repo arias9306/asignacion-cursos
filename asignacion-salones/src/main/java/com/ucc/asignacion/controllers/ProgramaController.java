@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,6 +45,15 @@ public class ProgramaController {
 		view.addObject("programaModel", new ProgramaModel());
 		return view;
 	}
+	
+	 @GetMapping("/edit/{id}")
+	  public ModelAndView edit(@PathVariable(value = "id") String id) {
+	    ModelAndView view = new ModelAndView(PROGRAMAS_EDIT);
+	    ProgramaModel programaModel = programaService.buscarProgramaById(id);
+	    programaModel.setEditar(true);
+	    view.addObject("programaModel", programaModel);
+	    return view;
+	  }
 
 	@PostMapping("/")
 	public ModelAndView save(@Valid ProgramaModel programa, BindingResult bindingResult) {
@@ -63,5 +73,11 @@ public class ProgramaController {
 		return view;
 
 	}
+	
+	  @GetMapping("/delete/{id}")
+	  public String delete(@PathVariable(name = "id") String id) {
+	   programaService.eliminarProgramaById(id);
+	    return REDIRECT_PROGRAMA;
+	  }
 
 }

@@ -6,8 +6,17 @@ public class ProgramaModel {
   private String nombre;
   private String facultad;
   private String codigo;
+  private boolean editar;
 
-  public ProgramaModel() {
+  public boolean isEditar() {
+	return editar;
+}
+
+public void setEditar(boolean editar) {
+	this.editar = editar;
+}
+
+public ProgramaModel() {
   }
 
   public int getIdPrograma() {
