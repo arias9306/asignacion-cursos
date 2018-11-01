@@ -24,17 +24,17 @@
 									<th style="width: 150px; text-align: center;">Eliminar</th>
 								</tr>
 								<tr th:each="carga : ${caracteristica}">
-									<td th:text="${carga.idCaracteristica}">Id</td>
+									<td th:text="${carga.idcaracteristica}">Id</td>
 									<td th:text="${carga.nombre}">Nombre</td>
 									<!--   <td th:text="${carga.estado}">Estado</td>  -->
 									<td><span th:if="${carga.estado}== true" th:text="Activo">
 									</span> <span th:unless="${carga.estado}" th:text="Inactivo"></span></td>
 									<td style="text-align: center"><a
-										th:href="${'/admin/caracteristica/edit/' + carga.idCaracteristica}"
+										th:href="${'/admin/caracteristica/edit/' + carga.idcaracteristica}"
 										class="btn btn-default">Editar</a></td>
 									<td style="text-align: center"><a
 										onclick="return confirm('Esta seguro que desea eliminar la caracteristica del Salon..')"
-										th:href="${'/admin/caracteristica/delete/' + carga.idCaracteristica}"
+										th:href="${'/admin/caracteristica/delete/' + carga.idcaracteristica}"
 										class="btn btn-danger">Eliminar</a></td>
 								</tr>
 							</table>
