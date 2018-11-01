@@ -57,6 +57,8 @@ public class CaracteristicaController {
 				errors.add(error.getDefaultMessage());
 			}
 			view.setViewName(CARACTERISTICAS_EDIT);
+			if(caracteristica.getIdcaracteristica() != 0)
+				caracteristica.setEditar(true);
 			view.addObject("caracteristicaModel", caracteristica);
 			view.addObject("errors", errors);
 		} else {
