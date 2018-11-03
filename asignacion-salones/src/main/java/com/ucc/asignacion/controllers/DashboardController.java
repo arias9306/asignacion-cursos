@@ -9,8 +9,19 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/dashboard")
 public class DashboardController {
 
-  @GetMapping("/")
-  public ModelAndView get() {
-    return new ModelAndView("/user/dashboard");
-  }
+
+
+    @GetMapping("/")
+    public ModelAndView get() {
+        return new ModelAndView("/user/dashboard");
+    }
+
+    @GetMapping("/statistics")
+    public ModelAndView getStatistics() {
+        ModelAndView view = new ModelAndView();
+        //Consultar numero de usuarios
+        //Consultar numero de salones / libre / ocupados.
+        //Consultar listado de solicitudes  para el dia actual.
+        return view;
+    }
 }

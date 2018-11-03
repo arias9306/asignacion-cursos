@@ -1,132 +1,129 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>AdminLTE 2 | Log in</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Log in</title>
 <body style="Background-color: #242e3d;">
-	<!-- Tell the browser to be responsive to screen width -->
-	<meta
-		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-		name="viewport">
-	<!-- Bootstrap 3.3.7 -->
-	<link rel="stylesheet"
-		href="../plugins/bootstrap/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet"
-		href="../plugins/font-awesome/css/font-awesome.min.css">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="../plugins/ionicons/css/ionicons.min.css">
-	<!-- Theme style -->
-	<link rel="stylesheet" href="../css/theme/AdminLTE.min.css">
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        name="viewport">
+<!-- Bootstrap 3.3.7 -->
+<link rel="stylesheet"
+      href="../plugins/bootstrap/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+      href="../plugins/font-awesome/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="../plugins/ionicons/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../css/theme/AdminLTE.min.css">
 
-	<!-- Google Font -->
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<!-- Google Font -->
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-	<style type="text/css">
-html, body {
-	height: 90%;
-}
+<style type="text/css">
+    html, body {
+        height: 90%;
+    }
 </style>
 </head>
 <body class="hold-transition login-page">
-	<div class="login-box">
-		<div class="login-logo">
-			<img src="../img/LogoUcc.png" border="0" width="300" height="300">
+<div class="login-box" style="margin: 6% auto">
+    <div class="login-logo">
+        <img src="../img/LogoUcc.png" border="0" width="200" height="200">
 
-			<a href="../../index2.html"><b>LOGIN</b>USUARIO</a>
-		</div>
-		<!-- /.login-logo -->
-		<div class="login-box-body">
-			<p class="login-box-msg">Sign in to start your session</p>
+        <span style="color:white"><b>LOGIN</b>USUARIO</span>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <form th:action="@{/j_spring_security_check}"
+              th:object="${modeloUser}" method="post">
+            <div class="form-group has-feedback">
 
-			<form th:action="@{/j_spring_security_check}"
-				th:object="${modeloUser}" method="post">
-				<div class="form-group has-feedback">
+                <input type="email" class="form-control" placeholder="Email"
+                       id="username" name="username" required> <span
+                    class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="Password"
+                       required id="password" name="password"> <span
+                    class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
 
-					<input type="email" class="form-control" placeholder="Email"
-						id="username" name="username" required> <span
-						class="glyphicon glyphicon-envelope form-control-feedback"></span>
-				</div>
-				<div class="form-group has-feedback">
-					<input type="password" class="form-control" placeholder="Password"
-						required id="password" name="password"> <span
-						class="glyphicon glyphicon-lock form-control-feedback"></span>
-				</div>
+            <div class="row">
 
-				<div class="row">
+                <div class="col-xs-4 pull-right">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar
+                    </button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
 
-					<div class="col-xs-4 pull-right">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar
-						</button>
-					</div>
-					<!-- /.col -->
-				</div>
-			</form>
-
-			<br>
-			<div class="alert alert-warning" role="alert" th:if="${mensajeError}"
-				th:text="${mensajeError}"></div>
-			<div th:if="${#request.getParameter('error') == 'true'}"
-				style="color: red; margin: 10px 0px;">
-				Login Failed!!!<br /> Reason : <span
-					th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
-					th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+        <br>
+        <div class="alert alert-warning" role="alert" th:if="${mensajeError}"
+             th:text="${mensajeError}"></div>
+        <div th:if="${#request.getParameter('error') == 'true'}"
+             style="color: red; margin: 10px 0px;">
+            Login Failed!!!<br/> Reason : <span
+                th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+                th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
 					Static summary </span>
 
-			</div>
+        </div>
 
 
+        <!-- Aca Recuerdo la contraseña -->
 
-			<!-- Aca Recuerdo la contraseña -->
+        <a href="#" data-toggle="modal" data-target="#myModal">Olvide mi
+            Contraseña</a><br>
 
-			<a href="#" data-toggle="modal" data-target="#myModal">Olvide mi
-				Contraseña</a><br>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
 
-			<!-- Modal -->
-			<div id="myModal" class="modal fade" role="dialog">
-				<div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Recuperar mi Contraseña</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Para recordar su contraseña, ingrese el correo registrado
+                            en la plataforma.</p>
 
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Recuperar mi Contraseña</h4>
-						</div>
-						<div class="modal-body">
-							<p>Para recordar su contraseña, ingrese el correo registrado
-								en la plataforma.</p>
+                        <form th:action="@{/login/cambioPassw}" th:object="${modeloUser}"
+                              method="post">
+                            <div class="form-group">
+                                <label for="email">Correo Electronico:</label> <input
+                                    type="email" class="form-control" id="email"
+                                    th:field="*{correo}" required>
+                            </div>
+                            <button type="submit" class="btn btn-default">Recuperar</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">Cerrar
+                        </button>
+                    </div>
+                </div>
 
-							<form th:action="@{/login/cambioPassw}" th:object="${modeloUser}"
-								method="post">
-								<div class="form-group">
-									<label for="email">Correo Electronico:</label> <input
-										type="email" class="form-control" id="email"
-										th:field="*{correo}" required>
-								</div>
-								<button type="submit" class="btn btn-default">Recuperar</button>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Cerrar</button>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
+            </div>
+        </div>
 
 
-		</div>
-		<!-- /.login-box-body -->
-	</div>
-	<!-- /.login-box -->
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
 
-	<!-- jQuery 3 -->
-	<script src="../plugins/jquery/jquery-3.3.1.min.js"></script>
-	<!-- Bootstrap 3.3.7 -->
-	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery 3 -->
+<script src="../plugins/jquery/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
