@@ -76,7 +76,7 @@ desired effect
         <!-- Main Header -->
         <header class="main-header">
             <!-- Logo -->
-            <a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+            <a href="#" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>U</b>CC</span> <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>UCC</b></span>
             </a>
@@ -239,7 +239,11 @@ desired effect
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">Menú</li>
-                    <!-- Optionally, you can add icons to the links -->
+                    <li th:classappend="${#httpServletRequest.getRequestURI().contains('dashboard') ? 'active':''}">
+                        <a th:href="@{/dashboard/}">
+                            <i class="fa fa-home"></i><span>Dashboard</span>
+                        </a>
+                    </li>
                     <li sec:authorize="hasAuthority('ADMIN')"
                         th:classappend="${#httpServletRequest.getRequestURI().contains('usuario') ? 'active':''}">
                         <a th:href="@{/admin/usuario/}">

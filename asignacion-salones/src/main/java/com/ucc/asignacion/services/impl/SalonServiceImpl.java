@@ -67,4 +67,9 @@ public class SalonServiceImpl implements ISalonService {
     salonRepository.deleteById(Integer.parseInt(id));
   }
 
+  @Override
+  public int numeroSalones() {
+    return 0;
+  }
+
 }

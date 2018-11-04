@@ -21,7 +21,7 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3><span th:text="${numeroUsuarios}"></span></h3>
                             <p>Usuarios</p>
                         </div>
                         <div class="icon">
@@ -33,39 +33,39 @@
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-purple">
                         <div class="inner">
-                            <h3>20</h3>
+                            <h3><span th:text="${numeroSalones}"></span></h3>
                             <p>Salones</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-building "></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3><span th:text="${numeroSalonesLibres}"></span></h3>
 
                             <p>Salones Libres</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-building "></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <div class="small-box-footer"> </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-xs-6">
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3><span th:text="${numerSalonesOcupados}"></span></h3>
 
                             <p>Salones Ocupados</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-building "></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <div class="small-box-footer"> </div>
                     </div>
                 </div>
             </div>
