@@ -68,8 +68,8 @@ public class SalonServiceImpl implements ISalonService {
   }
 
   @Override
-  public int numeroSalones() {
-    return 0;
+  public long numeroSalones() {
+    return salonRepository.count();
   }
 
 }

@@ -1,12 +1,12 @@
 package com.ucc.asignacion.services;
 
-import com.ucc.asignacion.models.PeticionModel;
-
 import java.util.List;
+
+import com.ucc.asignacion.models.PeticionModel;
 
 public interface IPeticionService {
 
-    int numeroSalonesOcupados();
+  long numeroSalonesOcupados();
 
-    List<PeticionModel> obtenerSolicitudes();
+  List<PeticionModel> obtenerSolicitudes();
 }

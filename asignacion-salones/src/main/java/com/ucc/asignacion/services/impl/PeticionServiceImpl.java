@@ -1,22 +1,33 @@
 package com.ucc.asignacion.services.impl;
 
-import com.ucc.asignacion.models.PeticionModel;
-import com.ucc.asignacion.services.IPeticionService;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ucc.asignacion.models.PeticionModel;
+import com.ucc.asignacion.repository.IPeticionRepository;
+import com.ucc.asignacion.services.IPeticionService;
+import com.ucc.asignacion.util.EnumEstadoPeticion;
 
 @Service
 public class PeticionServiceImpl implements IPeticionService {
 
-    @Override
-    public int numeroSalonesOcupados() {
-        return 0;
-    }
+  private final IPeticionRepository peticionRepository;
 
-    @Override
-    public List<PeticionModel> obtenerSolicitudes() {
-        return new ArrayList<>();
-    }
+  @Autowired
+  public PeticionServiceImpl(IPeticionRepository peticionRepository) {
+    this.peticionRepository = peticionRepository;
+  }
+
+  @Override
+  public long numeroSalonesOcupados() {
+    return peticionRepository.numeroSalonesByEstado(EnumEstadoPeticion.ASIGNADO.getId());
+  }
+
+  @Override
+  public List<PeticionModel> obtenerSolicitudes() {
+    return new ArrayList<>();
+  }
 }

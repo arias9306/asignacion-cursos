@@ -14,5 +14,5 @@ public interface ISalonService {
 
   void eliminarSalonById(String id);
 
-  int numeroSalones();
+  long numeroSalones();
 }
