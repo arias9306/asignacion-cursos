@@ -108,8 +108,8 @@ public class UsuarioService implements IUsuarioService {
   }
 
   @Override
-  public int numeroUsuarios() {
-    return 0;
+  public long numeroUsuarios() {
+    return usuarioRepository.count();
   }
 
 }
