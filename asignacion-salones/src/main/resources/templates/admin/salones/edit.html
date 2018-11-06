@@ -82,42 +82,15 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label"></label> <span> <input
-									id="favoriteFrameworks2" name="favoriteFrameworks"
-									type="checkbox" value="Struts 1" /> <label
-									for="favoriteFrameworks2">PC</label>
-								</span>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label"></label> <span> <input
-									id="favoriteFrameworks2" name="favoriteFrameworks"
-									type="checkbox" value="Struts 1" /> <label
-									for="favoriteFrameworks2">Aire</label>
-								</span>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label"></label> <span> <input
-									id="favoriteFrameworks2" name="favoriteFrameworks"
-									type="checkbox" value="Struts 1" /> <label
-									for="favoriteFrameworks2">Tablero</label>
-								</span>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label"></label> <span> <input
-									id="favoriteFrameworks2" name="favoriteFrameworks"
-									type="checkbox" value="Struts 1" /> <label
-									for="favoriteFrameworks2">Sillas</label>
-								</span>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-2 control-label"></label> <span> <input
-									id="favoriteFrameworks2" name="favoriteFrameworks"
-									type="checkbox" value="Struts 1" /> <label
-									for="favoriteFrameworks2">Videobeam</label>
-								</span>
-							</div>
+								<label class="col-sm-2 control-label"></label>
+								<div class="col-sm-10 ">
+									<tr th:each="caracteristica : ${caracteristicasModel}">
+										<input type="checkbox" th:name="idChecked" 
+											th:value="${caracteristica.idcaracteristica}" th:text="${caracteristica.nombre}" /><br/>
 
-
+									</tr>
+								</div>
+							</div>
 							<div class="box-footer">
 								<div class="form-group pull-right">
 									<div class="col-sm-2">
@@ -128,6 +101,7 @@
 					</form>
 				</div>
 			</div>
+
 
 		</div>
 		<footer th:replace="/layouts/layout :: footer"></footer>

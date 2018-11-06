@@ -23,4 +23,5 @@ public interface IUsuarioService {
 
   UsuarioModel buscarUsuarioByCorreo(String correo);
 
+  long numeroUsuarios();
 }

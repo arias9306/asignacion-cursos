@@ -56,6 +56,9 @@ public class RolController {
       for (ObjectError error : bindingResult.getAllErrors()) {
         errors.add(error.getDefaultMessage());
       }
+      if (rol.getIdRol() != 0) {
+        rol.setEditar(true);
+      }
       view.setViewName(VISTA_EDITAR);
       view.addObject(ROL_MODEL, rol);
       view.addObject("errors", errors);

@@ -107,4 +107,9 @@ public class UsuarioService implements IUsuarioService {
     return Converts.convertUsuarioToUsuarioModel(usuarioRepository.findByCorreo(correo));
   }
 
+  @Override
+  public long numeroUsuarios() {
+    return usuarioRepository.count();
+  }
+
 }
