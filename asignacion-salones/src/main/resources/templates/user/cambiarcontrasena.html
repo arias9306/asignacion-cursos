@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/security"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Cambiar Contraseña</title>
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+	<div class="wrapper">
+		<header th:replace="layouts/layout :: header"></header>
+		<div class="content-wrapper">
+			<div class="content">
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Nueva Contraseña</label> <input
+							type="password" class="form-control" id="password1"
+							placeholder="Nueva Contraseña">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Confirmar Contraseña</label> <input
+							type="password" class="form-control" id="password2"
+							placeholder="Confirme Nueva Contraseña">
+					</div>
+
+					<button type="submit" class="btn btn-primary">Actualizar</button>
+				</form>
+			</div>
+		</div>
+		<footer th:replace="layouts/layout :: footer"></footer>
+	</div>
+</body>
+</html>
