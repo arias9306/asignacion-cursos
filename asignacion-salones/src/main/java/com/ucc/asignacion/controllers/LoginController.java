@@ -90,7 +90,7 @@ public class LoginController {
 			usuarioModelo.setIdRol(usuario.getRol().getIdRol());
 			usuarioModelo.setIdPrograma(usuario.getPrograma().getIdPrograma());
 			usuarioModelo.setIdUser(usuario.getIdUsuario());
-			usuarioService.guardarUsuario(usuarioModelo);
+			usuarioService.guardarUsuario(usuarioModelo, true);
 			email.enviarCorreo(correo, password);
 		} else {
 			error = "El correo ingresado no está registrado en el sistema..";

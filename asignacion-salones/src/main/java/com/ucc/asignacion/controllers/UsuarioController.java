@@ -88,7 +88,7 @@ public class UsuarioController {
       view.addObject("programaModel", programaService.programas());
     }
     else {
-      usuarioService.guardarUsuario(usuario);
+      usuarioService.guardarUsuario(usuario, false);
       view.setViewName(REDIRECT_USUARIO);
     }
     return view;

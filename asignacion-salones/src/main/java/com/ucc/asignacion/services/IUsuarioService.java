@@ -17,7 +17,7 @@ public interface IUsuarioService {
 
   Usuario buscarUsuarioPrimerApellido(String primerApellido);
 
-  void guardarUsuario(UsuarioModel usuario);
+  void guardarUsuario(UsuarioModel usuario, boolean recordarContrasenia);
 
   void eliminarUsuarioById(String id);
 

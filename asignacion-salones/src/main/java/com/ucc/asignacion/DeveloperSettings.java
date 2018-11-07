@@ -121,7 +121,7 @@ public class DeveloperSettings implements CommandLineRunner {
     usuario.setIdRol(
         rolService.buscarByNombre(rol)
             .getIdRol());
-    usuarioService.guardarUsuario(usuario);
+    usuarioService.guardarUsuario(usuario, false);
   }
 
   /**
