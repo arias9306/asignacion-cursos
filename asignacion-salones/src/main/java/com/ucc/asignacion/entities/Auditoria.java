@@ -40,10 +40,8 @@ public class Auditoria implements Serializable {
 
 	private String tabla;
 
-	// bi-directional many-to-one association to Usuario
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_USUARIO")
-	private Usuario usuario;
+	@Column(name = "ID_USUARIO")
+	private String usuario;
 
 	public Auditoria() {
 	}
@@ -96,11 +94,11 @@ public class Auditoria implements Serializable {
 		this.tabla = tabla;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
