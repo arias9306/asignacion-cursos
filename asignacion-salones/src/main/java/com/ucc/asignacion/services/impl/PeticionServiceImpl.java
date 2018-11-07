@@ -14,20 +14,26 @@ import com.ucc.asignacion.util.EnumEstadoPeticion;
 @Service
 public class PeticionServiceImpl implements IPeticionService {
 
-  private final IPeticionRepository peticionRepository;
+	private final IPeticionRepository peticionRepository;
 
-  @Autowired
-  public PeticionServiceImpl(IPeticionRepository peticionRepository) {
-    this.peticionRepository = peticionRepository;
-  }
+	@Autowired
+	public PeticionServiceImpl(IPeticionRepository peticionRepository) {
+		this.peticionRepository = peticionRepository;
+	}
 
-  @Override
-  public long numeroSalonesOcupados() {
-    return peticionRepository.numeroSalonesByEstado(EnumEstadoPeticion.ASIGNADO.getId());
-  }
+	@Override
+	public long numeroSalonesOcupados() {
+		return peticionRepository.numeroSalonesByEstado(EnumEstadoPeticion.ASIGNADO.getId());
+	}
 
-  @Override
-  public List<PeticionModel> obtenerSolicitudes() {
-    return new ArrayList<>();
-  }
+	@Override
+	public List<PeticionModel> obtenerSolicitudes() {
+		return new ArrayList<>();
+	}
+
+	@Override
+	public void crearPeticion(PeticionModel peticionModel) {
+		// TODO Auto-generated method stub
+
+	}
 }

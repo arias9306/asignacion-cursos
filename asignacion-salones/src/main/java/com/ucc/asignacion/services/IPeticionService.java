@@ -9,4 +9,6 @@ public interface IPeticionService {
   long numeroSalonesOcupados();
 
   List<PeticionModel> obtenerSolicitudes();
+  
+  void crearPeticion(PeticionModel peticionModel);
 }
