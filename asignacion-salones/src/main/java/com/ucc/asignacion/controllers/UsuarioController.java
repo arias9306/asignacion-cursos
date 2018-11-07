@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ucc.asignacion.models.ContrasenaModel;
 import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.services.IProgramaService;
 import com.ucc.asignacion.services.IRolService;
@@ -103,12 +104,20 @@ public class UsuarioController {
 	@GetMapping("/cambiarcontrasena")
 	public ModelAndView cambiarContraseña() {
 		ModelAndView view = new ModelAndView("/user/cambiarcontrasena");
-
+		view.addObject("contrasenaModel", new ContrasenaModel());
 		return view;
 
 	}
 	
 	@PostMapping("/")
-	public ModelAndView save(@Valid UsuarioModel usuario) {}
+	public ModelAndView save(@Valid ContrasenaModel contrasena) {
+		ModelAndView view = new ModelAndView();
+		
+		view.setViewName(REDIRECT_USUARIO);
+	
+		return view;
+
+		
+	}
 
 }
