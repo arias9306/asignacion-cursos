@@ -82,14 +82,9 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label"></label>
 								<div class="col-sm-10 ">
-									<tr th:each="caracteristica : ${caracteristicasModel}"
-										th:field="${caracteristica}">
-										<label><input type="checkbox" th:name="idChecked"
-											th:value="${caracteristica.idcaracteristica}"
-											th:text="${caracteristica.nombre}" /></label>
-										<br> cantidad:
-										<input type="text" class="form-control" th:field="*{bloque}" />
-										<br>
+									<tr th:each="caracteristica : *{caracteristicas}">
+										<span th:text="${caracteristica.nombre}"></span>
+								
 									</tr>
 								</div>							
 							</div>

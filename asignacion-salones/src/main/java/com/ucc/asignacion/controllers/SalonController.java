@@ -53,8 +53,9 @@ public class SalonController {
 	@GetMapping("/add")
 	public ModelAndView create() {
 		ModelAndView view = new ModelAndView(SALONES_EDIT);
-		view.addObject("salonModel", new SalonModel());
-		view.addObject("caracteristicasModel", caracteristicaService.caracteristicasActivas());
+		SalonModel model = new SalonModel();
+		model.setCaracteristicas(caracteristicaService.caracteristicasActivas());
+		view.addObject("salonModel", model);
 		return view;
 	}
 
