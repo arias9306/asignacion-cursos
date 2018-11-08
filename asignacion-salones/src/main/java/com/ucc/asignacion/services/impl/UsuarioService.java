@@ -65,7 +65,7 @@ public class UsuarioService implements IUsuarioService {
   }
 
   @Override
-  public void guardarUsuario(UsuarioModel usuario) {
+  public void guardarUsuario(UsuarioModel usuario, boolean recordarContrasenia) {
     if (usuario.getIdUser() != 0) {
       Optional<Usuario> usuarioEntity = usuarioRepository.findById(usuario.getIdUser());
       if (usuarioEntity.isPresent()) {
@@ -86,6 +86,9 @@ public class UsuarioService implements IUsuarioService {
         updateUsuario.setPrograma(new Programa());
         updateUsuario.getPrograma()
             .setIdPrograma(usuario.getIdPrograma());
+        if(recordarContrasenia) {
+        	updateUsuario.setPassword(usuario.getPassword());
+        }
         usuarioRepository.save(updateUsuario);
       }
     }
@@ -105,6 +108,11 @@ public class UsuarioService implements IUsuarioService {
   @Override
   public UsuarioModel buscarUsuarioByCorreo(String correo) {
     return Converts.convertUsuarioToUsuarioModel(usuarioRepository.findByCorreo(correo));
+  }
+
+  @Override
+  public long numeroUsuarios() {
+    return usuarioRepository.count();
   }
 
 }

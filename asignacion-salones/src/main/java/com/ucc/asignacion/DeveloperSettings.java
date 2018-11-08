@@ -1,18 +1,24 @@
 package com.ucc.asignacion;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import com.ucc.asignacion.entities.Estado;
 import com.ucc.asignacion.models.ProgramaModel;
 import com.ucc.asignacion.models.RolModel;
 import com.ucc.asignacion.models.UsuarioModel;
+import com.ucc.asignacion.services.IEstadoService;
 import com.ucc.asignacion.services.IProgramaService;
 import com.ucc.asignacion.services.IRolService;
 import com.ucc.asignacion.services.IUsuarioService;
+import com.ucc.asignacion.util.EnumEstadoPeticion;
 
 /**
  * @author andres.arias
@@ -24,6 +30,7 @@ public class DeveloperSettings implements CommandLineRunner {
   private final IUsuarioService usuarioService;
   private final IRolService rolService;
   private final IProgramaService programaService;
+  private final IEstadoService estadoService;
   private int codigo;
 
   /**
@@ -33,10 +40,11 @@ public class DeveloperSettings implements CommandLineRunner {
    * @param rolService
    * @param programaService
    */
-  public DeveloperSettings(IUsuarioService usuarioService, IRolService rolService, IProgramaService programaService) {
+  public DeveloperSettings(IUsuarioService usuarioService, IRolService rolService, IProgramaService programaService, IEstadoService estadoService) {
     this.usuarioService = usuarioService;
     this.rolService = rolService;
     this.programaService = programaService;
+    this.estadoService = estadoService;
     codigo++;
   }
 
@@ -48,7 +56,26 @@ public class DeveloperSettings implements CommandLineRunner {
     crearProgramaIng();
     crearUsuario("admin@correo.co", "admin", "ADMIN");
     crearUsuario("user@correo.co", "user", "USER");
+    crearEstados();
 
+  }
+
+  /**
+   * @author: Andrés Arias
+   * @since: 6/11/2018 9:26:51 a. m.
+   *
+   */
+  private void crearEstados() {
+    List<EnumEstadoPeticion> enumEstado = new ArrayList<>(EnumSet.allOf(EnumEstadoPeticion.class));
+    for (EnumEstadoPeticion enumEstadoPeticion : enumEstado) {
+      Optional<Estado> estado = estadoService.findById(enumEstadoPeticion.getId());
+      if (!estado.isPresent()) {
+        Estado newEstado = new Estado();
+        newEstado.setDescripcion(enumEstadoPeticion.name());
+        newEstado.setIdEstado(enumEstadoPeticion.getId());
+        estadoService.save(newEstado);
+      }
+    }
   }
 
   /**
@@ -94,7 +121,7 @@ public class DeveloperSettings implements CommandLineRunner {
     usuario.setIdRol(
         rolService.buscarByNombre(rol)
             .getIdRol());
-    usuarioService.guardarUsuario(usuario);
+    usuarioService.guardarUsuario(usuario, false);
   }
 
   /**

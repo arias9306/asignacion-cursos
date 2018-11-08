@@ -178,20 +178,6 @@ public class Usuario implements Serializable {
 		this.auditorias = auditorias;
 	}
 
-	public Auditoria addAuditoria(Auditoria auditoria) {
-		getAuditorias().add(auditoria);
-		auditoria.setUsuario(this);
-
-		return auditoria;
-	}
-
-	public Auditoria removeAuditoria(Auditoria auditoria) {
-		getAuditorias().remove(auditoria);
-		auditoria.setUsuario(null);
-
-		return auditoria;
-	}
-
 	public List<Peticion> getPeticions() {
 		return this.peticions;
 	}

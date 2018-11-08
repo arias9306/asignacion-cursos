@@ -1,14 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.springframework.org/schema/security" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="ISO-8859-1">
+    <title>Dashboard</title>
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
-	<div class="wrapper">
-		<header th:replace="layouts/layout :: header"></header>
-		<div class="content-wrapper"></div>
-		<footer th:replace="layouts/layout :: footer"></footer>
-	</div>
+<div class="wrapper">
+    <header th:replace="layouts/layout :: header"></header>
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-right">
+                        <a th:href="@{/dashboard/peticion/}" class="btn btn-block btn-success">Crear Solicitud</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row" sec:authorize="hasAuthority('ADMIN')">
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3><span th:text="${numeroUsuarios}"></span></h3>
+                            <p>Usuarios</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <a th:href="@{/admin/usuario/}" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-purple">
+                        <div class="inner">
+                            <h3><span th:text="${numeroSalones}"></span></h3>
+                            <p>Salones</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-building "></i>
+                        </div>
+                        <a th:href="@{/admin/salones/}" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3><span th:text="${numeroSalonesLibres}"></span></h3>
+
+                            <p>Salones Libres</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-building "></i>
+                        </div>
+                        <div class="small-box-footer"> </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3><span th:text="${numerSalonesOcupados}"></span></h3>
+
+                            <p>Salones Ocupados</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-building "></i>
+                        </div>
+                        <div class="small-box-footer"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Solicitudes</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="layouts/layout :: footer"></footer>
+</div>
 </body>
 </html>

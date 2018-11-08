@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ucc.asignacion.models.ContrasenaModel;
 import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.services.IProgramaService;
 import com.ucc.asignacion.services.IRolService;
@@ -88,7 +89,7 @@ public class UsuarioController {
       view.addObject("programaModel", programaService.programas());
     }
     else {
-      usuarioService.guardarUsuario(usuario);
+      usuarioService.guardarUsuario(usuario, false);
       view.setViewName(REDIRECT_USUARIO);
     }
     return view;
@@ -99,6 +100,24 @@ public class UsuarioController {
   public String delete(@PathVariable(name = "id") String id) {
     usuarioService.eliminarUsuarioById(id);
     return REDIRECT_USUARIO;
+  }
+
+  @GetMapping("/cambiarcontrasena")
+  public ModelAndView cambiarContraseña() {
+    ModelAndView view = new ModelAndView("/user/cambiarcontrasena");
+    view.addObject("contrasenaModel", new ContrasenaModel());
+    return view;
+
+  }
+
+  @PostMapping("/cambiarcontrasena")
+  public ModelAndView save(@Valid ContrasenaModel contrasena) {
+    ModelAndView view = new ModelAndView();
+
+    view.setViewName(REDIRECT_USUARIO);
+
+    return view;
+
   }
 
 }

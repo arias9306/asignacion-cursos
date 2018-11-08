@@ -5,12 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -40,10 +37,8 @@ public class Auditoria implements Serializable {
 
 	private String tabla;
 
-	// bi-directional many-to-one association to Usuario
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_USUARIO")
-	private Usuario usuario;
+	@Column(name = "ID_USUARIO")
+	private String usuario;
 
 	public Auditoria() {
 	}
@@ -96,11 +91,11 @@ public class Auditoria implements Serializable {
 		this.tabla = tabla;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
