@@ -279,6 +279,13 @@ desired effect
 								<i class="fa fa-cogs"></i><span>Caracteristicas </span>
 							</a>
 						</li>
+						
+						<li sec:authorize="hasAuthority('ADMIN')"
+							th:classappend="${#httpServletRequest.getRequestURI().contains('auditoria') ? 'active':''}">
+							<a th:href="@{/admin/auditoria/}">
+								<i class="fa fa-cogs"></i><span>Auditoria </span>
+							</a>
+						</li>
 
 
 					</ul>

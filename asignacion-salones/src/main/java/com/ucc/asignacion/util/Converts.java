@@ -1,10 +1,12 @@
 package com.ucc.asignacion.util;
 
+import com.ucc.asignacion.entities.Auditoria;
 import com.ucc.asignacion.entities.Caracteristica;
 import com.ucc.asignacion.entities.Programa;
 import com.ucc.asignacion.entities.Rol;
 import com.ucc.asignacion.entities.Salon;
 import com.ucc.asignacion.entities.Usuario;
+import com.ucc.asignacion.models.AuditoriaModel;
 import com.ucc.asignacion.models.CaracteristicaModel;
 import com.ucc.asignacion.models.ProgramaModel;
 import com.ucc.asignacion.models.RolModel;
@@ -185,4 +187,32 @@ public class Converts {
     }
     return caracteristica;
   }
+  
+  public static AuditoriaModel convertAuditoriaToAuditoriaModel(Auditoria auditoria) {
+	    AuditoriaModel model = null;
+	    if (auditoria != null) {
+	      model = new AuditoriaModel();
+	      model.setAccion(auditoria.getAccion());
+	      model.setAntiguoValor(auditoria.getAntiguoValor());
+	      model.setFechaModificacion(auditoria.getFechaModificacion());	     
+	      model.setNuevoValor(auditoria.getNuevoValor());
+	      model.setTabla(auditoria.getTabla());
+	    }
+	    return model;
+  }
+  
+  public static Auditoria convertAuditoriaModelToAuditoria(AuditoriaModel auditoriamodel) {
+	    Auditoria auditoria = null;
+	    if (auditoriamodel != null) {
+	    	auditoria = new Auditoria();
+	    	auditoria.setAccion(auditoriamodel.getAccion());
+	        auditoria.setAntiguoValor(auditoria.getAntiguoValor());
+	        auditoria.setFechaModificacion(auditoriamodel.getFechaModificacion());
+	        auditoria.setNuevoValor(auditoria.getNuevoValor());
+	        auditoria.setTabla(auditoria.getTabla());
+	        auditoria.setUsuario(auditoria.getUsuario());
+	    }
+	    return auditoria;
+	  }
+  
 }
