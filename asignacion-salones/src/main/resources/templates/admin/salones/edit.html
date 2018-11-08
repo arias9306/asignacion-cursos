@@ -82,11 +82,34 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label"></label>
 								<div class="col-sm-10 ">
-									<tr th:each="caracteristica : *{caracteristicas}">
-										<span th:text="${caracteristica.nombre}"></span>
-								
-									</tr>
-								</div>							
+									<table class="table">
+										<thead>
+											<tr>
+												<th></th>
+												<th scope="col">#</th>
+												<th scope="col">Caracteristica</th>
+												<th scope="col">Cantidad</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="c, stat  : *{caracteristicas}">
+
+												<td><input type="hidden"
+													th:field="*{caracteristicas[__${stat.index}__].nombre}" />
+													<input type="hidden"
+													th:field="*{caracteristicas[__${stat.index}__].cantidad}" /></td>
+
+												<td th:text="${stat}"></td>
+												<th scope="row"><input type="checkbox"
+													th:name="|caracteristicas[${stat.index}]|"
+													th:checked="${c.seleccionada}"
+													th:value="${c.idcaracteristica}" /></th>
+												<td><label th:text="${c.nombre}"></label></td>
+												<td><input type="text" th:text="${c.cantidad}"></input></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 						<div class="box-footer">
