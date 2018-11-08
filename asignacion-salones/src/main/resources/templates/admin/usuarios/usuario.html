@@ -32,10 +32,10 @@
 								<td th:text="${usuario.segundoApellido}">Segundo Apellido</td>
 								<td style="text-align: center"><a
 										th:href="${'/admin/usuario/edit/' + usuario.idUser}"
-										class="btn btn-default">Edit</a></td>
+										class="btn btn-default">Editar</a></td>
 								<td style="text-align: center"><a
 									onclick="return confirm('¿Esta seguro que desea eliminar este usuario?')"
-									th:href="${'/admin/usuario/delete/' + usuario.idUser}" class="btn btn-danger">Delete</a>
+									th:href="${'/admin/usuario/delete/' + usuario.idUser}" class="btn btn-danger">Eliminar</a>
 
 								</td>
 							</tr>
