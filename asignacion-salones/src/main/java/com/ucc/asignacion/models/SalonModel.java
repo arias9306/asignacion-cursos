@@ -1,6 +1,6 @@
 package com.ucc.asignacion.models;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -27,7 +27,7 @@ public class SalonModel {
 
 	private boolean editar;
 
-	private List<CaracteristicaModel> caracteristicas;
+	private ArrayList<CaracteristicaModel> caracteristicas;
 
 	public SalonModel() {
 
@@ -89,12 +89,14 @@ public class SalonModel {
 		this.editar = editar;
 	}
 
-	public List<CaracteristicaModel> getCaracteristicas() {
+	public ArrayList<CaracteristicaModel> getCaracteristicas() {
 		return caracteristicas;
 	}
 
-	public void setCaracteristicas(List<CaracteristicaModel> caracteristicas) {
+	public void setCaracteristicas(ArrayList<CaracteristicaModel> caracteristicas) {
 		this.caracteristicas = caracteristicas;
 	}
+
+	
 
 }

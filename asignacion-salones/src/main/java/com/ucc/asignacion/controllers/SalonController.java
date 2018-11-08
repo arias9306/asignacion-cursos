@@ -8,14 +8,17 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ucc.asignacion.models.CaracteristicaModel;
 import com.ucc.asignacion.models.SalonModel;
 import com.ucc.asignacion.services.ICaracteristicaService;
 import com.ucc.asignacion.services.ISalonService;
@@ -54,13 +57,17 @@ public class SalonController {
 	public ModelAndView create() {
 		ModelAndView view = new ModelAndView(SALONES_EDIT);
 		SalonModel model = new SalonModel();
-		model.setCaracteristicas(caracteristicaService.caracteristicasActivas());
+		ArrayList<CaracteristicaModel> caracteristicas = new ArrayList<>();
+		for (CaracteristicaModel c : caracteristicaService.caracteristicasActivas()) {
+			caracteristicas.add(c);
+		}
+		model.setCaracteristicas(caracteristicas);
 		view.addObject("salonModel", model);
 		return view;
 	}
 
 	@PostMapping("/")
-	public ModelAndView save(@Valid SalonModel salon, BindingResult bindingResult) {
+	public ModelAndView save(@Valid @ModelAttribute SalonModel salon, BindingResult bindingResult, Model model) {
 		ModelAndView view = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			List<String> errors = new ArrayList<>();
