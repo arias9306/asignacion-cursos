@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class AuditoriaModel {
 	
+	private int idAuditoria;
 	private String AntiguoValor;
 	private Date fechaModificacion;
 	private String nuevoValor;
@@ -63,6 +64,16 @@ public class AuditoriaModel {
 	public void setAccion(String accion) {
 		Accion = accion;
 	}
+
+	public int getIdAuditoria() {
+		return idAuditoria;
+	}
+
+	public void setIdAuditoria(int idAuditoria) {
+		this.idAuditoria = idAuditoria;
+	}
+	
+	
 	
 	
 	

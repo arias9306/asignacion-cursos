@@ -35,6 +35,12 @@ public class AuditoriaServiceImpl implements IAuditoriaService {
 		
 		return auditoriaModel;
 	}
+
+
+	@Override
+	public AuditoriaModel buscarAuditoriaById(String id) {
+		return Converts.convertAuditoriaToAuditoriaModel(auditoriaRepository.findById(Integer.valueOf(id)).get());
+	}
 	
 	
 	

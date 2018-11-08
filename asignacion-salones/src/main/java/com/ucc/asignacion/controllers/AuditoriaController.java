@@ -2,14 +2,13 @@ package com.ucc.asignacion.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ucc.asignacion.models.AuditoriaModel;
+import com.ucc.asignacion.models.RolModel;
 import com.ucc.asignacion.services.IAuditoriaService;
 
 @Controller
@@ -17,7 +16,7 @@ import com.ucc.asignacion.services.IAuditoriaService;
 public class AuditoriaController {
 
   private static final String REDIRECT_AUDITORIA = "redirect:/admin/auditoria/";
-   private static final String VISTA = "/admin/auditoria/audirtoria";
+   private static final String VISTA = "/admin/auditoria/auditoria";
 
   private final IAuditoriaService auditoriaService;
 
@@ -33,6 +32,14 @@ public class AuditoriaController {
     return view;
   }
 
+  
+  @GetMapping("/edit/{id}")
+  public ModelAndView edit(@PathVariable(value = "id") String id) {
+    ModelAndView view = new ModelAndView("/admin/auditoria/Ver");
+    AuditoriaModel auditoriaModel = auditoriaService.buscarAuditoriaById(id);
+    view.addObject("auditoria", auditoriaModel);
+    return view;
+  }
 
 }
   
