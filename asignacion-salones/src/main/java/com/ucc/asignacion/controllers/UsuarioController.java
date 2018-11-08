@@ -32,6 +32,7 @@ public class UsuarioController {
   private static final String REDIRECT_USUARIO = "redirect:/admin/usuario/";
   private static final String VISTA_CONSULTA = "/admin/usuarios/usuario";
   private static final String VISTA_EDITAR = "/admin/usuarios/edit";
+  private static final String REDIRECT_CAMBIARCONTRA = "redirect:/user/cambiarcontrasena";
 
   /**
    * Constructor.
@@ -113,8 +114,15 @@ public class UsuarioController {
   @PostMapping("/cambiarcontrasena")
   public ModelAndView save(@Valid ContrasenaModel contrasena) {
     ModelAndView view = new ModelAndView();
-
-    view.setViewName(REDIRECT_USUARIO);
+    if(contrasena.getNuevaPassword().equals(contrasena.getConfirmacionPassword())){
+    	
+    
+    	
+    }else {
+    	
+    	view.setViewName(REDIRECT_CAMBIARCONTRA);
+    	
+    }
 
     return view;
 
