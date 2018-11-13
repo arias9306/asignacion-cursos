@@ -1,5 +1,7 @@
 package com.ucc.asignacion.controllers;
 
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +15,9 @@ public class PeticionController {
 	private static final String VISTA = "/user/peticion";
 	
 	@GetMapping("/")
-	public ModelAndView getProgramas() {
+	public ModelAndView getProgramas(Principal principal) {
 		ModelAndView view = new ModelAndView(VISTA);
+		view.addObject("user", principal.getName());
 		return view;
 	}
 
