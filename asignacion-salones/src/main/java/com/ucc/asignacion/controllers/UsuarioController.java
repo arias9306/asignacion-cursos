@@ -1,5 +1,6 @@
 package com.ucc.asignacion.controllers;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -34,6 +36,8 @@ public class UsuarioController {
 	private static final String VISTA_CONSULTA = "/admin/usuarios/usuario";
 	private static final String VISTA_EDITAR = "/admin/usuarios/edit";
 	private static final String REDIRECT_CAMBIARCONTRA = "redirect:/user/cambiarcontrasena";
+	private static final String REDIRECT_DASHBOARD = "redirect:/dashboard/";
+	private final BCryptPasswordEncoder passwordEncoder;
 
 	/**
 	 * Constructor.
@@ -43,10 +47,12 @@ public class UsuarioController {
 	 * @param programaService
 	 */
 	@Autowired
-	public UsuarioController(IUsuarioService usuarioService, IRolService rolService, IProgramaService programaService) {
+	public UsuarioController(IUsuarioService usuarioService, IRolService rolService, IProgramaService programaService,
+			BCryptPasswordEncoder passwordEncoder) {
 		this.rolService = rolService;
 		this.usuarioService = usuarioService;
 		this.programaService = programaService;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@GetMapping("/")
@@ -102,7 +108,6 @@ public class UsuarioController {
 			view.setViewName(REDIRECT_USUARIO);
 		}
 		return view;
-
 	}
 
 	@GetMapping("/delete/{id}")
@@ -120,14 +125,16 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/cambiarcontrasena")
-	public ModelAndView save(@Valid ContrasenaModel contrasena) {
+	public ModelAndView save(@Valid ContrasenaModel contrasena, Principal user) {
 		ModelAndView view = new ModelAndView();
+
 		if (contrasena.getNuevaPassword().equals(contrasena.getConfirmacionPassword())) {
-
+			UsuarioModel usuario = usuarioService.buscarUsuarioByCorreo(user.getName());
+			contrasena.setNuevaPassword(passwordEncoder.encode(contrasena.getConfirmacionPassword()));
+			usuarioService.actualizarPassword(usuario, contrasena);
+			view.setViewName(REDIRECT_DASHBOARD);
 		} else {
-
 			view.setViewName(REDIRECT_CAMBIARCONTRA);
-
 		}
 
 		return view;
