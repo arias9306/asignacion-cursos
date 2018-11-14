@@ -27,8 +27,8 @@ import com.ucc.asignacion.services.ISalonService;
 public class SalonController {
 
 	private static final String REDIRECT_SALONES = "redirect:/admin/salones/";
-	private static final String SALONES_EDIT = "/admin/salones/edit";
-	private static final String VIEW = "/admin/salones/salones";
+	private static final String SALONES_EDIT = "admin/salones/edit";
+	private static final String VIEW = "admin/salones/salones";
 
 	private final ISalonService salonService;
 	private final ICaracteristicaService caracteristicaService;

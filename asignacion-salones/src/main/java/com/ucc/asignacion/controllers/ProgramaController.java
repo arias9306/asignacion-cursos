@@ -23,8 +23,8 @@ import com.ucc.asignacion.services.IProgramaService;
 public class ProgramaController {
 
 	private static final String REDIRECT_PROGRAMA = "redirect:/admin/programas/";
-	private static final String PROGRAMAS_EDIT = "/admin/programas/edit";
-	private static final String VISTA = "/admin/programas/programas";
+	private static final String PROGRAMAS_EDIT = "admin/programas/edit";
+	private static final String VISTA = "admin/programas/programas";
 	private final IProgramaService programaService;
 
 	@Autowired

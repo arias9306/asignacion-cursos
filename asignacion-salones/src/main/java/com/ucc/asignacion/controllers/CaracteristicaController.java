@@ -24,8 +24,8 @@ import com.ucc.asignacion.services.ICaracteristicaService;
 public class CaracteristicaController {
 
 	private static final String REDIRECT_CARACTERISTICA = "redirect:/admin/caracteristica/";
-	private static final String CARACTERISTICAS_EDIT = "/admin/caracteristicas/edit";
-	private static final String VISTA = "/admin/caracteristicas/caracteristica";
+	private static final String CARACTERISTICAS_EDIT = "admin/caracteristicas/edit";
+	private static final String VISTA = "admin/caracteristicas/caracteristica";
 
 	private final ICaracteristicaService caracteristicaService;
 

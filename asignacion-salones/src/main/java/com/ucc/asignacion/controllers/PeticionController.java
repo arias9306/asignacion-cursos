@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class PeticionController {
 	
 	
-	private static final String VISTA = "/user/peticion";
+	private static final String VISTA = "user/peticion";
 	
 	@GetMapping("/")
 	public ModelAndView getProgramas(Principal principal) {

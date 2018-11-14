@@ -16,7 +16,7 @@ import com.ucc.asignacion.services.IAuditoriaService;
 public class AuditoriaController {
 
   private static final String REDIRECT_AUDITORIA = "redirect:/admin/auditoria/";
-   private static final String VISTA = "/admin/auditoria/auditoria";
+   private static final String VISTA = "admin/auditoria/auditoria";
 
   private final IAuditoriaService auditoriaService;
 
@@ -35,7 +35,7 @@ public class AuditoriaController {
   
   @GetMapping("/edit/{id}")
   public ModelAndView edit(@PathVariable(value = "id") String id) {
-    ModelAndView view = new ModelAndView("/admin/auditoria/Ver");
+    ModelAndView view = new ModelAndView("admin/auditoria/Ver");
     AuditoriaModel auditoriaModel = auditoriaService.buscarAuditoriaById(id);
     view.addObject("auditoria", auditoriaModel);
     return view;

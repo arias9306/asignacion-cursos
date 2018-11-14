@@ -33,8 +33,8 @@ public class UsuarioController {
 	private final IProgramaService programaService;
 
 	private static final String REDIRECT_USUARIO = "redirect:/admin/usuario/";
-	private static final String VISTA_CONSULTA = "/admin/usuarios/usuario";
-	private static final String VISTA_EDITAR = "/admin/usuarios/edit";
+	private static final String VISTA_CONSULTA = "admin/usuarios/usuario";
+	private static final String VISTA_EDITAR = "admin/usuarios/edit";
 	private static final String REDIRECT_CAMBIARCONTRA = "redirect:/user/cambiarcontrasena";
 	private static final String REDIRECT_DASHBOARD = "redirect:/dashboard/";
 	private final BCryptPasswordEncoder passwordEncoder;
@@ -118,7 +118,7 @@ public class UsuarioController {
 
 	@GetMapping("/cambiarcontrasena")
 	public ModelAndView cambiarContraseña() {
-		ModelAndView view = new ModelAndView("/user/cambiarcontrasena");
+		ModelAndView view = new ModelAndView("user/cambiarcontrasena");
 		view.addObject("contrasenaModel", new ContrasenaModel());
 		return view;
 

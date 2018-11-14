@@ -24,8 +24,8 @@ public class RolController {
 
   private static final String ROL_MODEL = "rolModel";
   private static final String REDIRECT_ROLES = "redirect:/admin/roles/";
-  private static final String VISTA_EDITAR = "/admin/roles/edit";
-  private static final String VISTA_CONSULTA = "/admin/roles/roles";
+  private static final String VISTA_EDITAR = "admin/roles/edit";
+  private static final String VISTA_CONSULTA = "admin/roles/roles";
 
   private final IRolService rolService;
 
