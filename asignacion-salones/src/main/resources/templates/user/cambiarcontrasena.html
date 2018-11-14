@@ -10,15 +10,15 @@
 		<header th:replace="layouts/layout :: header"></header>
 		<div class="content-wrapper">
 			<div class="content">
-				<form>
+				<form th:action="@{/admin/usuario/cambiarcontrasena}" th:object="${contrasenaModel}" method="post">
 					<div class="form-group">
 						<label for="exampleInputEmail1">Nueva Contraseña</label> <input
-							type="password" class="form-control" id="password1"
+							type="password" class="form-control" id="password1" th:field="*{nuevaPassword}"
 							placeholder="Nueva Contraseña">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Confirmar Contraseña</label> <input
-							type="password" class="form-control" id="password2"
+							type="password" class="form-control" id="password2" th:field="*{confirmacionPassword}"
 							placeholder="Confirme Nueva Contraseña">
 					</div>
 
