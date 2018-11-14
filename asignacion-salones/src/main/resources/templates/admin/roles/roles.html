@@ -27,11 +27,11 @@
 									<td th:text="${rol.descripcion}">Descripción</td>
 									<td style="text-align: center"><a
 										th:href="${'/admin/roles/edit/' + rol.idRol}"
-										class="btn btn-default">Edit</a></td>
+										class="btn btn-default">Editar</a></td>
 									<td style="text-align: center"><a
 										onclick="return confirm('Esta seguro que desea eliminar le rol..')"
 										th:href="${'/admin/roles/delete/' + rol.idRol}"
-										class="btn btn-danger">Delete</a></td>
+										class="btn btn-danger">Eliminar</a></td>
 								</tr>
 							</table>
 						</div>
