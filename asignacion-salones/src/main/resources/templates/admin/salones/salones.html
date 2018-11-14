@@ -17,34 +17,35 @@
 						<table class="table table-striped">
 							<tr>
 								<th>Id</th>
-								<th>Codigo</th>
+								<th>Código</th>
 								<th>Estado</th>
 								<th>Bloque</th>
 								<th>Tipo</th>
-								<th>Descripcion</th>
+								<th>Descripción</th>
 								<th style="width: 150px; text-align: center;">Editar</th>
 								<th style="width: 150px; text-align: center;">Eliminar</th>
 							</tr>
 							<tr th:each="salon : ${salones}">
 								<td th:text="${salon.idSalon}">Id</td>
-								<td th:text="${salon.codigo}">Codigo</td>
-								<td th:text="${salon.estado}">Estado</td>
+								<td th:text="${salon.codigo}">Código</td>
+								<td th:text="${salon.estado == true ? 'Activo' :'Inactivo'}">Estado</td>
 								<td th:text="${salon.bloque}">Bloque</td>
 								<td th:text="${salon.tipo}">Tipo</td>
-								<td th:text="${salon.descripcion}">Descripcion</td>												
+								<td th:text="${salon.descripcion}">Descripción</td>
 								<td style="text-align: center"><a
-										th:href="${'/admin/salones/edit/' + salon.idSalon}"
-										class="btn btn-default">Edit</a></td>
-										
+									th:href="${'/admin/salones/edit/' + salon.idSalon}"
+									class="btn btn-default">Editar</a></td>
+
 								<td style="text-align: center"><a
 									onclick="return confirm('Esta seguro que desea eliminar el salón..')"
-									th:href="${'/admin/salones/delete/' + salon.idSalon}" class="btn btn-danger">Delete</a>
-								</td>
+									th:href="${'/admin/salones/delete/' + salon.idSalon}"
+									class="btn btn-danger">Eliminar</a></td>
 							</tr>
 						</table>
 					</div>
 					<div class="box-footer">
-						<a class="btn btn-primary pull-right" th:href="@{/admin/salones/add}">Crear</a>
+						<a class="btn btn-primary pull-right"
+							th:href="@{/admin/salones/add}">Crear</a>
 					</div>
 				</div>
 			</div>
