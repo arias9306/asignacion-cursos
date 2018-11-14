@@ -92,20 +92,16 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="c, stat  : *{caracteristicas}">
-
-												<td><input type="hidden"
-													th:field="*{caracteristicas[__${stat.index}__].nombre}" />
-													<input type="hidden"
-													th:field="*{caracteristicas[__${stat.index}__].cantidad}" /></td>
-
-												<td th:text="${stat}"></td>
+											<tr th:each="c, stat  : ${salonModel.caracteristicas}">
+												<td></td>
 												<th scope="row"><input type="checkbox"
-													th:name="|caracteristicas[${stat.index}]|"
+													th:name="|salonModel.caracteristicas[${stat.index}]|"
 													th:checked="${c.seleccionada}"
 													th:value="${c.idcaracteristica}" /></th>
 												<td><label th:text="${c.nombre}"></label></td>
-												<td><input type="text" th:text="${c.cantidad}"></input></td>
+												<td><input
+													th:name="|salonModel.caracteristicas[${stat.index}].cantidad|"
+													th:value="${c.cantidad}" /></td>
 											</tr>
 										</tbody>
 									</table>
