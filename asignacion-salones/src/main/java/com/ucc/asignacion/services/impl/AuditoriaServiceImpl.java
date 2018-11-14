@@ -2,12 +2,15 @@ package com.ucc.asignacion.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ucc.asignacion.entities.Auditoria;
+import com.ucc.asignacion.entities.Usuario;
 import com.ucc.asignacion.models.AuditoriaModel;
+import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.repository.IAuditoriaRepository;
 import com.ucc.asignacion.services.IAuditoriaService;
 import com.ucc.asignacion.util.Converts;
@@ -39,10 +42,18 @@ public class AuditoriaServiceImpl implements IAuditoriaService {
 
 	@Override
 	public AuditoriaModel buscarAuditoriaById(String id) {
-		return Converts.convertAuditoriaToAuditoriaModel(auditoriaRepository.findById(Integer.valueOf(id)).get());
+		  Optional<Auditoria> auditoria = auditoriaRepository.findById(Integer.parseInt(id));
+		if (auditoria.isPresent()) {
+			return Converts.convertAuditoriaToAuditoriaModel(auditoriaRepository.findById(Integer.valueOf(id)).get());
 	}
 	
+	return new AuditoriaModel();
 	
+	  
+
+}
+
+
 	
 	
 	
