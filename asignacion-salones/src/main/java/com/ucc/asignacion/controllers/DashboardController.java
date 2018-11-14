@@ -27,7 +27,7 @@ public class DashboardController {
 
   @GetMapping("/")
   public ModelAndView get() {
-    ModelAndView view = new ModelAndView("/user/dashboard");
+    ModelAndView view = new ModelAndView("user/dashboard");
     long numeroSalones = salonService.numeroSalones();
     long numeroSalonesOcupados = peticionService.numeroSalonesOcupados();
     long numeroSalonesLibres = numeroSalones - numeroSalonesOcupados;
