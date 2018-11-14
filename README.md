@@ -1,5 +1,4 @@
 # Proyecto de asignación de salones
-======
 
 Proyecto realizado por el grupo de noveno semestre de la Universidad Cooperativa de Colombia
 
