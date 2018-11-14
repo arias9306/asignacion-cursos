@@ -83,6 +83,9 @@ public class UsuarioController {
       for (ObjectError error : bindingResult.getAllErrors()) {
         errors.add(error.getDefaultMessage());
       }
+      if(usuario.getIdUser() != 0) {
+    	  usuario.setEditar(true);
+      }
       view.setViewName(VISTA_EDITAR);
       view.addObject("usuarioModel", usuario);
       view.addObject("errors", errors);
