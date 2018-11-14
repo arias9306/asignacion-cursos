@@ -67,7 +67,7 @@ public class SalonController {
 	}
 
 	@PostMapping("/")
-	public ModelAndView save(@Valid @ModelAttribute SalonModel salon, BindingResult bindingResult)  {
+	public ModelAndView save(@Valid @ModelAttribute SalonModel salon, BindingResult bindingResult) {
 		ModelAndView view = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			List<String> errors = new ArrayList<>();
@@ -80,6 +80,14 @@ public class SalonController {
 				}
 			}
 
+			if (salon.getIdSalon() != 0) {
+				salon.setEditar(true);
+			}
+			ArrayList<CaracteristicaModel> caracteristicas = new ArrayList<>();
+			for (CaracteristicaModel c : caracteristicaService.caracteristicasActivas()) {
+				caracteristicas.add(c);
+			}
+			salon.setCaracteristicas(caracteristicas);
 			view.setViewName(SALONES_EDIT);
 			view.addObject("salonModel", salon);
 			view.addObject("errors", errors);
