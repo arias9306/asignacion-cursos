@@ -15,7 +15,7 @@ public class ProgramaModel {
   private String facultad;
   @NotNull(message = "El codigo no puede ser nulo...")
   @NotBlank(message = "El codigo no puede estar vacio...")
-  @Size(min = 2, max = 10, message = "El código no es valido.")
+  @Size(min = 2, max = 10, message = "El código no es valido, debe tener entre dos y maximo diez caracteres.")
   private String codigo;
   private boolean editar;
 
