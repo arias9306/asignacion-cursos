@@ -6,11 +6,11 @@ import javax.validation.constraints.NotNull;
 public class CaracteristicaModel {
 
 	private int idcaracteristica;
-//	@NotBlank(message = "El nombre es obligatorio...")
-//	@NotNull(message = "El nombre es obligatorio...")
+	@NotBlank(message = "El nombre es obligatorio...")
+	@NotNull(message = "El nombre es obligatorio...")
 	private String nombre;
-//	@NotNull(message = "El estado es obligatorio...")
-//	@NotBlank(message = "El estado es obligatorio...")
+	@NotNull(message = "El estado es obligatorio...")
+	@NotBlank(message = "El estado es obligatorio...")
 	private String estado;
 	private boolean editar;
 	private Integer cantidad;
