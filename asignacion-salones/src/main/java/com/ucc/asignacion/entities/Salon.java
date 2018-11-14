@@ -3,13 +3,13 @@ package com.ucc.asignacion.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
 
 /**
  * The persistent class for the salon database table.
@@ -19,8 +19,8 @@ public class Salon implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_SALON")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_SALON")
 	private int idSalon;
 
 	private int bloque;
@@ -33,12 +33,12 @@ public class Salon implements Serializable {
 
 	private String tipo;
 
-	//bi-directional many-to-one association to CaracteristicasXSalon
-	@OneToMany(mappedBy="salon")
+	// bi-directional many-to-one association to CaracteristicasXSalon
+	@OneToMany(mappedBy = "salon", cascade = CascadeType.REMOVE)
 	private List<CaracteristicasXSalon> caracteristicasXSalons;
 
-	//bi-directional many-to-one association to Peticion
-	@OneToMany(mappedBy="salon")
+	// bi-directional many-to-one association to Peticion
+	@OneToMany(mappedBy = "salon")
 	private List<Peticion> peticions;
 
 	public Salon() {

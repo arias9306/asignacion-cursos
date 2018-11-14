@@ -81,24 +81,28 @@ public class UsuarioController {
 		return view;
 	}
 
-	@PostMapping("/")
-	public ModelAndView save(@Valid UsuarioModel usuario, BindingResult bindingResult) {
-		ModelAndView view = new ModelAndView();
-		if (bindingResult.hasErrors()) {
-			List<String> errors = new ArrayList<>();
-			for (ObjectError error : bindingResult.getAllErrors()) {
-				errors.add(error.getDefaultMessage());
-			}
-			view.setViewName(VISTA_EDITAR);
-			view.addObject("usuarioModel", usuario);
-			view.addObject("errors", errors);
-			view.addObject("rolModel", rolService.roles());
-			view.addObject("programaModel", programaService.programas());
-		} else {
-			usuarioService.guardarUsuario(usuario, false);
-			view.setViewName(REDIRECT_USUARIO);
-		}
-		return view;
+  @PostMapping("/")
+  public ModelAndView save(@Valid UsuarioModel usuario, BindingResult bindingResult) {
+    ModelAndView view = new ModelAndView();
+    if (bindingResult.hasErrors()) {
+      List<String> errors = new ArrayList<>();
+      for (ObjectError error : bindingResult.getAllErrors()) {
+        errors.add(error.getDefaultMessage());
+      }
+      if(usuario.getIdUser() != 0) {
+    	  usuario.setEditar(true);
+      }
+      view.setViewName(VISTA_EDITAR);
+      view.addObject("usuarioModel", usuario);
+      view.addObject("errors", errors);
+      view.addObject("rolModel", rolService.roles());
+      view.addObject("programaModel", programaService.programas());
+    }
+    else {
+      usuarioService.guardarUsuario(usuario, false);
+      view.setViewName(REDIRECT_USUARIO);
+    }
+    return view;
 
 	}
 

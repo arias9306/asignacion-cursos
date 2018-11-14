@@ -20,7 +20,7 @@
 									<th>Id</th>
 									<th>Nombre</th>
 									<th>Facultad</th>
-									<th>Codigo</th>
+									<th>Código</th>
 									<th style="width: 150px; text-align: center;">Editar</th>
 									<th style="width: 150px; text-align: center;">Eliminar</th>
 								</tr>
@@ -28,14 +28,14 @@
 									<td th:text="${programa.idPrograma}">Id</td>
 									<td th:text="${programa.nombre}">Nombre</td>
 									<td th:text="${programa.facultad}">Facultad</td>
-									<td th:text="${programa.codigo}">Codigo</td>
+									<td th:text="${programa.codigo}">Código</td>
 									<td style="text-align: center"><a
 										th:href="${'/admin/programas/edit/' + programa.idPrograma}"
-										class="btn btn-default">Edit</a></td>
+										class="btn btn-default">Editar</a></td>
 									<td style="text-align: center"><a
 										onclick="return confirm('¿Esta seguro que desea eliminar este programa?')"
 										th:href="${'/admin/programas/delete/' + programa.idPrograma}"
-										class="btn btn-danger">Delete</a></td>
+										class="btn btn-danger">Eliminar</a></td>
 								</tr>
 							</table>
 						</div>

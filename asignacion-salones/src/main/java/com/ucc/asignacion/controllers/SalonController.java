@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,11 +62,12 @@ public class SalonController {
 		}
 		model.setCaracteristicas(caracteristicas);
 		view.addObject("salonModel", model);
+		view.addObject("caracteriticasObject", caracteristicas);
 		return view;
 	}
 
 	@PostMapping("/")
-	public ModelAndView save(@Valid @ModelAttribute SalonModel salon, BindingResult bindingResult, Model model) {
+	public ModelAndView save(@Valid @ModelAttribute SalonModel salon, BindingResult bindingResult) {
 		ModelAndView view = new ModelAndView();
 		if (bindingResult.hasErrors()) {
 			List<String> errors = new ArrayList<>();
@@ -80,6 +80,14 @@ public class SalonController {
 				}
 			}
 
+			if (salon.getIdSalon() != 0) {
+				salon.setEditar(true);
+			}
+			ArrayList<CaracteristicaModel> caracteristicas = new ArrayList<>();
+			for (CaracteristicaModel c : caracteristicaService.caracteristicasActivas()) {
+				caracteristicas.add(c);
+			}
+			salon.setCaracteristicas(caracteristicas);
 			view.setViewName(SALONES_EDIT);
 			view.addObject("salonModel", salon);
 			view.addObject("errors", errors);
@@ -95,8 +103,12 @@ public class SalonController {
 		ModelAndView view = new ModelAndView(SALONES_EDIT);
 		SalonModel modelSalon = salonService.buscarSalonById(id);
 		modelSalon.setEditar(true);
+		ArrayList<CaracteristicaModel> caracteristicas = new ArrayList<>();
+		for (CaracteristicaModel c : caracteristicaService.caracteristica()) {
+			caracteristicas.add(c);
+		}
+		modelSalon.setCaracteristicas(caracteristicas);
 		view.addObject("salonModel", modelSalon);
-		view.addObject("caracteristicaModel", caracteristicaService.caracteristica());
 		return view;
 	}
 

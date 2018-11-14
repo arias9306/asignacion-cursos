@@ -42,18 +42,20 @@ public class ProgramaController {
 	@GetMapping("/add")
 	public ModelAndView create() {
 		ModelAndView view = new ModelAndView(PROGRAMAS_EDIT);
-		view.addObject("programaModel", new ProgramaModel());
+		ProgramaModel attributeValue = new ProgramaModel();
+
+		view.addObject("programaModel", attributeValue);
 		return view;
 	}
-	
-	 @GetMapping("/edit/{id}")
-	  public ModelAndView edit(@PathVariable(value = "id") String id) {
-	    ModelAndView view = new ModelAndView(PROGRAMAS_EDIT);
-	    ProgramaModel programaModel = programaService.buscarProgramaById(id);
-	    programaModel.setEditar(true);
-	    view.addObject("programaModel", programaModel);
-	    return view;
-	  }
+
+	@GetMapping("/edit/{id}")
+	public ModelAndView edit(@PathVariable(value = "id") String id) {
+		ModelAndView view = new ModelAndView(PROGRAMAS_EDIT);
+		ProgramaModel programaModel = programaService.buscarProgramaById(id);
+		programaModel.setEditar(true);
+		view.addObject("programaModel", programaModel);
+		return view;
+	}
 
 	@PostMapping("/")
 	public ModelAndView save(@Valid ProgramaModel programa, BindingResult bindingResult) {
@@ -63,6 +65,10 @@ public class ProgramaController {
 			for (ObjectError error : bindingResult.getAllErrors()) {
 				errors.add(error.getDefaultMessage());
 			}
+			if (programa.getIdPrograma() != 0) {
+				programa.setEditar(true);
+			}
+			view.addObject("programaModel", programa);
 			view.setViewName(PROGRAMAS_EDIT);
 			view.addObject("errors", errors);
 
@@ -73,11 +79,11 @@ public class ProgramaController {
 		return view;
 
 	}
-	
-	  @GetMapping("/delete/{id}")
-	  public String delete(@PathVariable(name = "id") String id) {
-	   programaService.eliminarProgramaById(id);
-	    return REDIRECT_PROGRAMA;
-	  }
+
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable(name = "id") String id) {
+		programaService.eliminarProgramaById(id);
+		return REDIRECT_PROGRAMA;
+	}
 
 }
