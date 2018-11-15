@@ -33,7 +33,7 @@ public class AuditoriaController {
   }
 
   
-  @GetMapping("/edit/{id}")
+  @GetMapping("/Ver/{id}")
   public ModelAndView edit(@PathVariable(value = "id") String id) {
     ModelAndView view = new ModelAndView("admin/auditoria/Ver");
     AuditoriaModel auditoriaModel = auditoriaService.buscarAuditoriaById(id);

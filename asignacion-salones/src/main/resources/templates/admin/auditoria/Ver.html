@@ -20,18 +20,19 @@
 									<th>Tabla</th>
 									<th>Fecha</th>
 									<th>Accion</th>
-									<th style="width: 150px; text-align: center;">Ver</th>
+									<th>Antiguo Valor</th>
+									<th>Nuevo Valor</th>
+									
 									
 								</tr>
 								<tr th:each="carga : ${auditoria}">
 									<td th:text="${carga.tabla}">Tabla</td>
 									<td th:text="${carga.fechaModificacion}">Fecha</td>
 									<td th:text="${carga.Accion}">Accion</td>
+									<td th:text="${carga.AntiguoValor}">Antiguo Valor</td>
+									<td th:text="${carga.nuevoValor}">Nuevo Valor</td>
 																										
-									<td style="text-align: center"><a
-										th:href="${'/admin/auditoria//' +ver carga.idauditoria}"
-										class="btn btn-default">VER</a></td>
-										
+									
 									
 								</tr>
 							</table>

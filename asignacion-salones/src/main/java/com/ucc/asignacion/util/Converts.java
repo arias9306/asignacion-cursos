@@ -169,6 +169,7 @@ public class Converts {
 			model.setFechaModificacion(auditoria.getFechaModificacion());
 			model.setNuevoValor(auditoria.getNuevoValor());
 			model.setTabla(auditoria.getTabla());
+			model.setIdAuditoria(auditoria.getIdAuditoria());
 		}
 		return model;
 	}
