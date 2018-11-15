@@ -5,4 +5,3 @@ Proyecto realizado por el grupo de noveno semestre de la Universidad Cooperativa
 ![Dashboard](https://github.com/arias9306/asignacion-cursos/blob/master/dashboard.PNG)
 
 
-[=85% "85%"]
