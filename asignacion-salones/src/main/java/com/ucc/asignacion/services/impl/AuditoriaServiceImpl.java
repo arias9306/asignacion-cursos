@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ucc.asignacion.entities.Auditoria;
-import com.ucc.asignacion.entities.Usuario;
 import com.ucc.asignacion.models.AuditoriaModel;
-import com.ucc.asignacion.models.UsuarioModel;
 import com.ucc.asignacion.repository.IAuditoriaRepository;
 import com.ucc.asignacion.services.IAuditoriaService;
 import com.ucc.asignacion.util.Converts;
